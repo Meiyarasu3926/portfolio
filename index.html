@@ -76,14 +76,10 @@
   .hero-visual{opacity:0;animation:fadeIn 1s .8s forwards;}
   .hero-grid-box{width:100%;aspect-ratio:1;max-width:420px;margin:0 auto;position:relative;}
   .grid-ring{position:absolute;border-radius:50%;border:1px solid var(--border);top:50%;left:50%;transform:translate(-50%,-50%);animation:rotateSlow linear infinite;}
-  .ring-1{width:92%;height:92%;animation-duration:20s;border-color:rgba(0,229,255,.12);}
-  .ring-2{width:76%;height:76%;animation-duration:15s;animation-direction:reverse;border-color:rgba(255,109,59,.15);}
-  .ring-3{width:60%;height:60%;animation-duration:10s;border-color:rgba(0,229,255,.25);}
-  /* Profile photo */
-  .profile-photo-wrap{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:50%;height:50%;border-radius:50%;z-index:2;}
-  .profile-photo-wrap::before{content:'';position:absolute;inset:-3px;border-radius:50%;background:conic-gradient(var(--cyan),var(--orange),var(--cyan));animation:rotateSlow 4s linear infinite;z-index:-1;}
-  .profile-photo-wrap::after{content:'';position:absolute;inset:-1px;border-radius:50%;background:var(--bg-primary);z-index:-1;}
-  .profile-photo{width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:top center;display:block;filter:brightness(.95) contrast(1.05);}
+  .ring-1{width:88%;height:88%;animation-duration:20s;border-color:rgba(0,229,255,.12);}
+  .ring-2{width:68%;height:68%;animation-duration:15s;animation-direction:reverse;border-color:rgba(255,109,59,.15);}
+  .ring-3{width:48%;height:48%;animation-duration:10s;border-color:rgba(0,229,255,.2);}
+  .grid-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:38%;height:38%;background:linear-gradient(135deg,var(--bg-card),var(--bg-card-hover));border:1px solid var(--border-hover);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:2.5rem;box-shadow:var(--glow);}
   .floating-tag{position:absolute;font-family:'JetBrains Mono',monospace;font-size:.65rem;padding:.3rem .7rem;background:var(--bg-card);border:1px solid var(--border);border-radius:3px;color:var(--text-secondary);white-space:nowrap;animation:floatAnim ease-in-out infinite alternate;}
   .tag-1{top:8%;left:5%;animation-duration:3s;color:var(--cyan);border-color:rgba(0,229,255,.3);}
   .tag-2{top:15%;right:2%;animation-duration:3.5s;animation-delay:.5s;color:var(--orange);border-color:rgba(255,109,59,.3);}
@@ -164,9 +160,10 @@
   .project-points{list-style:none;padding:0;margin-bottom:1.2rem;flex:1;}
   .project-points li{font-size:.8rem;color:var(--text-secondary);padding:.25rem 0 .25rem 1rem;position:relative;}
   .project-points li::before{content:'→';position:absolute;left:0;color:var(--cyan);font-size:.7rem;}
+
+  /* PROJECT STACK TAGS — all uniform cyan */
   .project-stack{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:auto;}
   .stack-tag{font-family:'JetBrains Mono',monospace;font-size:.62rem;padding:.2rem .6rem;background:rgba(0,229,255,.06);border:1px solid rgba(0,229,255,.2);border-radius:2px;color:var(--cyan);letter-spacing:.05em;}
-  .stack-tag.orange{background:rgba(255,109,59,.06);border-color:rgba(255,109,59,.2);color:var(--orange);}
 
   /* INLINE VIDEO */
   .inline-video-wrap{margin:.8rem 0 1rem;border-radius:6px;overflow:hidden;border:1px solid var(--border-hover);background:#000;}
@@ -193,10 +190,10 @@
   .lightbox-close:hover{background:rgba(0,229,255,.12);border-color:var(--cyan);transform:scale(1.1);}
   .lightbox-caption{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-secondary);letter-spacing:.1em;background:rgba(13,21,32,.85);padding:.4rem 1rem;border-radius:3px;border:1px solid var(--border);}
 
-  /* PROFILES */
-  .profile-card{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:2rem;text-align:center;transition:all .3s;text-decoration:none;display:block;color:inherit;}
+  /* PROFILES — equal height, flex column */
+  .profile-card{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:2rem;text-align:center;transition:all .3s;text-decoration:none;display:flex;flex-direction:column;align-items:center;color:inherit;height:100%;}
   .profile-card:hover{border-color:var(--border-hover);box-shadow:var(--glow);transform:translateY(-6px);color:inherit;}
-  .profile-icon{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:1.5rem;border:2px solid var(--border);}
+  .profile-icon{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin:0 auto 1rem;font-size:1.5rem;border:2px solid var(--border);}
   .profile-name{font-weight:700;font-size:1rem;color:var(--text-primary);margin-bottom:.4rem;}
   .profile-handle{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--text-secondary);margin-bottom:.8rem;}
   .profile-desc{font-size:.8rem;color:var(--text-secondary);line-height:1.6;}
@@ -222,10 +219,9 @@
   .contact-arrow{margin-left:auto;color:var(--text-secondary);font-size:.8rem;transition:transform .2s;flex-shrink:0;}
   .contact-card:hover .contact-arrow{transform:translateX(4px);color:var(--cyan);}
 
-  /* FOOTER */
+  /* FOOTER — uniform color */
   footer{border-top:1px solid var(--border);padding:2.5rem 0;text-align:center;}
   .footer-brand{font-family:'JetBrains Mono',monospace;font-size:.85rem;color:var(--text-secondary);margin-bottom:.5rem;}
-  .footer-brand span{color:var(--cyan);}
   .footer-copy{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-secondary);opacity:.5;}
 
   @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
@@ -309,9 +305,7 @@
             <div class="grid-ring ring-1"></div>
             <div class="grid-ring ring-2"></div>
             <div class="grid-ring ring-3"></div>
-            <div class="profile-photo-wrap">
-              <img src="profile_photo.jpeg" alt="Meiyarasu K" class="profile-photo">
-            </div>
+            <div class="grid-center">🧠</div>
             <div class="floating-tag tag-1">YOLOv11</div>
             <div class="floating-tag tag-2">PyTorch</div>
             <div class="floating-tag tag-3">FaceNet</div>
@@ -432,74 +426,46 @@
           <div class="project-num">01 / ANPR</div>
           <div class="project-icon">🚗</div>
           <div class="project-title">Automatic Number Plate Recognition System</div>
-          <p class="project-desc">
-            Not a straight line from idea to product — a months-long grind through broken OCR engines, exploding false positives, a dataset that didn't exist, and a live-camera that refused to cooperate. Every obstacle forced a smarter solution. The result: a stable, production-deployed ANPR system that actually works.
-          </p>
+          <p class="project-desc">Not a straight line from idea to product — a months-long grind through broken OCR engines, exploding false positives, a dataset that didn't exist, and a live-camera that refused to cooperate. Every obstacle forced a smarter solution. The result: a stable, production-deployed ANPR system that actually works.</p>
 
-          <!-- Journey Story -->
           <div class="project-story">
-            <div class="story-toggle" onclick="toggleStory(this)">
-              <span class="arrow">▶</span> The Full Journey
-            </div>
+            <div class="story-toggle" onclick="toggleStory(this)"><span class="arrow">▶</span> The Full Journey</div>
             <div class="story-body">
-
               <div class="story-para">
-                <strong>Phase 1 — OCR Engine Graveyard.</strong> The search for a working OCR engine started broad. Tried nearly every available option — none delivered satisfying accuracy on Indian number plates. Eventually settled on <strong>YOLOv8m + PaddleOCR</strong> as the baseline. But it was painfully slow, missed characters regularly, and was completely unstable on a live camera feed. Added <strong>Indian plate regex post-processing</strong> — this improved results noticeably, but couldn't fully fix the accuracy gap.
+                <strong>Phase 1 — OCR Engine Graveyard.</strong> Tried nearly every available option — none delivered satisfying accuracy on Indian number plates. Eventually settled on <strong>YOLOv8m + PaddleOCR</strong> as the baseline. But it was painfully slow, missed characters regularly, and was completely unstable on a live camera feed. Added <strong>Indian plate regex post-processing</strong> — this improved results noticeably, but couldn't fully fix the accuracy gap.
               </div>
               <div class="story-milestone">
-                <span class="ms bad">Tesseract ✗</span>
-                <span class="ms bad">EasyOCR ✗</span>
-                <span class="ms bad">PaddleOCR (raw) ✗</span>
-                <span class="ms warn">PaddleOCR + regex → partial ✓</span>
+                <span class="ms bad">Tesseract ✗</span><span class="ms bad">EasyOCR ✗</span><span class="ms bad">PaddleOCR (raw) ✗</span><span class="ms warn">PaddleOCR + regex → partial ✓</span>
               </div>
-
               <div class="story-para">
-                <strong>Phase 2 — False Positive Crisis.</strong> <span class="prob">Any rectangular object in frame — storefronts, stickers, camera watermarks, signboards — was being confidently detected as a number plate.</span> Worse: front-facing plates weren't being detected at all, only rear plates. Collected and manually annotated front-plate images to fill the detection gap. That fixed detection, but false positives still ran wild.
+                <strong>Phase 2 — False Positive Crisis.</strong> <span class="prob">Any rectangular object in frame — storefronts, stickers, camera watermarks, signboards — was being confidently detected as a number plate.</span> Worse: front-facing plates weren't being detected at all. Collected and manually annotated front-plate images to fill the detection gap. That fixed detection, but false positives still ran wild.
               </div>
               <div class="story-milestone">
-                <span class="ms bad">Storefront → plate ✗</span>
-                <span class="ms bad">Watermark → plate ✗</span>
-                <span class="ms bad">Front plates missed ✗</span>
-                <span class="ms warn">Front plate annotations → detection fixed</span>
+                <span class="ms bad">Storefront → plate ✗</span><span class="ms bad">Watermark → plate ✗</span><span class="ms bad">Front plates missed ✗</span><span class="ms warn">Front plate annotations → detection fixed</span>
               </div>
-
               <div class="story-para">
-                <strong>Phase 3 — The Dataset That Didn't Exist.</strong> To fix OCR accuracy properly, the plan was to build a lightweight custom recognition model. Problem: couldn't find any dataset with actual plate text labels for recognition training. Tried every available source — public repos, scraping, synthetic generation. Nothing worked. So the only option was to do it manually.
+                <strong>Phase 3 — The Dataset That Didn't Exist.</strong> Planned a lightweight custom recognition model but couldn't find any dataset with actual plate text labels. Tried every available source. Nothing worked. So the only option was to do it manually.
                 <br><br>
                 <strong>681 plate images annotated by hand over 12 straight hours.</strong> Then extended programmatically to 2,500 images. Later discovered a public 1-lakh character recognition dataset — combined all characters with the manual annotations. After full quality filtering (deduplication, blur scoring, noise removal), ended up with <strong>14K images for detection</strong> and <strong>17K images for recognition</strong>.
               </div>
               <div class="story-milestone">
-                <span class="ms good">681 manual annotations</span>
-                <span class="ms good">12 hours of labeling</span>
-                <span class="ms good">2,500 → 17K via pipeline</span>
-                <span class="ms good">14K detection · 17K recognition</span>
+                <span class="ms good">681 manual annotations</span><span class="ms good">12 hours of labeling</span><span class="ms good">2,500 → 17K via pipeline</span><span class="ms good">14K detection · 17K recognition</span>
               </div>
-
               <div class="story-para">
-                <strong>Phase 4 — TrOCR Breakthrough, Then Another Wall.</strong> Fine-tuned <strong>Microsoft TrOCR</strong> on the curated dataset — it worked well on static images, hitting strong character accuracy. But on a live feed with moving vehicles, it was still unstable. Came very close to solving this, but moving-vehicle inference remained unresolved despite exhausting every approach. Fell back to PaddleOCR, which still failed on edge cases. Added a <strong>manual entry fallback</strong> as a practical, user-facing workaround.
+                <strong>Phase 4 — TrOCR Breakthrough, Then Another Wall.</strong> Fine-tuned <strong>Microsoft TrOCR</strong> on the curated dataset — worked well on static images. But on a live feed with moving vehicles, it was still unstable. Came very close to solving this, but moving-vehicle inference remained unresolved despite exhausting every approach. Fell back to PaddleOCR, which still failed on edge cases. Added a <strong>manual entry fallback</strong> as a practical workaround.
               </div>
               <div class="story-milestone">
-                <span class="ms good">TrOCR → static images ✓</span>
-                <span class="ms bad">TrOCR → moving vehicles ✗</span>
-                <span class="ms warn">PaddleOCR fallback + manual entry</span>
+                <span class="ms good">TrOCR → static images ✓</span><span class="ms bad">TrOCR → moving vehicles ✗</span><span class="ms warn">PaddleOCR fallback + manual entry</span>
               </div>
-
               <div class="story-para">
-                <strong>Phase 5 — False Positives, Solved for Good.</strong> Researched hard negative mining. Collected <strong>10,000 negative images</strong> — storefronts, signboards, stickers, watermarks, anything that looked plate-shaped but wasn't. Ran training in two rounds: first on the 14K plate dataset alone, then again on 14K plates + 10K negatives combined. <span style="color:var(--green)"><strong>This completely eliminated the false positive problem.</strong></span>
-                <br><br>
-                The final ANPR system is stable under real-world conditions, accurately handles diverse Indian plate formats, and has been running in a production environment on AWS EC2 via FastAPI.
+                <strong>Phase 5 — False Positives, Solved for Good.</strong> Collected <strong>10,000 negative images</strong> — storefronts, signboards, stickers, watermarks. Ran training in two rounds: first on 14K plates alone, then on 14K plates + 10K negatives combined. <span style="color:var(--green)"><strong>This completely eliminated the false positive problem.</strong></span> The final system is stable, accurate, and production-deployed on AWS EC2 via FastAPI.
               </div>
               <div class="story-milestone">
-                <span class="ms good">10K hard negatives collected</span>
-                <span class="ms good">Two-round progressive fine-tuning</span>
-                <span class="ms good">False positives eliminated ✓</span>
-                <span class="ms good">Production deployed ✓</span>
+                <span class="ms good">10K hard negatives collected</span><span class="ms good">Two-round progressive fine-tuning</span><span class="ms good">False positives eliminated ✓</span><span class="ms good">Production deployed ✓</span>
               </div>
-
             </div>
           </div>
 
-          <!-- Demo Video -->
           <div class="inline-video-wrap">
             <div class="inline-video-label"><span class="dot-blink"></span> Demo Video</div>
             <video class="inline-video auto-play-video" muted playsinline controls preload="metadata">
@@ -515,7 +481,13 @@
             <li>Manual entry fallback for edge cases; FastAPI on AWS EC2 at ~20 FPS</li>
           </ul>
           <div class="project-stack">
-            <span class="stack-tag">YOLOv8</span><span class="stack-tag">PaddleOCR</span><span class="stack-tag">TrOCR</span><span class="stack-tag orange">FastAPI</span><span class="stack-tag">PyTorch</span><span class="stack-tag">OpenCV</span><span class="stack-tag orange">AWS EC2</span>
+            <span class="stack-tag">YOLOv8</span>
+            <span class="stack-tag">PaddleOCR</span>
+            <span class="stack-tag">TrOCR</span>
+            <span class="stack-tag">FastAPI</span>
+            <span class="stack-tag">PyTorch</span>
+            <span class="stack-tag">OpenCV</span>
+            <span class="stack-tag">AWS EC2</span>
           </div>
         </div>
       </div>
@@ -526,60 +498,38 @@
           <div class="project-num">03 / BIOMETRIC</div>
           <div class="project-icon">🛡️</div>
           <div class="project-title">Secure Face Recognition with Anti-Spoofing</div>
-          <p class="project-desc">
-            A full month spent testing every available face recognition approach before finding what actually works. Then building an anti-spoofing layer from scratch because no off-the-shelf solution was good enough. The outcome: a 3-stage production pipeline that handles real-world identity verification.
-          </p>
+          <p class="project-desc">A full month spent testing every available face recognition approach before finding what actually works. Then building an anti-spoofing layer from scratch because no off-the-shelf solution was good enough. The outcome: a 3-stage production pipeline that handles real-world identity verification.</p>
 
-          <!-- Journey Story -->
           <div class="project-story">
-            <div class="story-toggle" onclick="toggleStory(this)">
-              <span class="arrow">▶</span> The Full Journey
-            </div>
+            <div class="story-toggle" onclick="toggleStory(this)"><span class="arrow">▶</span> The Full Journey</div>
             <div class="story-body">
-
               <div class="story-para">
-                <strong>Phase 1 — One Month in the Library Graveyard.</strong> Spent a full month systematically testing every mainstream face recognition library. <strong>DeepFace, OpenCV face modules, and the face_recognition library</strong> — each tried, evaluated, and discarded. Performance on varied lighting, different angles, and partial occlusion was too inconsistent for production use. None cleared the accuracy bar required for a real deployment.
+                <strong>Phase 1 — One Month in the Library Graveyard.</strong> Spent a full month systematically testing every mainstream face recognition library. <strong>DeepFace, OpenCV face modules, and the face_recognition library</strong> — each tried, evaluated, and discarded. Performance on varied lighting, different angles, and partial occlusion was too inconsistent for production use. None cleared the accuracy bar required.
               </div>
               <div class="story-milestone">
-                <span class="ms bad">DeepFace ✗</span>
-                <span class="ms bad">face_recognition ✗</span>
-                <span class="ms bad">OpenCV face module ✗</span>
+                <span class="ms bad">DeepFace ✗</span><span class="ms bad">face_recognition ✗</span><span class="ms bad">OpenCV face module ✗</span>
               </div>
-
               <div class="story-para">
-                <strong>Phase 2 — Building a Siamese Network from Scratch.</strong> Decided to go custom. Designed and trained a <strong>Siamese network with contrastive loss</strong> — learning to push similar faces together and dissimilar faces apart. Built OpenCV-based data collection scripts to capture personal training data. Rewrote it with <strong>triplet loss</strong> (anchor / positive / negative pairs) for better metric learning. Results were promising and performance improved — but still fell short of production-grade accuracy.
+                <strong>Phase 2 — Building a Siamese Network from Scratch.</strong> Decided to go custom. Designed and trained a <strong>Siamese network with contrastive loss</strong> — learning to push similar faces together and dissimilar faces apart. Built OpenCV-based data collection scripts to capture personal training data. Rewrote it with <strong>triplet loss</strong> (anchor / positive / negative pairs) for better metric learning. Results were promising — but still fell short of production-grade accuracy.
               </div>
               <div class="story-milestone">
-                <span class="ms bad">Siamese + Contrastive Loss ✗</span>
-                <span class="ms bad">Siamese + Triplet Loss ✗</span>
-                <span class="ms warn">Custom data collection pipeline ✓</span>
+                <span class="ms bad">Siamese + Contrastive Loss ✗</span><span class="ms bad">Siamese + Triplet Loss ✗</span><span class="ms warn">Custom data collection pipeline ✓</span>
               </div>
-
               <div class="story-para">
-                <strong>Phase 3 — FaceNet Breakthrough.</strong> Discovered <strong>facenet_pytorch</strong> — InceptionResnetV1 pretrained on the VGGFace2 dataset. Cosine similarity for 1:N identity verification. The accuracy jump was immediate and significant — fast enrollment, reliable matching across lighting and angle variation. This became the identity verification backbone of the entire system.
+                <strong>Phase 3 — FaceNet Breakthrough.</strong> Discovered <strong>facenet_pytorch</strong> — InceptionResnetV1 pretrained on VGGFace2. Cosine similarity for 1:N identity verification. The accuracy jump was immediate and significant — fast enrollment, reliable matching across lighting and angle variation. This became the identity verification backbone.
               </div>
               <div class="story-milestone">
-                <span class="ms good">FaceNet (InceptionResnetV1) ✓</span>
-                <span class="ms good">Cosine similarity 1:N ✓</span>
-                <span class="ms good">VGGFace2 pretrained backbone ✓</span>
+                <span class="ms good">FaceNet (InceptionResnetV1) ✓</span><span class="ms good">Cosine similarity 1:N ✓</span><span class="ms good">VGGFace2 pretrained backbone ✓</span>
               </div>
-
               <div class="story-para">
-                <strong>Phase 4 — Anti-Spoofing: Built from Scratch.</strong> <span class="prob">The system could now recognize faces accurately — but it couldn't tell the difference between a real person and a printed photo, a passport-size image, or a face displayed on a phone screen.</span> Any physical attack would pass straight through.
-                <br><br>
-                No existing off-the-shelf anti-spoof model met the requirements. Collected <strong>10,000 images across 5 people</strong> — real faces under natural lighting, attacks via digital screens, and printed passport-size photos. Trained an <strong>EfficientNet-B0 binary classifier</strong> (live vs. spoof) on this custom dataset. The classifier was then integrated with <strong>YOLOv11-face</strong> for detection into a clean <strong>3-stage pipeline</strong>: detect face → check liveness → verify identity. Deployed the full system on AWS EC2 via FastAPI.
+                <strong>Phase 4 — Anti-Spoofing: Built from Scratch.</strong> <span class="prob">The system could now recognize faces accurately — but it couldn't tell the difference between a real person and a printed photo, a passport-size image, or a face on a phone screen.</span> No off-the-shelf anti-spoof model met the requirements. Collected <strong>10,000 images across 5 people</strong> — real faces, digital screen attacks, and printed passport-size photos. Trained an <strong>EfficientNet-B0 binary classifier</strong>. Integrated with <strong>YOLOv11-face</strong> into a clean <strong>3-stage pipeline</strong>: detect face → check liveness → verify identity. Deployed on AWS EC2 via FastAPI.
               </div>
               <div class="story-milestone">
-                <span class="ms good">10K custom anti-spoof images</span>
-                <span class="ms good">5 people · 3 attack types</span>
-                <span class="ms good">EfficientNet-B0 liveness classifier ✓</span>
-                <span class="ms good">3-stage pipeline deployed ✓</span>
+                <span class="ms good">10K custom anti-spoof images</span><span class="ms good">5 people · 3 attack types</span><span class="ms good">EfficientNet-B0 liveness classifier ✓</span><span class="ms good">3-stage pipeline deployed ✓</span>
               </div>
-
             </div>
           </div>
 
-          <!-- Demo Video -->
           <div class="inline-video-wrap">
             <div class="inline-video-label"><span class="dot-blink"></span> Demo Video</div>
             <video class="inline-video auto-play-video" muted playsinline controls preload="metadata">
@@ -595,7 +545,12 @@
             <li>EfficientNet-B0 liveness check gating identity verification; FastAPI on AWS EC2</li>
           </ul>
           <div class="project-stack">
-            <span class="stack-tag">YOLOv11-Face</span><span class="stack-tag">FaceNet</span><span class="stack-tag orange">EfficientNet-B0</span><span class="stack-tag">Siamese Net</span><span class="stack-tag">FastAPI</span><span class="stack-tag orange">AWS EC2</span>
+            <span class="stack-tag">YOLOv11-Face</span>
+            <span class="stack-tag">FaceNet</span>
+            <span class="stack-tag">EfficientNet-B0</span>
+            <span class="stack-tag">Siamese Net</span>
+            <span class="stack-tag">FastAPI</span>
+            <span class="stack-tag">AWS EC2</span>
           </div>
         </div>
       </div>
@@ -606,25 +561,14 @@
           <div class="project-num">02 / OCR</div>
           <div class="project-icon">📝</div>
           <div class="project-title">Transformer-Based OCR Fine-Tuning (TrOCR)</div>
-          <p class="project-desc">
-            Fine-tuned Microsoft TrOCR on 17K carefully curated Indian plate crops — achieving 93% character-level accuracy on static images after systematic error analysis across blur, low-light, and non-standard fonts.
-          </p>
+          <p class="project-desc">Fine-tuned Microsoft TrOCR on 17K carefully curated Indian plate crops — achieving 93% character-level accuracy on static images after systematic error analysis across blur, low-light, and non-standard fonts.</p>
 
-          <!-- Result Image — zoomable -->
           <div class="result-img-wrap">
             <div class="result-img-label">
-              <div class="result-img-label-left">
-                <i class="fa fa-image" style="color:var(--cyan);font-size:.7rem;"></i> Model Output Results
-              </div>
+              <div class="result-img-label-left"><i class="fa fa-image" style="color:var(--cyan);font-size:.7rem;"></i> Model Output Results</div>
               <div class="zoom-hint"><i class="fa fa-search-plus"></i> click to zoom</div>
             </div>
-            <img
-              src="trocr_result.png"
-              alt="TrOCR Model Output Results"
-              class="result-img"
-              onclick="openLightbox(this)"
-              data-caption="TrOCR Fine-Tuned Results — 93% character accuracy on Indian plates"
-            >
+            <img src="trocr_result.png" alt="TrOCR Model Output Results" class="result-img" onclick="openLightbox(this)" data-caption="TrOCR Fine-Tuned Results — 93% character accuracy on Indian plates">
           </div>
 
           <ul class="project-points">
@@ -635,7 +579,10 @@
             <li>Revealed live-camera instability on moving vehicles — informed final pipeline decision</li>
           </ul>
           <div class="project-stack">
-            <span class="stack-tag">TrOCR</span><span class="stack-tag">Hugging Face</span><span class="stack-tag">PyTorch</span><span class="stack-tag orange">Python</span>
+            <span class="stack-tag">TrOCR</span>
+            <span class="stack-tag">Hugging Face</span>
+            <span class="stack-tag">PyTorch</span>
+            <span class="stack-tag">Python</span>
           </div>
         </div>
       </div>
@@ -656,28 +603,32 @@
       <div class="col-md-6 col-lg-3 reveal">
         <a href="https://www.linkedin.com/in/meiyarasu-k" target="_blank" class="profile-card">
           <div class="profile-icon" style="background:rgba(0,119,181,.1);border-color:rgba(0,119,181,.3);"><i class="fab fa-linkedin" style="color:#0077b5;"></i></div>
-          <div class="profile-name">LinkedIn</div><div class="profile-handle">meiyarasu-k</div>
+          <div class="profile-name">LinkedIn</div>
+          <div class="profile-handle">meiyarasu-k</div>
           <div class="profile-desc">Professional profile & work experience updates</div>
         </a>
       </div>
       <div class="col-md-6 col-lg-3 reveal">
         <a href="https://leetcode.com/u/dyXX6IGV43/" target="_blank" class="profile-card">
           <div class="profile-icon" style="background:rgba(255,161,22,.1);border-color:rgba(255,161,22,.3);"><span style="font-size:1.3rem;">⚡</span></div>
-          <div class="profile-name">LeetCode</div><div class="profile-handle">dyXX6IGV43</div>
+          <div class="profile-name">LeetCode</div>
+          <div class="profile-handle">dyXX6IGV43</div>
           <div class="profile-desc">Competitive programming & algorithm challenges</div>
         </a>
       </div>
       <div class="col-md-6 col-lg-3 reveal">
         <a href="https://www.hackerrank.com/profile/meiyarasu713" target="_blank" class="profile-card">
           <div class="profile-icon" style="background:rgba(0,194,58,.1);border-color:rgba(0,194,58,.3);"><i class="fab fa-hackerrank" style="color:#00c23a;"></i></div>
-          <div class="profile-name">HackerRank</div><div class="profile-handle">meiyarasu713</div>
+          <div class="profile-name">HackerRank</div>
+          <div class="profile-handle">meiyarasu713</div>
           <div class="profile-desc">Python Basic certification & coding challenges</div>
         </a>
       </div>
       <div class="col-md-6 col-lg-3 reveal">
         <a href="https://www.geeksforgeeks.org/profile/meiyara7i3f" target="_blank" class="profile-card">
           <div class="profile-icon" style="background:rgba(14,150,58,.1);border-color:rgba(14,150,58,.3);"><span style="font-size:1.1rem;color:#0e963a;font-weight:700;font-family:monospace;">GfG</span></div>
-          <div class="profile-name">GeeksforGeeks</div><div class="profile-handle">meiyara7i3f</div>
+          <div class="profile-name">GeeksforGeeks</div>
+          <div class="profile-handle">meiyara7i3f</div>
           <div class="profile-desc">DSA practice & CS articles engagement</div>
         </a>
       </div>
@@ -759,7 +710,7 @@
 <!-- FOOTER -->
 <footer>
   <div class="container">
-    <p class="footer-brand">MEI<span>YARASU K</span> — AI/ML Engineer</p>
+    <p class="footer-brand">MEIYARASU K — AI/ML Engineer</p>
     <p class="footer-copy">© 2025 Meiyarasu K · Built with precision · Tamil Nadu, India</p>
   </div>
 </footer>
@@ -768,7 +719,7 @@
 <script>
 // ── LIGHTBOX ──
 function openLightbox(img) {
-  const lb = document.getElementById('lightbox');
+  const lb    = document.getElementById('lightbox');
   const lbImg = document.getElementById('lightboxImg');
   const lbCap = document.getElementById('lightboxCaption');
   lbImg.src = img.src;
@@ -782,97 +733,86 @@ function closeLightboxBtn() {
   document.body.style.overflow = '';
 }
 function closeLightbox(e) {
-  if (e.target === document.getElementById('lightbox')) {
-    closeLightboxBtn();
-  }
+  if (e.target === document.getElementById('lightbox')) closeLightboxBtn();
 }
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeLightboxBtn();
-});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightboxBtn(); });
 
 // ── STORY TOGGLE ──
 function toggleStory(btn) {
   btn.classList.toggle('open');
-  const body = btn.nextElementSibling;
-  body.classList.toggle('open');
+  btn.nextElementSibling.classList.toggle('open');
 }
 
 // ── CURSOR ──
-const dot = document.getElementById('cursorDot');
+const dot  = document.getElementById('cursorDot');
 const ring = document.getElementById('cursorRing');
-let mx=0,my=0,rx=0,ry=0;
+let mx=0, my=0, rx=0, ry=0;
 document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; });
 (function tick(){
-  dot.style.left=mx+'px'; dot.style.top=my+'px';
-  rx+=(mx-rx)*.12; ry+=(my-ry)*.12;
-  ring.style.left=rx+'px'; ring.style.top=ry+'px';
+  dot.style.left  = mx+'px'; dot.style.top  = my+'px';
+  rx += (mx-rx)*.12; ry += (my-ry)*.12;
+  ring.style.left = rx+'px'; ring.style.top = ry+'px';
   requestAnimationFrame(tick);
 })();
-document.querySelectorAll('a,button,video,.story-toggle,.result-img').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{ring.style.transform='translate(-50%,-50%) scale(1.5)';ring.style.opacity='1';});
-  el.addEventListener('mouseleave',()=>{ring.style.transform='translate(-50%,-50%) scale(1)';ring.style.opacity='.6';});
+document.querySelectorAll('a,button,video,.story-toggle,.result-img').forEach(el => {
+  el.addEventListener('mouseenter', () => { ring.style.transform='translate(-50%,-50%) scale(1.5)'; ring.style.opacity='1'; });
+  el.addEventListener('mouseleave', () => { ring.style.transform='translate(-50%,-50%) scale(1)';   ring.style.opacity='.6'; });
 });
 
 // ── NEURAL CANVAS ──
-const canvas=document.getElementById('neural-bg');
-const ctx=canvas.getContext('2d');
-let W,H;
-const nodes=Array.from({length:60},()=>({
-  x:Math.random()*innerWidth, y:Math.random()*innerHeight,
-  vx:(Math.random()-.5)*.4, vy:(Math.random()-.5)*.4,
-  r:Math.random()*2+1
+const canvas = document.getElementById('neural-bg');
+const ctx    = canvas.getContext('2d');
+let W, H;
+const nodes  = Array.from({length:60}, () => ({
+  x: Math.random()*innerWidth, y: Math.random()*innerHeight,
+  vx: (Math.random()-.5)*.4,  vy: (Math.random()-.5)*.4,
+  r: Math.random()*2+1
 }));
-function resize(){W=canvas.width=innerWidth;H=canvas.height=innerHeight;}
-resize(); window.addEventListener('resize',resize);
+function resize(){ W=canvas.width=innerWidth; H=canvas.height=innerHeight; }
+resize();
+window.addEventListener('resize', resize);
 (function draw(){
   ctx.clearRect(0,0,W,H);
-  nodes.forEach((n,i)=>{
+  nodes.forEach((n,i) => {
     n.x+=n.vx; n.y+=n.vy;
-    if(n.x<0||n.x>W)n.vx*=-1; if(n.y<0||n.y>H)n.vy*=-1;
-    for(let j=i+1;j<nodes.length;j++){
-      const m=nodes[j],d=Math.hypot(n.x-m.x,n.y-m.y);
-      if(d<160){ctx.beginPath();ctx.strokeStyle=`rgba(0,229,255,${.2*(1-d/160)})`;ctx.lineWidth=.5;ctx.moveTo(n.x,n.y);ctx.lineTo(m.x,m.y);ctx.stroke();}
+    if(n.x<0||n.x>W) n.vx*=-1;
+    if(n.y<0||n.y>H) n.vy*=-1;
+    for(let j=i+1; j<nodes.length; j++){
+      const m=nodes[j], d=Math.hypot(n.x-m.x, n.y-m.y);
+      if(d<160){ ctx.beginPath(); ctx.strokeStyle=`rgba(0,229,255,${.2*(1-d/160)})`; ctx.lineWidth=.5; ctx.moveTo(n.x,n.y); ctx.lineTo(m.x,m.y); ctx.stroke(); }
     }
-    ctx.beginPath();ctx.arc(n.x,n.y,n.r,0,Math.PI*2);ctx.fillStyle='rgba(0,229,255,.5)';ctx.fill();
+    ctx.beginPath(); ctx.arc(n.x,n.y,n.r,0,Math.PI*2); ctx.fillStyle='rgba(0,229,255,.5)'; ctx.fill();
   });
   requestAnimationFrame(draw);
 })();
 
 // ── SCROLL REVEAL ──
-const revObs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),80);revObs.unobserve(e.target);}
-  });
-},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
+const revObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('visible'),80); revObs.unobserve(e.target); } });
+}, {threshold:.1, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
 
 // ── VIDEO AUTO-PLAY ON SCROLL ──
-const vidObs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    const v=e.target;
-    if(e.isIntersecting && e.intersectionRatio>=0.5){
-      v.play().catch(()=>{});
-    } else {
-      v.pause();
-    }
+const vidObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    const v = e.target;
+    if(e.isIntersecting && e.intersectionRatio>=0.5){ v.play().catch(()=>{}); }
+    else { v.pause(); }
   });
-},{threshold:[0,.25,.5,.75,1]});
-
-document.querySelectorAll('.auto-play-video').forEach(v=>{
+}, {threshold:[0,.25,.5,.75,1]});
+document.querySelectorAll('.auto-play-video').forEach(v => {
   vidObs.observe(v);
-  v.addEventListener('play',()=>{
-    document.querySelectorAll('.auto-play-video').forEach(o=>{ if(o!==v) o.pause(); });
-  });
+  v.addEventListener('play', () => { document.querySelectorAll('.auto-play-video').forEach(o => { if(o!==v) o.pause(); }); });
 });
 
 // ── COUNTER ──
-const statsEl=document.querySelector('.hero-stats');
+const statsEl = document.querySelector('.hero-stats');
 if(statsEl){
-  let done=false;
-  new IntersectionObserver(entries=>{
-    if(entries[0].isIntersecting&&!done){
-      done=true;
-      document.querySelectorAll('[data-count]').forEach(el=>{
+  let done = false;
+  new IntersectionObserver(entries => {
+    if(entries[0].isIntersecting && !done){
+      done = true;
+      document.querySelectorAll('[data-count]').forEach(el => {
         const end=+el.dataset.count; let v=0; const step=end/60;
         const t=setInterval(()=>{ v+=step; if(v>=end){el.textContent=end;clearInterval(t);}else el.textContent=Math.floor(v); },20);
       });
@@ -881,13 +821,13 @@ if(statsEl){
 }
 
 // ── NAVBAR ACTIVE ──
-const allSecs=document.querySelectorAll('section[id]');
-window.addEventListener('scroll',()=>{
+const allSecs = document.querySelectorAll('section[id]');
+window.addEventListener('scroll', () => {
   let cur='';
-  allSecs.forEach(s=>{if(scrollY>=s.offsetTop-130)cur=s.id;});
-  document.querySelectorAll('.nav-link').forEach(a=>{
+  allSecs.forEach(s => { if(scrollY>=s.offsetTop-130) cur=s.id; });
+  document.querySelectorAll('.nav-link').forEach(a => {
     a.style.color='';
-    if(a.getAttribute('href')==='#'+cur)a.style.color='var(--cyan)';
+    if(a.getAttribute('href')==='#'+cur) a.style.color='var(--cyan)';
   });
 },{passive:true});
 </script>
