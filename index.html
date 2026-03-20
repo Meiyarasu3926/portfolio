@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meiyarasu K — AI/ML Engineer</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-primary: #050a0f;
+    --bg-secondary: #090f17;
+    --bg-card: #0d1520;
+    --bg-card-hover: #111d2e;
+    --cyan: #00e5ff;
+    --cyan-dim: #0097a7;
+    --orange: #ff6d3b;
+    --green: #00e676;
+    --text-primary: #e8f0fe;
+    --text-secondary: #8899aa;
+    --border: rgba(0,229,255,0.15);
+    --border-hover: rgba(0,229,255,0.45);
+    --glow: 0 0 20px rgba(0,229,255,0.25);
+    --glow-strong: 0 0 40px rgba(0,229,255,0.4);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg-primary);color:var(--text-primary);font-family:'Syne',sans-serif;overflow-x:hidden;cursor:none;}
+
+  .cursor-dot{width:8px;height:8px;background:var(--cyan);border-radius:50%;position:fixed;pointer-events:none;z-index:10000;transform:translate(-50%,-50%);}
+  .cursor-ring{width:36px;height:36px;border:1.5px solid var(--cyan);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:all .12s ease;opacity:.6;}
+
+  #neural-bg{position:fixed;inset:0;z-index:0;opacity:.28;pointer-events:none;}
+  body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:1;opacity:.35;}
+  section,nav,footer{position:relative;z-index:2;}
+
+  ::-webkit-scrollbar{width:4px;}
+  ::-webkit-scrollbar-track{background:var(--bg-primary);}
+  ::-webkit-scrollbar-thumb{background:var(--cyan-dim);border-radius:2px;}
+
+  /* NAV */
+  .navbar{background:rgba(5,10,15,.92)!important;backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:1rem 0;}
+  .navbar-brand{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:1.1rem;color:var(--cyan)!important;letter-spacing:.05em;}
+  .navbar-brand span{color:var(--orange);}
+  .nav-link{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--text-secondary)!important;letter-spacing:.08em;text-transform:uppercase;padding:.4rem .9rem!important;transition:color .2s;position:relative;}
+  .nav-link::after{content:'';position:absolute;bottom:-2px;left:50%;right:50%;height:1px;background:var(--cyan);transition:all .25s;}
+  .nav-link:hover{color:var(--cyan)!important;}
+  .nav-link:hover::after{left:.9rem;right:.9rem;}
+  .navbar-toggler{border-color:var(--border);padding:.4rem .6rem;}
+  .navbar-toggler-icon{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0,229,255,.9)' stroke-linecap='round' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");}
+
+  /* HERO */
+  #hero{min-height:100vh;display:flex;align-items:center;padding:120px 0 80px;}
+  .hero-label{font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--cyan);letter-spacing:.25em;text-transform:uppercase;margin-bottom:1.2rem;opacity:0;animation:fadeUp .6s .3s forwards;}
+  .hero-label::before{content:'> ';color:var(--orange);}
+  .hero-name{font-weight:800;font-size:clamp(3rem,8vw,6.5rem);line-height:1;letter-spacing:-.02em;margin-bottom:.3rem;opacity:0;animation:fadeUp .7s .5s forwards;}
+  .hero-name .first{color:var(--text-primary);}
+  .hero-name .last{color:transparent;-webkit-text-stroke:1.5px var(--cyan);display:block;}
+  .hero-title{font-family:'JetBrains Mono',monospace;font-size:clamp(.8rem,2vw,1rem);color:var(--text-secondary);margin-top:1.2rem;margin-bottom:2rem;opacity:0;animation:fadeUp .7s .7s forwards;}
+  .hero-title .hl{color:var(--orange);}
+  .hero-desc{font-size:1rem;color:var(--text-secondary);line-height:1.8;max-width:520px;margin-bottom:2.5rem;opacity:0;animation:fadeUp .7s .9s forwards;}
+  .hero-badges{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:2.5rem;opacity:0;animation:fadeUp .7s 1.1s forwards;}
+  .hero-badge{font-family:'JetBrains Mono',monospace;font-size:.7rem;padding:.35rem .9rem;border:1px solid var(--border);border-radius:3px;color:var(--text-secondary);background:rgba(0,229,255,.04);letter-spacing:.05em;transition:all .2s;}
+  .hero-badge:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(0,229,255,.08);}
+  .hero-cta{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:fadeUp .7s 1.3s forwards;}
+  .btn-p{font-family:'JetBrains Mono',monospace;font-size:.8rem;letter-spacing:.08em;padding:.75rem 1.8rem;background:var(--cyan);color:#000;border:none;border-radius:3px;text-decoration:none;font-weight:700;transition:all .25s;text-transform:uppercase;}
+  .btn-p:hover{background:#fff;box-shadow:var(--glow-strong);transform:translateY(-2px);}
+  .btn-o{font-family:'JetBrains Mono',monospace;font-size:.8rem;letter-spacing:.08em;padding:.75rem 1.8rem;background:transparent;color:var(--cyan);border:1px solid var(--border-hover);border-radius:3px;text-decoration:none;font-weight:700;transition:all .25s;text-transform:uppercase;}
+  .btn-o:hover{background:rgba(0,229,255,.08);border-color:var(--cyan);box-shadow:var(--glow);transform:translateY(-2px);color:var(--cyan);}
+  .hero-stats{opacity:0;animation:fadeUp .7s 1.5s forwards;}
+  .stat-item{text-align:center;}
+  .stat-num{font-family:'JetBrains Mono',monospace;font-size:2.2rem;font-weight:700;color:var(--cyan);line-height:1;}
+  .stat-label{font-size:.7rem;color:var(--text-secondary);letter-spacing:.1em;text-transform:uppercase;margin-top:.3rem;}
+  .stat-divider{width:1px;height:50px;background:var(--border);margin:0 2rem;align-self:center;}
+  .hero-visual{opacity:0;animation:fadeIn 1s .8s forwards;}
+  .hero-grid-box{width:100%;aspect-ratio:1;max-width:420px;margin:0 auto;position:relative;}
+  .grid-ring{position:absolute;border-radius:50%;border:1px solid var(--border);top:50%;left:50%;transform:translate(-50%,-50%);animation:rotateSlow linear infinite;}
+  .ring-1{width:88%;height:88%;animation-duration:20s;border-color:rgba(0,229,255,.12);}
+  .ring-2{width:68%;height:68%;animation-duration:15s;animation-direction:reverse;border-color:rgba(255,109,59,.15);}
+  .ring-3{width:48%;height:48%;animation-duration:10s;border-color:rgba(0,229,255,.2);}
+  .grid-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:38%;height:38%;background:linear-gradient(135deg,var(--bg-card),var(--bg-card-hover));border:1px solid var(--border-hover);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:2.5rem;box-shadow:var(--glow);}
+  .floating-tag{position:absolute;font-family:'JetBrains Mono',monospace;font-size:.65rem;padding:.3rem .7rem;background:var(--bg-card);border:1px solid var(--border);border-radius:3px;color:var(--text-secondary);white-space:nowrap;animation:floatAnim ease-in-out infinite alternate;}
+  .tag-1{top:8%;left:5%;animation-duration:3s;color:var(--cyan);border-color:rgba(0,229,255,.3);}
+  .tag-2{top:15%;right:2%;animation-duration:3.5s;animation-delay:.5s;color:var(--orange);border-color:rgba(255,109,59,.3);}
+  .tag-3{bottom:18%;left:0%;animation-duration:4s;animation-delay:1s;color:var(--green);border-color:rgba(0,230,118,.3);}
+  .tag-4{bottom:8%;right:5%;animation-duration:2.8s;animation-delay:.8s;}
+
+  /* SECTIONS */
+  section{padding:100px 0;}
+  .section-header{margin-bottom:4rem;}
+  .section-tag{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.2em;color:var(--cyan);text-transform:uppercase;margin-bottom:.8rem;display:block;}
+  .section-tag::before{content:'// ';}
+  .section-title{font-weight:800;font-size:clamp(2rem,4vw,3rem);letter-spacing:-.02em;line-height:1.1;color:var(--text-primary);}
+  .section-line{width:60px;height:3px;background:linear-gradient(90deg,var(--cyan),transparent);margin-top:1rem;}
+
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.visible{opacity:1;transform:translateY(0);}
+
+  /* ABOUT */
+  #about{background:var(--bg-secondary);}
+  .about-card{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:2.5rem;height:100%;transition:all .3s;}
+  .about-card:hover{border-color:var(--border-hover);box-shadow:var(--glow);transform:translateY(-4px);}
+  .about-icon{width:48px;height:48px;background:rgba(0,229,255,.08);border:1px solid rgba(0,229,255,.2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:1.2rem;color:var(--cyan);}
+  .about-card h5{font-weight:700;font-size:1rem;margin-bottom:.7rem;color:var(--text-primary);}
+  .about-card p{font-size:.88rem;color:var(--text-secondary);line-height:1.7;}
+
+  /* SKILLS */
+  .skills-category{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:2rem;margin-bottom:1.5rem;transition:all .3s;}
+  .skills-category:hover{border-color:var(--border-hover);}
+  .skills-cat-title{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--orange);letter-spacing:.15em;text-transform:uppercase;margin-bottom:1.2rem;padding-bottom:.8rem;border-bottom:1px solid var(--border);}
+  .skill-pills{display:flex;flex-wrap:wrap;gap:.5rem;}
+  .skill-pill{font-family:'JetBrains Mono',monospace;font-size:.72rem;padding:.35rem .85rem;border-radius:3px;border:1px solid var(--border);color:var(--text-secondary);background:rgba(255,255,255,.02);transition:all .2s;cursor:default;}
+  .skill-pill:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(0,229,255,.06);box-shadow:0 0 10px rgba(0,229,255,.15);transform:translateY(-2px);}
+  .skill-pill.featured{border-color:rgba(0,229,255,.35);color:var(--cyan);background:rgba(0,229,255,.06);}
+
+  /* EXPERIENCE */
+  #experience{background:var(--bg-secondary);}
+  .timeline{position:relative;padding-left:2rem;}
+  .timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,var(--cyan),transparent);}
+  .timeline-item{position:relative;padding-bottom:3rem;}
+  .timeline-dot{position:absolute;left:-2rem;top:6px;width:10px;height:10px;border-radius:50%;background:var(--cyan);border:2px solid var(--bg-primary);box-shadow:0 0 12px var(--cyan);transform:translateX(-4px);}
+  .exp-card{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:2rem;transition:all .3s;}
+  .exp-card:hover{border-color:var(--border-hover);box-shadow:var(--glow);transform:translateX(4px);}
+  .exp-company{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--orange);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem;}
+  .exp-role{font-size:1.25rem;font-weight:700;color:var(--text-primary);margin-bottom:.5rem;}
+  .exp-date{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--text-secondary);margin-bottom:1.2rem;padding:.25rem .7rem;border:1px solid var(--border);border-radius:3px;display:inline-block;}
+  .exp-points{list-style:none;padding:0;}
+  .exp-points li{font-size:.88rem;color:var(--text-secondary);line-height:1.7;padding:.4rem 0 .4rem 1.2rem;position:relative;border-bottom:1px solid rgba(255,255,255,.03);}
+  .exp-points li:last-child{border-bottom:none;}
+  .exp-points li::before{content:'▸';position:absolute;left:0;color:var(--cyan);font-size:.7rem;top:.55rem;}
+
+  /* PROJECTS */
+  .project-card{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:2rem;height:100%;transition:all .35s;position:relative;overflow:hidden;display:flex;flex-direction:column;}
+  .project-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--cyan),var(--orange));opacity:0;transition:opacity .3s;}
+  .project-card:hover{border-color:var(--border-hover);box-shadow:var(--glow);transform:translateY(-5px);}
+  .project-card:hover::before{opacity:1;}
+  .project-num{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--text-secondary);letter-spacing:.1em;margin-bottom:.6rem;opacity:.5;}
+  .project-icon{font-size:2rem;margin-bottom:.8rem;}
+  .project-title{font-size:1.1rem;font-weight:700;color:var(--text-primary);margin-bottom:.7rem;line-height:1.3;}
+
+  /* JOURNEY STORY BLOCK */
+  .project-story{margin-bottom:1.2rem;}
+  .story-toggle{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--cyan);cursor:pointer;border:1px solid rgba(0,229,255,.25);border-radius:3px;padding:.3rem .8rem;background:rgba(0,229,255,.04);display:inline-flex;align-items:center;gap:.4rem;transition:all .2s;user-select:none;}
+  .story-toggle:hover{background:rgba(0,229,255,.1);border-color:var(--cyan);}
+  .story-toggle .arrow{display:inline-block;transition:transform .25s;}
+  .story-toggle.open .arrow{transform:rotate(90deg);}
+  .story-body{max-height:0;overflow:hidden;transition:max-height .4s ease,opacity .3s ease;opacity:0;}
+  .story-body.open{max-height:2000px;opacity:1;}
+  .story-para{font-size:.82rem;color:var(--text-secondary);line-height:1.8;margin-top:.9rem;padding:1rem 1.2rem;border-left:2px solid rgba(0,229,255,.25);background:rgba(0,229,255,.03);border-radius:0 4px 4px 0;}
+  .story-para strong{color:var(--cyan);font-weight:600;}
+  .story-para .prob{color:var(--orange);}
+  .story-milestone{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.7rem;}
+  .ms{font-family:'JetBrains Mono',monospace;font-size:.62rem;padding:.2rem .55rem;border-radius:20px;border:1px solid rgba(0,229,255,.2);color:var(--cyan);background:rgba(0,229,255,.05);}
+  .ms.bad{border-color:rgba(255,109,59,.25);color:var(--orange);background:rgba(255,109,59,.05);}
+  .ms.good{border-color:rgba(0,230,118,.25);color:var(--green);background:rgba(0,230,118,.05);}
+  .ms.warn{border-color:rgba(255,220,50,.25);color:#ffd84a;background:rgba(255,220,50,.05);}
+
+  .project-desc{font-size:.85rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem;}
+  .project-points{list-style:none;padding:0;margin-bottom:1.2rem;flex:1;}
+  .project-points li{font-size:.8rem;color:var(--text-secondary);padding:.25rem 0 .25rem 1rem;position:relative;}
+  .project-points li::before{content:'→';position:absolute;left:0;color:var(--cyan);font-size:.7rem;}
+
+  /* PROJECT STACK TAGS — all uniform cyan */
+  .project-stack{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:auto;}
+  .stack-tag{font-family:'JetBrains Mono',monospace;font-size:.62rem;padding:.2rem .6rem;background:rgba(0,229,255,.06);border:1px solid rgba(0,229,255,.2);border-radius:2px;color:var(--cyan);letter-spacing:.05em;}
+
+  /* INLINE VIDEO */
+  .inline-video-wrap{margin:.8rem 0 1rem;border-radius:6px;overflow:hidden;border:1px solid var(--border-hover);background:#000;}
+  .inline-video-label{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--text-secondary);letter-spacing:.12em;text-transform:uppercase;padding:.5rem 1rem;border-bottom:1px solid var(--border);background:var(--bg-card-hover);display:flex;align-items:center;gap:.5rem;}
+  .dot-blink{width:7px;height:7px;border-radius:50%;background:var(--green);display:inline-block;animation:blink 1.4s ease-in-out infinite;flex-shrink:0;}
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+  .inline-video{width:100%;display:block;max-height:270px;object-fit:contain;background:#000;}
+
+  /* RESULT IMAGE — zoomable */
+  .result-img-wrap{margin:.8rem 0 1rem;border-radius:6px;overflow:hidden;border:1px solid var(--border-hover);}
+  .result-img-label{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--text-secondary);letter-spacing:.12em;text-transform:uppercase;padding:.5rem 1rem;border-bottom:1px solid var(--border);background:var(--bg-card-hover);display:flex;align-items:center;justify-content:space-between;gap:.5rem;}
+  .result-img-label-left{display:flex;align-items:center;gap:.5rem;}
+  .zoom-hint{font-family:'JetBrains Mono',monospace;font-size:.6rem;color:var(--cyan);opacity:.7;display:flex;align-items:center;gap:.3rem;}
+  .result-img{width:100%;display:block;max-height:260px;object-fit:contain;background:#000;cursor:zoom-in;transition:opacity .2s;}
+  .result-img:hover{opacity:.85;}
+
+  /* LIGHTBOX */
+  .lightbox-overlay{position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,.92);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .25s;backdrop-filter:blur(8px);}
+  .lightbox-overlay.active{opacity:1;pointer-events:all;}
+  .lightbox-img-wrap{position:relative;max-width:92vw;max-height:90vh;display:flex;align-items:center;justify-content:center;}
+  .lightbox-img{max-width:92vw;max-height:88vh;border-radius:6px;border:1px solid var(--border-hover);box-shadow:0 0 60px rgba(0,229,255,.2);transform:scale(.95);transition:transform .3s ease;object-fit:contain;cursor:zoom-out;}
+  .lightbox-overlay.active .lightbox-img{transform:scale(1);}
+  .lightbox-close{position:fixed;top:1.2rem;right:1.4rem;width:40px;height:40px;border-radius:50%;background:var(--bg-card);border:1px solid var(--border-hover);color:var(--cyan);font-size:1.2rem;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;z-index:100000;}
+  .lightbox-close:hover{background:rgba(0,229,255,.12);border-color:var(--cyan);transform:scale(1.1);}
+  .lightbox-caption{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-secondary);letter-spacing:.1em;background:rgba(13,21,32,.85);padding:.4rem 1rem;border-radius:3px;border:1px solid var(--border);}
+
+  /* PROFILES — equal height, flex column */
+  .profile-card{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:2rem;text-align:center;transition:all .3s;text-decoration:none;display:flex;flex-direction:column;align-items:center;color:inherit;height:100%;}
+  .profile-card:hover{border-color:var(--border-hover);box-shadow:var(--glow);transform:translateY(-6px);color:inherit;}
+  .profile-icon{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin:0 auto 1rem;font-size:1.5rem;border:2px solid var(--border);}
+  .profile-name{font-weight:700;font-size:1rem;color:var(--text-primary);margin-bottom:.4rem;}
+  .profile-handle{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--text-secondary);margin-bottom:.8rem;}
+  .profile-desc{font-size:.8rem;color:var(--text-secondary);line-height:1.6;}
+
+  /* EDUCATION */
+  .edu-card{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:2rem;transition:all .3s;}
+  .edu-card:hover{border-color:var(--border-hover);box-shadow:var(--glow);}
+  .edu-degree{font-size:1.15rem;font-weight:700;color:var(--text-primary);margin-bottom:.3rem;}
+  .edu-school{font-size:.88rem;color:var(--text-secondary);margin-bottom:.5rem;}
+  .edu-meta{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--cyan);}
+  .cert-item{display:flex;align-items:flex-start;gap:1rem;padding:1.2rem 0;border-bottom:1px solid var(--border);}
+  .cert-item:last-child{border-bottom:none;}
+  .cert-icon{width:36px;height:36px;flex-shrink:0;background:rgba(255,109,59,.08);border:1px solid rgba(255,109,59,.2);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.9rem;color:var(--orange);}
+  .cert-title{font-size:.88rem;font-weight:600;color:var(--text-primary);line-height:1.4;}
+  .cert-issuer{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--text-secondary);margin-top:.2rem;}
+
+  /* CONTACT */
+  .contact-card{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:2.5rem;transition:all .3s;text-decoration:none;display:flex;align-items:center;gap:1.2rem;color:inherit;}
+  .contact-card:hover{border-color:var(--border-hover);box-shadow:var(--glow);transform:translateX(6px);color:inherit;}
+  .contact-icon{width:48px;height:48px;flex-shrink:0;background:rgba(0,229,255,.08);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:var(--cyan);}
+  .contact-label{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--text-secondary);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.2rem;}
+  .contact-value{font-size:.95rem;font-weight:600;color:var(--text-primary);word-break:break-all;}
+  .contact-arrow{margin-left:auto;color:var(--text-secondary);font-size:.8rem;transition:transform .2s;flex-shrink:0;}
+  .contact-card:hover .contact-arrow{transform:translateX(4px);color:var(--cyan);}
+
+  /* FOOTER — uniform color */
+  footer{border-top:1px solid var(--border);padding:2.5rem 0;text-align:center;}
+  .footer-brand{font-family:'JetBrains Mono',monospace;font-size:.85rem;color:var(--text-secondary);margin-bottom:.5rem;}
+  .footer-copy{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-secondary);opacity:.5;}
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+  @keyframes rotateSlow{from{transform:translate(-50%,-50%) rotate(0deg)}to{transform:translate(-50%,-50%) rotate(360deg)}}
+  @keyframes floatAnim{from{transform:translateY(0)}to{transform:translateY(-8px)}}
+
+  @media(max-width:991px){.hero-visual{margin-top:3rem}.stat-divider{margin:0 1rem}}
+  @media(max-width:576px){.hero-stats{flex-wrap:wrap;gap:1.5rem}.stat-divider{display:none}.stat-item{width:45%}}
+</style>
+</head>
+<body>
+
+<!-- LIGHTBOX -->
+<div class="lightbox-overlay" id="lightbox" onclick="closeLightbox(event)">
+  <div class="lightbox-img-wrap">
+    <img class="lightbox-img" id="lightboxImg" src="" alt="">
+  </div>
+  <button class="lightbox-close" onclick="closeLightboxBtn()"><i class="fa fa-times"></i></button>
+  <div class="lightbox-caption" id="lightboxCaption"></div>
+</div>
+
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<canvas id="neural-bg"></canvas>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#hero">MEI<span>.</span>K</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+        <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="#profiles">Profiles</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-7">
+        <p class="hero-label">AI/ML Engineer · Computer Vision</p>
+        <h1 class="hero-name"><span class="first">Meiyarasu</span><span class="last">K.</span></h1>
+        <p class="hero-title"><span class="hl">PyTorch</span> · YOLO · TrOCR · FaceNet · FastAPI · <span class="hl">AWS EC2</span></p>
+        <p class="hero-desc">Building production-grade computer vision systems — from 100K+ image pipelines and model fine-tuning to real-time inference at 20 FPS on the cloud.</p>
+        <div class="hero-badges">
+          <span class="hero-badge">Object Detection</span>
+          <span class="hero-badge">OCR Pipelines</span>
+          <span class="hero-badge">Face Recognition</span>
+          <span class="hero-badge">Anti-Spoofing</span>
+          <span class="hero-badge">AWS Deployment</span>
+          <span class="hero-badge">Transformer Architectures</span>
+        </div>
+        <div class="hero-cta">
+          <a href="mailto:meiyarasu.developer3@gmail.com" class="btn-p">Get In Touch</a>
+          <a href="#projects" class="btn-o">View Projects</a>
+        </div>
+        <div class="hero-stats d-flex mt-5">
+          <div class="stat-item"><div class="stat-num" data-count="3">0</div><div class="stat-label">CV Systems Built</div></div>
+          <div class="stat-divider"></div>
+          <div class="stat-item"><div class="stat-num" data-count="200">0</div><div class="stat-label">K+ Images Curated</div></div>
+          <div class="stat-divider"></div>
+          <div class="stat-item"><div class="stat-num" data-count="20">0</div><div class="stat-label">FPS Inference</div></div>
+          <div class="stat-divider"></div>
+          <div class="stat-item"><div class="stat-num" data-count="93">0</div><div class="stat-label">% OCR Accuracy</div></div>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="hero-visual">
+          <div class="hero-grid-box">
+            <div class="grid-ring ring-1"></div>
+            <div class="grid-ring ring-2"></div>
+            <div class="grid-ring ring-3"></div>
+            <div class="grid-center">🧠</div>
+            <div class="floating-tag tag-1">YOLOv11</div>
+            <div class="floating-tag tag-2">PyTorch</div>
+            <div class="floating-tag tag-3">FaceNet</div>
+            <div class="floating-tag tag-4">FastAPI</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">About</span>
+      <h2 class="section-title">What I Do</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3 reveal"><div class="about-card"><div class="about-icon">🎯</div><h5>Computer Vision</h5><p>Specialized in object detection, OCR, and face recognition systems using YOLO, TrOCR, and FaceNet architectures for real-world deployment.</p></div></div>
+      <div class="col-md-6 col-lg-3 reveal"><div class="about-card"><div class="about-icon">🔧</div><h5>End-to-End Pipelines</h5><p>From large-scale dataset curation (100K+ images) and quality filtering to model fine-tuning, evaluation, and production deployment.</p></div></div>
+      <div class="col-md-6 col-lg-3 reveal"><div class="about-card"><div class="about-icon">☁️</div><h5>Cloud Deployment</h5><p>Deploying ML systems via FastAPI REST services on AWS EC2, achieving real-time inference at ~20 FPS throughput in live environments.</p></div></div>
+      <div class="col-md-6 col-lg-3 reveal"><div class="about-card"><div class="about-icon">🤖</div><h5>Transformer Models</h5><p>Deep understanding of self-attention, multi-head attention, and encoder–decoder mechanisms powering state-of-the-art CV systems.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Technical Skills</span>
+      <h2 class="section-title">Stack & Expertise</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="row g-3">
+      <div class="col-md-6 col-lg-3 reveal">
+        <div class="skills-category h-100">
+          <div class="skills-cat-title">AI/ML Domains</div>
+          <div class="skill-pills">
+            <span class="skill-pill featured">Machine Learning</span><span class="skill-pill featured">Deep Learning</span><span class="skill-pill featured">Computer Vision</span><span class="skill-pill featured">OCR</span><span class="skill-pill">Biometric Authentication</span><span class="skill-pill">Anti-Spoofing</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 reveal">
+        <div class="skills-category h-100">
+          <div class="skills-cat-title">Frameworks & Libraries</div>
+          <div class="skill-pills">
+            <span class="skill-pill featured">PyTorch</span><span class="skill-pill featured">OpenCV</span><span class="skill-pill">Hugging Face Transformers</span><span class="skill-pill">scikit-learn</span><span class="skill-pill">NumPy</span><span class="skill-pill">Pandas</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 reveal">
+        <div class="skills-category h-100">
+          <div class="skills-cat-title">Model Architectures</div>
+          <div class="skill-pills">
+            <span class="skill-pill featured">YOLOv8</span><span class="skill-pill featured">YOLOv11</span><span class="skill-pill featured">TrOCR</span><span class="skill-pill featured">FaceNet</span><span class="skill-pill">EfficientNet-B0</span><span class="skill-pill">PaddleOCR</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 reveal">
+        <div class="skills-category h-100">
+          <div class="skills-cat-title">Backend & Deployment</div>
+          <div class="skill-pills">
+            <span class="skill-pill featured">FastAPI</span><span class="skill-pill featured">AWS EC2</span><span class="skill-pill">REST API Design</span><span class="skill-pill">Docker</span><span class="skill-pill">Python</span><span class="skill-pill">SQL</span><span class="skill-pill">Linux</span><span class="skill-pill">Git</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Experience</span>
+      <h2 class="section-title">Work History</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-9 reveal">
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="exp-card">
+              <div class="exp-company">Hexbee Software Solutions Pvt Ltd · Tamil Nadu, India</div>
+              <div class="exp-role">Python Developer — Computer Vision</div>
+              <span class="exp-date">Dec 2024 → Present</span>
+              <ul class="exp-points">
+                <li>Engineered 3 production computer vision systems (ANPR, Transformer OCR, Face Recognition) deployed in live environments</li>
+                <li>Curated 200K+ raw images across projects with custom deduplication, quality filtering, and annotation pipelines</li>
+                <li>Reduced false positive rates via progressive YOLO fine-tuning strategy (10K → 14K → 14K + hard negatives)</li>
+                <li>Deployed all systems on AWS EC2 via FastAPI with REST endpoints, achieving real-time inference at ~20 FPS</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Projects</span>
+      <h2 class="section-title">What I've Built</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="row g-4">
+
+      <!-- ── ANPR ── -->
+      <div class="col-lg-6 reveal">
+        <div class="project-card">
+          <div class="project-num">01 / ANPR</div>
+          <div class="project-icon">🚗</div>
+          <div class="project-title">Automatic Number Plate Recognition System</div>
+          <p class="project-desc">Not a straight line from idea to product — a months-long grind through broken OCR engines, exploding false positives, a dataset that didn't exist, and a live-camera that refused to cooperate. Every obstacle forced a smarter solution. The result: a stable, production-deployed ANPR system that actually works.</p>
+
+          <div class="project-story">
+            <div class="story-toggle" onclick="toggleStory(this)"><span class="arrow">▶</span> The Full Journey</div>
+            <div class="story-body">
+              <div class="story-para">
+                <strong>Phase 1 — OCR Engine Graveyard.</strong> Tried nearly every available option — none delivered satisfying accuracy on Indian number plates. Eventually settled on <strong>YOLOv8m + PaddleOCR</strong> as the baseline. But it was painfully slow, missed characters regularly, and was completely unstable on a live camera feed. Added <strong>Indian plate regex post-processing</strong> — this improved results noticeably, but couldn't fully fix the accuracy gap.
+              </div>
+              <div class="story-milestone">
+                <span class="ms bad">Tesseract ✗</span><span class="ms bad">EasyOCR ✗</span><span class="ms bad">PaddleOCR (raw) ✗</span><span class="ms warn">PaddleOCR + regex → partial ✓</span>
+              </div>
+              <div class="story-para">
+                <strong>Phase 2 — False Positive Crisis.</strong> <span class="prob">Any rectangular object in frame — storefronts, stickers, camera watermarks, signboards — was being confidently detected as a number plate.</span> Worse: front-facing plates weren't being detected at all. Collected and manually annotated front-plate images to fill the detection gap. That fixed detection, but false positives still ran wild.
+              </div>
+              <div class="story-milestone">
+                <span class="ms bad">Storefront → plate ✗</span><span class="ms bad">Watermark → plate ✗</span><span class="ms bad">Front plates missed ✗</span><span class="ms warn">Front plate annotations → detection fixed</span>
+              </div>
+              <div class="story-para">
+                <strong>Phase 3 — The Dataset That Didn't Exist.</strong> Planned a lightweight custom recognition model but couldn't find any dataset with actual plate text labels. Tried every available source. Nothing worked. So the only option was to do it manually.
+                <br><br>
+                <strong>681 plate images annotated by hand over 12 straight hours.</strong> Then extended programmatically to 2,500 images. Later discovered a public 1-lakh character recognition dataset — combined all characters with the manual annotations. After full quality filtering (deduplication, blur scoring, noise removal), ended up with <strong>14K images for detection</strong> and <strong>17K images for recognition</strong>.
+              </div>
+              <div class="story-milestone">
+                <span class="ms good">681 manual annotations</span><span class="ms good">12 hours of labeling</span><span class="ms good">2,500 → 17K via pipeline</span><span class="ms good">14K detection · 17K recognition</span>
+              </div>
+              <div class="story-para">
+                <strong>Phase 4 — TrOCR Breakthrough, Then Another Wall.</strong> Fine-tuned <strong>Microsoft TrOCR</strong> on the curated dataset — worked well on static images. But on a live feed with moving vehicles, it was still unstable. Came very close to solving this, but moving-vehicle inference remained unresolved despite exhausting every approach. Fell back to PaddleOCR, which still failed on edge cases. Added a <strong>manual entry fallback</strong> as a practical workaround.
+              </div>
+              <div class="story-milestone">
+                <span class="ms good">TrOCR → static images ✓</span><span class="ms bad">TrOCR → moving vehicles ✗</span><span class="ms warn">PaddleOCR fallback + manual entry</span>
+              </div>
+              <div class="story-para">
+                <strong>Phase 5 — False Positives, Solved for Good.</strong> Collected <strong>10,000 negative images</strong> — storefronts, signboards, stickers, watermarks. Ran training in two rounds: first on 14K plates alone, then on 14K plates + 10K negatives combined. <span style="color:var(--green)"><strong>This completely eliminated the false positive problem.</strong></span> The final system is stable, accurate, and production-deployed on AWS EC2 via FastAPI.
+              </div>
+              <div class="story-milestone">
+                <span class="ms good">10K hard negatives collected</span><span class="ms good">Two-round progressive fine-tuning</span><span class="ms good">False positives eliminated ✓</span><span class="ms good">Production deployed ✓</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="inline-video-wrap">
+            <div class="inline-video-label"><span class="dot-blink"></span> Demo Video</div>
+            <video class="inline-video auto-play-video" muted playsinline controls preload="metadata">
+              <source src="ANPR_DEMO.mp4" type="video/mp4">
+            </video>
+          </div>
+
+          <ul class="project-points">
+            <li>14K annotated plates + 10K hard negatives — two-round progressive fine-tuning crushed false positives</li>
+            <li>681 plates annotated manually over 12 hours — programmatically extended to 17K for recognition training</li>
+            <li>Indian plate regex post-processing to stabilize OCR output across format variants</li>
+            <li>Advanced augmentation: motion blur, low-light, rotation, shadow overlays for robustness</li>
+            <li>Manual entry fallback for edge cases; FastAPI on AWS EC2 at ~20 FPS</li>
+          </ul>
+          <div class="project-stack">
+            <span class="stack-tag">YOLOv8</span>
+            <span class="stack-tag">PaddleOCR</span>
+            <span class="stack-tag">TrOCR</span>
+            <span class="stack-tag">FastAPI</span>
+            <span class="stack-tag">PyTorch</span>
+            <span class="stack-tag">OpenCV</span>
+            <span class="stack-tag">AWS EC2</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── FACE RECOGNITION ── -->
+      <div class="col-lg-6 reveal">
+        <div class="project-card">
+          <div class="project-num">03 / BIOMETRIC</div>
+          <div class="project-icon">🛡️</div>
+          <div class="project-title">Secure Face Recognition with Anti-Spoofing</div>
+          <p class="project-desc">A full month spent testing every available face recognition approach before finding what actually works. Then building an anti-spoofing layer from scratch because no off-the-shelf solution was good enough. The outcome: a 3-stage production pipeline that handles real-world identity verification.</p>
+
+          <div class="project-story">
+            <div class="story-toggle" onclick="toggleStory(this)"><span class="arrow">▶</span> The Full Journey</div>
+            <div class="story-body">
+              <div class="story-para">
+                <strong>Phase 1 — One Month in the Library Graveyard.</strong> Spent a full month systematically testing every mainstream face recognition library. <strong>DeepFace, OpenCV face modules, and the face_recognition library</strong> — each tried, evaluated, and discarded. Performance on varied lighting, different angles, and partial occlusion was too inconsistent for production use. None cleared the accuracy bar required.
+              </div>
+              <div class="story-milestone">
+                <span class="ms bad">DeepFace ✗</span><span class="ms bad">face_recognition ✗</span><span class="ms bad">OpenCV face module ✗</span>
+              </div>
+              <div class="story-para">
+                <strong>Phase 2 — Building a Siamese Network from Scratch.</strong> Decided to go custom. Designed and trained a <strong>Siamese network with contrastive loss</strong> — learning to push similar faces together and dissimilar faces apart. Built OpenCV-based data collection scripts to capture personal training data. Rewrote it with <strong>triplet loss</strong> (anchor / positive / negative pairs) for better metric learning. Results were promising — but still fell short of production-grade accuracy.
+              </div>
+              <div class="story-milestone">
+                <span class="ms bad">Siamese + Contrastive Loss ✗</span><span class="ms bad">Siamese + Triplet Loss ✗</span><span class="ms warn">Custom data collection pipeline ✓</span>
+              </div>
+              <div class="story-para">
+                <strong>Phase 3 — FaceNet Breakthrough.</strong> Discovered <strong>facenet_pytorch</strong> — InceptionResnetV1 pretrained on VGGFace2. Cosine similarity for 1:N identity verification. The accuracy jump was immediate and significant — fast enrollment, reliable matching across lighting and angle variation. This became the identity verification backbone.
+              </div>
+              <div class="story-milestone">
+                <span class="ms good">FaceNet (InceptionResnetV1) ✓</span><span class="ms good">Cosine similarity 1:N ✓</span><span class="ms good">VGGFace2 pretrained backbone ✓</span>
+              </div>
+              <div class="story-para">
+                <strong>Phase 4 — Anti-Spoofing: Built from Scratch.</strong> <span class="prob">The system could now recognize faces accurately — but it couldn't tell the difference between a real person and a printed photo, a passport-size image, or a face on a phone screen.</span> No off-the-shelf anti-spoof model met the requirements. Collected <strong>10,000 images across 5 people</strong> — real faces, digital screen attacks, and printed passport-size photos. Trained an <strong>EfficientNet-B0 binary classifier</strong>. Integrated with <strong>YOLOv11-face</strong> into a clean <strong>3-stage pipeline</strong>: detect face → check liveness → verify identity. Deployed on AWS EC2 via FastAPI.
+              </div>
+              <div class="story-milestone">
+                <span class="ms good">10K custom anti-spoof images</span><span class="ms good">5 people · 3 attack types</span><span class="ms good">EfficientNet-B0 liveness classifier ✓</span><span class="ms good">3-stage pipeline deployed ✓</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="inline-video-wrap">
+            <div class="inline-video-label"><span class="dot-blink"></span> Demo Video</div>
+            <video class="inline-video auto-play-video" muted playsinline controls preload="metadata">
+              <source src="face_recognition.mp4" type="video/mp4">
+            </video>
+          </div>
+
+          <ul class="project-points">
+            <li>Full month testing DeepFace, face_recognition, OpenCV — none met production accuracy bar</li>
+            <li>Custom Siamese network (contrastive + triplet loss) built and trained from scratch</li>
+            <li>FaceNet (InceptionResnetV1 / VGGFace2) — cosine similarity 1:N with dedup enrollment</li>
+            <li>10K images (5 people) — real faces, screen attacks, passport prints — for custom anti-spoof training</li>
+            <li>EfficientNet-B0 liveness check gating identity verification; FastAPI on AWS EC2</li>
+          </ul>
+          <div class="project-stack">
+            <span class="stack-tag">YOLOv11-Face</span>
+            <span class="stack-tag">FaceNet</span>
+            <span class="stack-tag">EfficientNet-B0</span>
+            <span class="stack-tag">Siamese Net</span>
+            <span class="stack-tag">FastAPI</span>
+            <span class="stack-tag">AWS EC2</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── TrOCR ── -->
+      <div class="col-lg-6 reveal">
+        <div class="project-card">
+          <div class="project-num">02 / OCR</div>
+          <div class="project-icon">📝</div>
+          <div class="project-title">Transformer-Based OCR Fine-Tuning (TrOCR)</div>
+          <p class="project-desc">Fine-tuned Microsoft TrOCR on 17K carefully curated Indian plate crops — achieving 93% character-level accuracy on static images after systematic error analysis across blur, low-light, and non-standard fonts.</p>
+
+          <div class="result-img-wrap">
+            <div class="result-img-label">
+              <div class="result-img-label-left"><i class="fa fa-image" style="color:var(--cyan);font-size:.7rem;"></i> Model Output Results</div>
+              <div class="zoom-hint"><i class="fa fa-search-plus"></i> click to zoom</div>
+            </div>
+            <img src="trocr_result.png" alt="TrOCR Model Output Results" class="result-img" onclick="openLightbox(this)" data-caption="TrOCR Fine-Tuned Results — 93% character accuracy on Indian plates">
+          </div>
+
+          <ul class="project-points">
+            <li>17K training samples curated from 100K+ raw via blur score, resolution & aspect ratio filters</li>
+            <li>93% character-level · 71% full plate-level accuracy on static images</li>
+            <li>Systematic error analysis: blur, low-light, non-standard Indian fonts</li>
+            <li>TrOCR vs. PaddleOCR benchmarking — identified scenarios where each excels</li>
+            <li>Revealed live-camera instability on moving vehicles — informed final pipeline decision</li>
+          </ul>
+          <div class="project-stack">
+            <span class="stack-tag">TrOCR</span>
+            <span class="stack-tag">Hugging Face</span>
+            <span class="stack-tag">PyTorch</span>
+            <span class="stack-tag">Python</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROFILES -->
+<section id="profiles" style="background:var(--bg-secondary);">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Online Profiles</span>
+      <h2 class="section-title">Find Me Online</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3 reveal">
+        <a href="https://www.linkedin.com/in/meiyarasu-k" target="_blank" class="profile-card">
+          <div class="profile-icon" style="background:rgba(0,119,181,.1);border-color:rgba(0,119,181,.3);"><i class="fab fa-linkedin" style="color:#0077b5;"></i></div>
+          <div class="profile-name">LinkedIn</div>
+          <div class="profile-handle">meiyarasu-k</div>
+          <div class="profile-desc">Professional profile & work experience updates</div>
+        </a>
+      </div>
+      <div class="col-md-6 col-lg-3 reveal">
+        <a href="https://leetcode.com/u/dyXX6IGV43/" target="_blank" class="profile-card">
+          <div class="profile-icon" style="background:rgba(255,161,22,.1);border-color:rgba(255,161,22,.3);"><span style="font-size:1.3rem;">⚡</span></div>
+          <div class="profile-name">LeetCode</div>
+          <div class="profile-handle">dyXX6IGV43</div>
+          <div class="profile-desc">Competitive programming & algorithm challenges</div>
+        </a>
+      </div>
+      <div class="col-md-6 col-lg-3 reveal">
+        <a href="https://www.hackerrank.com/profile/meiyarasu713" target="_blank" class="profile-card">
+          <div class="profile-icon" style="background:rgba(0,194,58,.1);border-color:rgba(0,194,58,.3);"><i class="fab fa-hackerrank" style="color:#00c23a;"></i></div>
+          <div class="profile-name">HackerRank</div>
+          <div class="profile-handle">meiyarasu713</div>
+          <div class="profile-desc">Python Basic certification & coding challenges</div>
+        </a>
+      </div>
+      <div class="col-md-6 col-lg-3 reveal">
+        <a href="https://www.geeksforgeeks.org/profile/meiyara7i3f" target="_blank" class="profile-card">
+          <div class="profile-icon" style="background:rgba(14,150,58,.1);border-color:rgba(14,150,58,.3);"><span style="font-size:1.1rem;color:#0e963a;font-weight:700;font-family:monospace;">GfG</span></div>
+          <div class="profile-name">GeeksforGeeks</div>
+          <div class="profile-handle">meiyara7i3f</div>
+          <div class="profile-desc">DSA practice & CS articles engagement</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Education & Certifications</span>
+      <h2 class="section-title">Academic & Learning</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-5 reveal">
+        <div class="edu-card h-100">
+          <div class="about-icon mb-3">🎓</div>
+          <div class="edu-degree">Bachelor of Computer Applications</div>
+          <div class="edu-school">J.K.K. Nataraja College of Arts & Science</div>
+          <div class="edu-meta">Graduated 2022 · CGPA: 6.81 / 10</div>
+        </div>
+      </div>
+      <div class="col-lg-7 reveal">
+        <div class="edu-card h-100">
+          <div class="about-icon mb-3">📜</div>
+          <div class="cert-item"><div class="cert-icon"><i class="fa fa-code"></i></div><div><div class="cert-title">Python Basic</div><div class="cert-issuer">HackerRank</div></div></div>
+          <div class="cert-item"><div class="cert-icon"><i class="fa fa-brain"></i></div><div><div class="cert-title">Deep Learning and Neural Networks with PyTorch</div><div class="cert-issuer">Udemy</div></div></div>
+          <div class="cert-item"><div class="cert-icon"><i class="fa fa-sitemap"></i></div><div><div class="cert-title">Python Data Structures and Algorithms</div><div class="cert-issuer">Udemy</div></div></div>
+          <div class="cert-item"><div class="cert-icon"><i class="fa fa-chart-bar"></i></div><div><div class="cert-title">Complete Data Science, ML, Deep Learning & NLP Bootcamp</div><div class="cert-issuer">Udemy</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="background:var(--bg-secondary);">
+  <div class="container">
+    <div class="section-header text-center">
+      <span class="section-tag" style="display:block;text-align:center;">Contact</span>
+      <h2 class="section-title">Let's Connect</h2>
+      <div class="section-line mx-auto"></div>
+      <p class="mt-3" style="color:var(--text-secondary);font-size:.9rem;">Open to opportunities in Computer Vision, ML Engineering, and AI research roles.</p>
+    </div>
+    <div class="row justify-content-center g-3">
+      <div class="col-lg-5 reveal">
+        <a href="mailto:meiyarasu.developer3@gmail.com" class="contact-card">
+          <div class="contact-icon"><i class="fa fa-envelope"></i></div>
+          <div><div class="contact-label">Email</div><div class="contact-value">meiyarasu.developer3@gmail.com</div></div>
+          <div class="contact-arrow"><i class="fa fa-arrow-right"></i></div>
+        </a>
+      </div>
+      <div class="col-lg-5 reveal">
+        <a href="tel:+917904677948" class="contact-card">
+          <div class="contact-icon"><i class="fa fa-phone"></i></div>
+          <div><div class="contact-label">Phone</div><div class="contact-value">+91 7904677948</div></div>
+          <div class="contact-arrow"><i class="fa fa-arrow-right"></i></div>
+        </a>
+      </div>
+      <div class="col-lg-5 reveal">
+        <a href="https://www.linkedin.com/in/meiyarasu-k" target="_blank" class="contact-card">
+          <div class="contact-icon"><i class="fab fa-linkedin"></i></div>
+          <div><div class="contact-label">LinkedIn</div><div class="contact-value">linkedin.com/in/meiyarasu-k</div></div>
+          <div class="contact-arrow"><i class="fa fa-arrow-right"></i></div>
+        </a>
+      </div>
+      <div class="col-lg-5 reveal">
+        <div class="contact-card">
+          <div class="contact-icon"><i class="fa fa-map-marker-alt"></i></div>
+          <div><div class="contact-label">Location</div><div class="contact-value">Tamil Nadu, India</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p class="footer-brand">MEIYARASU K — AI/ML Engineer</p>
+    <p class="footer-copy">© 2025 Meiyarasu K · Built with precision · Tamil Nadu, India</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+<script>
+// ── LIGHTBOX ──
+function openLightbox(img) {
+  const lb    = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightboxImg');
+  const lbCap = document.getElementById('lightboxCaption');
+  lbImg.src = img.src;
+  lbImg.alt = img.alt;
+  lbCap.textContent = img.dataset.caption || img.alt;
+  lb.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightboxBtn() {
+  document.getElementById('lightbox').classList.remove('active');
+  document.body.style.overflow = '';
+}
+function closeLightbox(e) {
+  if (e.target === document.getElementById('lightbox')) closeLightboxBtn();
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightboxBtn(); });
+
+// ── STORY TOGGLE ──
+function toggleStory(btn) {
+  btn.classList.toggle('open');
+  btn.nextElementSibling.classList.toggle('open');
+}
+
+// ── CURSOR ──
+const dot  = document.getElementById('cursorDot');
+const ring = document.getElementById('cursorRing');
+let mx=0, my=0, rx=0, ry=0;
+document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; });
+(function tick(){
+  dot.style.left  = mx+'px'; dot.style.top  = my+'px';
+  rx += (mx-rx)*.12; ry += (my-ry)*.12;
+  ring.style.left = rx+'px'; ring.style.top = ry+'px';
+  requestAnimationFrame(tick);
+})();
+document.querySelectorAll('a,button,video,.story-toggle,.result-img').forEach(el => {
+  el.addEventListener('mouseenter', () => { ring.style.transform='translate(-50%,-50%) scale(1.5)'; ring.style.opacity='1'; });
+  el.addEventListener('mouseleave', () => { ring.style.transform='translate(-50%,-50%) scale(1)';   ring.style.opacity='.6'; });
+});
+
+// ── NEURAL CANVAS ──
+const canvas = document.getElementById('neural-bg');
+const ctx    = canvas.getContext('2d');
+let W, H;
+const nodes  = Array.from({length:60}, () => ({
+  x: Math.random()*innerWidth, y: Math.random()*innerHeight,
+  vx: (Math.random()-.5)*.4,  vy: (Math.random()-.5)*.4,
+  r: Math.random()*2+1
+}));
+function resize(){ W=canvas.width=innerWidth; H=canvas.height=innerHeight; }
+resize();
+window.addEventListener('resize', resize);
+(function draw(){
+  ctx.clearRect(0,0,W,H);
+  nodes.forEach((n,i) => {
+    n.x+=n.vx; n.y+=n.vy;
+    if(n.x<0||n.x>W) n.vx*=-1;
+    if(n.y<0||n.y>H) n.vy*=-1;
+    for(let j=i+1; j<nodes.length; j++){
+      const m=nodes[j], d=Math.hypot(n.x-m.x, n.y-m.y);
+      if(d<160){ ctx.beginPath(); ctx.strokeStyle=`rgba(0,229,255,${.2*(1-d/160)})`; ctx.lineWidth=.5; ctx.moveTo(n.x,n.y); ctx.lineTo(m.x,m.y); ctx.stroke(); }
+    }
+    ctx.beginPath(); ctx.arc(n.x,n.y,n.r,0,Math.PI*2); ctx.fillStyle='rgba(0,229,255,.5)'; ctx.fill();
+  });
+  requestAnimationFrame(draw);
+})();
+
+// ── SCROLL REVEAL ──
+const revObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('visible'),80); revObs.unobserve(e.target); } });
+}, {threshold:.1, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
+
+// ── VIDEO AUTO-PLAY ON SCROLL ──
+const vidObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    const v = e.target;
+    if(e.isIntersecting && e.intersectionRatio>=0.5){ v.play().catch(()=>{}); }
+    else { v.pause(); }
+  });
+}, {threshold:[0,.25,.5,.75,1]});
+document.querySelectorAll('.auto-play-video').forEach(v => {
+  vidObs.observe(v);
+  v.addEventListener('play', () => { document.querySelectorAll('.auto-play-video').forEach(o => { if(o!==v) o.pause(); }); });
+});
+
+// ── COUNTER ──
+const statsEl = document.querySelector('.hero-stats');
+if(statsEl){
+  let done = false;
+  new IntersectionObserver(entries => {
+    if(entries[0].isIntersecting && !done){
+      done = true;
+      document.querySelectorAll('[data-count]').forEach(el => {
+        const end=+el.dataset.count; let v=0; const step=end/60;
+        const t=setInterval(()=>{ v+=step; if(v>=end){el.textContent=end;clearInterval(t);}else el.textContent=Math.floor(v); },20);
+      });
+    }
+  },{threshold:.5}).observe(statsEl);
+}
+
+// ── NAVBAR ACTIVE ──
+const allSecs = document.querySelectorAll('section[id]');
+window.addEventListener('scroll', () => {
+  let cur='';
+  allSecs.forEach(s => { if(scrollY>=s.offsetTop-130) cur=s.id; });
+  document.querySelectorAll('.nav-link').forEach(a => {
+    a.style.color='';
+    if(a.getAttribute('href')==='#'+cur) a.style.color='var(--cyan)';
+  });
+},{passive:true});
+</script>
+</body>
+</html>
