@@ -64,8 +64,6 @@
   .hero-badge{font-family:'JetBrains Mono',monospace;font-size:.7rem;padding:.35rem .9rem;border:1px solid var(--border);border-radius:3px;color:var(--text-secondary);background:rgba(0,229,255,.04);letter-spacing:.05em;transition:all .2s;}
   .hero-badge:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(0,229,255,.08);}
   .hero-cta{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:fadeUp .7s 1.3s forwards;}
-  .btn-p{font-family:'JetBrains Mono',monospace;font-size:.8rem;letter-spacing:.08em;padding:.75rem 1.8rem;background:var(--cyan);color:#000;border:none;border-radius:3px;text-decoration:none;font-weight:700;transition:all .25s;text-transform:uppercase;}
-  .btn-p:hover{background:#fff;box-shadow:var(--glow-strong);transform:translateY(-2px);}
   .btn-o{font-family:'JetBrains Mono',monospace;font-size:.8rem;letter-spacing:.08em;padding:.75rem 1.8rem;background:transparent;color:var(--cyan);border:1px solid var(--border-hover);border-radius:3px;text-decoration:none;font-weight:700;transition:all .25s;text-transform:uppercase;}
   .btn-o:hover{background:rgba(0,229,255,.08);border-color:var(--cyan);box-shadow:var(--glow);transform:translateY(-2px);color:var(--cyan);}
   .hero-stats{opacity:0;animation:fadeUp .7s 1.5s forwards;}
@@ -105,14 +103,13 @@
   .about-card h5{font-weight:700;font-size:1rem;margin-bottom:.7rem;color:var(--text-primary);}
   .about-card p{font-size:.88rem;color:var(--text-secondary);line-height:1.7;}
 
-  /* SKILLS */
+  /* SKILLS — all pills same cyan color */
   .skills-category{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:2rem;margin-bottom:1.5rem;transition:all .3s;}
   .skills-category:hover{border-color:var(--border-hover);}
   .skills-cat-title{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--orange);letter-spacing:.15em;text-transform:uppercase;margin-bottom:1.2rem;padding-bottom:.8rem;border-bottom:1px solid var(--border);}
   .skill-pills{display:flex;flex-wrap:wrap;gap:.5rem;}
-  .skill-pill{font-family:'JetBrains Mono',monospace;font-size:.72rem;padding:.35rem .85rem;border-radius:3px;border:1px solid var(--border);color:var(--text-secondary);background:rgba(255,255,255,.02);transition:all .2s;cursor:default;}
-  .skill-pill:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(0,229,255,.06);box-shadow:0 0 10px rgba(0,229,255,.15);transform:translateY(-2px);}
-  .skill-pill.featured{border-color:rgba(0,229,255,.35);color:var(--cyan);background:rgba(0,229,255,.06);}
+  .skill-pill{font-family:'JetBrains Mono',monospace;font-size:.72rem;padding:.35rem .85rem;border-radius:3px;border:1px solid rgba(0,229,255,.35);color:var(--cyan);background:rgba(0,229,255,.06);transition:all .2s;cursor:default;}
+  .skill-pill:hover{border-color:var(--cyan);color:#fff;background:rgba(0,229,255,.14);box-shadow:0 0 10px rgba(0,229,255,.2);transform:translateY(-2px);}
 
   /* EXPERIENCE */
   #experience{background:var(--bg-secondary);}
@@ -161,7 +158,6 @@
   .project-points li{font-size:.8rem;color:var(--text-secondary);padding:.25rem 0 .25rem 1rem;position:relative;}
   .project-points li::before{content:'→';position:absolute;left:0;color:var(--cyan);font-size:.7rem;}
 
-  /* PROJECT STACK TAGS — all uniform cyan */
   .project-stack{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:auto;}
   .stack-tag{font-family:'JetBrains Mono',monospace;font-size:.62rem;padding:.2rem .6rem;background:rgba(0,229,255,.06);border:1px solid rgba(0,229,255,.2);border-radius:2px;color:var(--cyan);letter-spacing:.05em;}
 
@@ -172,7 +168,7 @@
   @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
   .inline-video{width:100%;display:block;max-height:270px;object-fit:contain;background:#000;}
 
-  /* RESULT IMAGE — zoomable */
+  /* RESULT IMAGE */
   .result-img-wrap{margin:.8rem 0 1rem;border-radius:6px;overflow:hidden;border:1px solid var(--border-hover);}
   .result-img-label{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--text-secondary);letter-spacing:.12em;text-transform:uppercase;padding:.5rem 1rem;border-bottom:1px solid var(--border);background:var(--bg-card-hover);display:flex;align-items:center;justify-content:space-between;gap:.5rem;}
   .result-img-label-left{display:flex;align-items:center;gap:.5rem;}
@@ -190,7 +186,7 @@
   .lightbox-close:hover{background:rgba(0,229,255,.12);border-color:var(--cyan);transform:scale(1.1);}
   .lightbox-caption{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-secondary);letter-spacing:.1em;background:rgba(13,21,32,.85);padding:.4rem 1rem;border-radius:3px;border:1px solid var(--border);}
 
-  /* PROFILES — equal height, flex column */
+  /* PROFILES */
   .profile-card{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:2rem;text-align:center;transition:all .3s;text-decoration:none;display:flex;flex-direction:column;align-items:center;color:inherit;height:100%;}
   .profile-card:hover{border-color:var(--border-hover);box-shadow:var(--glow);transform:translateY(-6px);color:inherit;}
   .profile-icon{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin:0 auto 1rem;font-size:1.5rem;border:2px solid var(--border);}
@@ -198,17 +194,40 @@
   .profile-handle{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--text-secondary);margin-bottom:.8rem;}
   .profile-desc{font-size:.8rem;color:var(--text-secondary);line-height:1.6;}
 
+  /* BADGES */
+  #badges{background:var(--bg-primary);}
+  .badge-card{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:1.5rem;text-align:center;transition:all .3s;text-decoration:none;display:flex;flex-direction:column;align-items:center;color:inherit;height:100%;}
+  .badge-card:hover{border-color:var(--border-hover);box-shadow:var(--glow);transform:translateY(-6px);color:inherit;}
+  .badge-img-wrap{width:110px;height:110px;margin:0 auto 1rem;position:relative;}
+  .badge-img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 0 12px rgba(0,229,255,.25));transition:filter .3s;}
+  .badge-card:hover .badge-img{filter:drop-shadow(0 0 20px rgba(0,229,255,.5));}
+  .badge-name{font-weight:700;font-size:.92rem;color:var(--text-primary);margin-bottom:.3rem;line-height:1.3;}
+  .badge-issuer{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--orange);letter-spacing:.08em;margin-bottom:.5rem;}
+  .badge-view{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--cyan);letter-spacing:.1em;text-transform:uppercase;opacity:.7;margin-top:auto;padding-top:.5rem;}
+  .badge-card:hover .badge-view{opacity:1;}
+
+  /* CERTIFICATES */
+  #certifications{background:var(--bg-secondary);}
+  .cert-card{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;overflow:hidden;transition:all .3s;text-decoration:none;display:flex;flex-direction:column;color:inherit;height:100%;}
+  .cert-card:hover{border-color:var(--border-hover);box-shadow:var(--glow);transform:translateY(-5px);color:inherit;}
+  .cert-img-wrap{width:100%;aspect-ratio:16/10;overflow:hidden;background:#000;border-bottom:1px solid var(--border);position:relative;}
+  .cert-img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease,opacity .3s;}
+  .cert-card:hover .cert-img{transform:scale(1.04);opacity:.9;}
+  .cert-img-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,rgba(13,21,32,.9) 100%);opacity:0;transition:opacity .3s;}
+  .cert-card:hover .cert-img-overlay{opacity:1;}
+  .cert-card-body{padding:1rem 1.2rem;flex:1;display:flex;flex-direction:column;}
+  .cert-card-title{font-size:.88rem;font-weight:700;color:var(--text-primary);line-height:1.4;margin-bottom:.3rem;}
+  .cert-card-issuer{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--orange);letter-spacing:.08em;margin-bottom:.4rem;}
+  .cert-card-link{font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--cyan);letter-spacing:.08em;margin-top:auto;display:flex;align-items:center;gap:.4rem;opacity:.7;transition:opacity .2s;}
+  .cert-card:hover .cert-card-link{opacity:1;}
+
   /* EDUCATION */
+  #education{background:var(--bg-primary);}
   .edu-card{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:2rem;transition:all .3s;}
   .edu-card:hover{border-color:var(--border-hover);box-shadow:var(--glow);}
   .edu-degree{font-size:1.15rem;font-weight:700;color:var(--text-primary);margin-bottom:.3rem;}
   .edu-school{font-size:.88rem;color:var(--text-secondary);margin-bottom:.5rem;}
   .edu-meta{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--cyan);}
-  .cert-item{display:flex;align-items:flex-start;gap:1rem;padding:1.2rem 0;border-bottom:1px solid var(--border);}
-  .cert-item:last-child{border-bottom:none;}
-  .cert-icon{width:36px;height:36px;flex-shrink:0;background:rgba(255,109,59,.08);border:1px solid rgba(255,109,59,.2);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.9rem;color:var(--orange);}
-  .cert-title{font-size:.88rem;font-weight:600;color:var(--text-primary);line-height:1.4;}
-  .cert-issuer{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--text-secondary);margin-top:.2rem;}
 
   /* CONTACT */
   .contact-card{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:2.5rem;transition:all .3s;text-decoration:none;display:flex;align-items:center;gap:1.2rem;color:inherit;}
@@ -219,7 +238,7 @@
   .contact-arrow{margin-left:auto;color:var(--text-secondary);font-size:.8rem;transition:transform .2s;flex-shrink:0;}
   .contact-card:hover .contact-arrow{transform:translateX(4px);color:var(--cyan);}
 
-  /* FOOTER — uniform color */
+  /* FOOTER */
   footer{border-top:1px solid var(--border);padding:2.5rem 0;text-align:center;}
   .footer-brand{font-family:'JetBrains Mono',monospace;font-size:.85rem;color:var(--text-secondary);margin-bottom:.5rem;}
   .footer-copy{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-secondary);opacity:.5;}
@@ -262,6 +281,8 @@
         <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
         <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
         <li class="nav-item"><a class="nav-link" href="#profiles">Profiles</a></li>
+        <li class="nav-item"><a class="nav-link" href="#badges">Badges</a></li>
+        <li class="nav-item"><a class="nav-link" href="#certifications">Certs</a></li>
         <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
       </ul>
     </div>
@@ -276,7 +297,7 @@
         <p class="hero-label">AI/ML Engineer · Computer Vision</p>
         <h1 class="hero-name"><span class="first">Meiyarasu</span><span class="last">K.</span></h1>
         <p class="hero-title"><span class="hl">PyTorch</span> · YOLO · TrOCR · FaceNet · FastAPI · <span class="hl">AWS EC2</span></p>
-        <p class="hero-desc">Building production-grade computer vision systems — from 100K+ image pipelines and model fine-tuning to real-time inference at 20 FPS on the cloud.</p>
+        <p class="hero-desc">Building production-grade computer vision systems — from 100K+ image pipelines and model fine-tuning to real-time inference deployed locally and on the cloud.</p>
         <div class="hero-badges">
           <span class="hero-badge">Object Detection</span>
           <span class="hero-badge">OCR Pipelines</span>
@@ -286,7 +307,6 @@
           <span class="hero-badge">Transformer Architectures</span>
         </div>
         <div class="hero-cta">
-          <a href="mailto:meiyarasu.developer3@gmail.com" class="btn-p">Get In Touch</a>
           <a href="#projects" class="btn-o">View Projects</a>
         </div>
         <div class="hero-stats d-flex mt-5">
@@ -328,7 +348,7 @@
     <div class="row g-4">
       <div class="col-md-6 col-lg-3 reveal"><div class="about-card"><div class="about-icon">🎯</div><h5>Computer Vision</h5><p>Specialized in object detection, OCR, and face recognition systems using YOLO, TrOCR, and FaceNet architectures for real-world deployment.</p></div></div>
       <div class="col-md-6 col-lg-3 reveal"><div class="about-card"><div class="about-icon">🔧</div><h5>End-to-End Pipelines</h5><p>From large-scale dataset curation (100K+ images) and quality filtering to model fine-tuning, evaluation, and production deployment.</p></div></div>
-      <div class="col-md-6 col-lg-3 reveal"><div class="about-card"><div class="about-icon">☁️</div><h5>Cloud Deployment</h5><p>Deploying ML systems via FastAPI REST services on AWS EC2, achieving real-time inference at ~20 FPS throughput in live environments.</p></div></div>
+      <div class="col-md-6 col-lg-3 reveal"><div class="about-card"><div class="about-icon">☁️</div><h5>Cloud & Local Deploy</h5><p>Deploying ML systems via FastAPI REST services on AWS EC2 and local LAN networks, achieving real-time inference at ~20 FPS in live environments.</p></div></div>
       <div class="col-md-6 col-lg-3 reveal"><div class="about-card"><div class="about-icon">🤖</div><h5>Transformer Models</h5><p>Deep understanding of self-attention, multi-head attention, and encoder–decoder mechanisms powering state-of-the-art CV systems.</p></div></div>
     </div>
   </div>
@@ -347,7 +367,7 @@
         <div class="skills-category h-100">
           <div class="skills-cat-title">AI/ML Domains</div>
           <div class="skill-pills">
-            <span class="skill-pill featured">Machine Learning</span><span class="skill-pill featured">Deep Learning</span><span class="skill-pill featured">Computer Vision</span><span class="skill-pill featured">OCR</span><span class="skill-pill">Biometric Authentication</span><span class="skill-pill">Anti-Spoofing</span>
+            <span class="skill-pill">Machine Learning</span><span class="skill-pill">Deep Learning</span><span class="skill-pill">Computer Vision</span><span class="skill-pill">OCR</span><span class="skill-pill">Biometric Authentication</span><span class="skill-pill">Anti-Spoofing</span>
           </div>
         </div>
       </div>
@@ -355,7 +375,7 @@
         <div class="skills-category h-100">
           <div class="skills-cat-title">Frameworks & Libraries</div>
           <div class="skill-pills">
-            <span class="skill-pill featured">PyTorch</span><span class="skill-pill featured">OpenCV</span><span class="skill-pill">Hugging Face Transformers</span><span class="skill-pill">scikit-learn</span><span class="skill-pill">NumPy</span><span class="skill-pill">Pandas</span>
+            <span class="skill-pill">PyTorch</span><span class="skill-pill">OpenCV</span><span class="skill-pill">Hugging Face Transformers</span><span class="skill-pill">scikit-learn</span><span class="skill-pill">NumPy</span><span class="skill-pill">Pandas</span>
           </div>
         </div>
       </div>
@@ -363,7 +383,7 @@
         <div class="skills-category h-100">
           <div class="skills-cat-title">Model Architectures</div>
           <div class="skill-pills">
-            <span class="skill-pill featured">YOLOv8</span><span class="skill-pill featured">YOLOv11</span><span class="skill-pill featured">TrOCR</span><span class="skill-pill featured">FaceNet</span><span class="skill-pill">EfficientNet-B0</span><span class="skill-pill">PaddleOCR</span>
+            <span class="skill-pill">YOLOv8</span><span class="skill-pill">YOLOv11</span><span class="skill-pill">TrOCR</span><span class="skill-pill">FaceNet</span><span class="skill-pill">EfficientNet-B0</span><span class="skill-pill">PaddleOCR</span>
           </div>
         </div>
       </div>
@@ -371,7 +391,7 @@
         <div class="skills-category h-100">
           <div class="skills-cat-title">Backend & Deployment</div>
           <div class="skill-pills">
-            <span class="skill-pill featured">FastAPI</span><span class="skill-pill featured">AWS EC2</span><span class="skill-pill">REST API Design</span><span class="skill-pill">Docker</span><span class="skill-pill">Python</span><span class="skill-pill">SQL</span><span class="skill-pill">Linux</span><span class="skill-pill">Git</span>
+            <span class="skill-pill">FastAPI</span><span class="skill-pill">AWS EC2</span><span class="skill-pill">REST API Design</span><span class="skill-pill">Docker</span><span class="skill-pill">Python</span><span class="skill-pill">SQL</span><span class="skill-pill">Linux</span><span class="skill-pill">Git</span>
           </div>
         </div>
       </div>
@@ -400,7 +420,7 @@
                 <li>Engineered 3 production computer vision systems (ANPR, Transformer OCR, Face Recognition) deployed in live environments</li>
                 <li>Curated 200K+ raw images across projects with custom deduplication, quality filtering, and annotation pipelines</li>
                 <li>Reduced false positive rates via progressive YOLO fine-tuning strategy (10K → 14K → 14K + hard negatives)</li>
-                <li>Deployed all systems on AWS EC2 via FastAPI with REST endpoints, achieving real-time inference at ~20 FPS</li>
+                <li>Deployed Face Recognition system on AWS EC2 via FastAPI; ANPR running locally over LAN-connected IP cameras at ~20 FPS</li>
               </ul>
             </div>
           </div>
@@ -426,7 +446,7 @@
           <div class="project-num">01 / ANPR</div>
           <div class="project-icon">🚗</div>
           <div class="project-title">Automatic Number Plate Recognition System</div>
-          <p class="project-desc">Not a straight line from idea to product — a months-long grind through broken OCR engines, exploding false positives, a dataset that didn't exist, and a live-camera that refused to cooperate. Every obstacle forced a smarter solution. The result: a stable, production-deployed ANPR system that actually works.</p>
+          <p class="project-desc">Not a straight line from idea to product — a months-long grind through broken OCR engines, exploding false positives, a dataset that didn't exist, and a live LAN camera that refused to cooperate. Every obstacle forced a smarter solution. The result: a stable ANPR system running locally over a LAN-connected IP camera that actually works.</p>
 
           <div class="project-story">
             <div class="story-toggle" onclick="toggleStory(this)"><span class="arrow">▶</span> The Full Journey</div>
@@ -452,16 +472,16 @@
                 <span class="ms good">681 manual annotations</span><span class="ms good">12 hours of labeling</span><span class="ms good">2,500 → 17K via pipeline</span><span class="ms good">14K detection · 17K recognition</span>
               </div>
               <div class="story-para">
-                <strong>Phase 4 — TrOCR Breakthrough, Then Another Wall.</strong> Fine-tuned <strong>Microsoft TrOCR</strong> on the curated dataset — worked well on static images. But on a live feed with moving vehicles, it was still unstable. Came very close to solving this, but moving-vehicle inference remained unresolved despite exhausting every approach. Fell back to PaddleOCR, which still failed on edge cases. Added a <strong>manual entry fallback</strong> as a practical workaround.
+                <strong>Phase 4 — TrOCR Breakthrough, Then Another Wall.</strong> Fine-tuned <strong>Microsoft TrOCR</strong> on the curated dataset — worked well on static images. But on a live LAN camera feed with moving vehicles, it was still unstable. Came very close to solving this, but moving-vehicle inference remained unresolved despite exhausting every approach. Fell back to PaddleOCR, which still failed on edge cases. Added a <strong>manual entry fallback</strong> as a practical workaround.
               </div>
               <div class="story-milestone">
                 <span class="ms good">TrOCR → static images ✓</span><span class="ms bad">TrOCR → moving vehicles ✗</span><span class="ms warn">PaddleOCR fallback + manual entry</span>
               </div>
               <div class="story-para">
-                <strong>Phase 5 — False Positives, Solved for Good.</strong> Collected <strong>10,000 negative images</strong> — storefronts, signboards, stickers, watermarks. Ran training in two rounds: first on 14K plates alone, then on 14K plates + 10K negatives combined. <span style="color:var(--green)"><strong>This completely eliminated the false positive problem.</strong></span> The final system is stable, accurate, and production-deployed on AWS EC2 via FastAPI.
+                <strong>Phase 5 — False Positives, Solved for Good.</strong> Collected <strong>10,000 negative images</strong> — storefronts, signboards, stickers, watermarks. Ran training in two rounds: first on 14K plates alone, then on 14K plates + 10K negatives combined. <span style="color:var(--green)"><strong>This completely eliminated the false positive problem.</strong></span> The final system is stable, accurate, and runs locally via FastAPI on a LAN-connected IP camera at ~20 FPS.
               </div>
               <div class="story-milestone">
-                <span class="ms good">10K hard negatives collected</span><span class="ms good">Two-round progressive fine-tuning</span><span class="ms good">False positives eliminated ✓</span><span class="ms good">Production deployed ✓</span>
+                <span class="ms good">10K hard negatives collected</span><span class="ms good">Two-round progressive fine-tuning</span><span class="ms good">False positives eliminated ✓</span><span class="ms good">Local LAN deployment ✓</span>
               </div>
             </div>
           </div>
@@ -478,7 +498,7 @@
             <li>681 plates annotated manually over 12 hours — programmatically extended to 17K for recognition training</li>
             <li>Indian plate regex post-processing to stabilize OCR output across format variants</li>
             <li>Advanced augmentation: motion blur, low-light, rotation, shadow overlays for robustness</li>
-            <li>Manual entry fallback for edge cases; FastAPI on AWS EC2 at ~20 FPS</li>
+            <li>Manual entry fallback for edge cases; FastAPI running locally on LAN IP camera at ~20 FPS</li>
           </ul>
           <div class="project-stack">
             <span class="stack-tag">YOLOv8</span>
@@ -487,7 +507,7 @@
             <span class="stack-tag">FastAPI</span>
             <span class="stack-tag">PyTorch</span>
             <span class="stack-tag">OpenCV</span>
-            <span class="stack-tag">AWS EC2</span>
+            <span class="stack-tag">Local LAN</span>
           </div>
         </div>
       </div>
@@ -498,7 +518,7 @@
           <div class="project-num">03 / BIOMETRIC</div>
           <div class="project-icon">🛡️</div>
           <div class="project-title">Secure Face Recognition with Anti-Spoofing</div>
-          <p class="project-desc">A full month spent testing every available face recognition approach before finding what actually works. Then building an anti-spoofing layer from scratch because no off-the-shelf solution was good enough. The outcome: a 3-stage production pipeline that handles real-world identity verification.</p>
+          <p class="project-desc">A full month spent testing every available face recognition approach before finding what actually works. Then building an anti-spoofing layer from scratch because no off-the-shelf solution was good enough. The outcome: a 3-stage production pipeline deployed on AWS EC2 that handles real-world identity verification.</p>
 
           <div class="project-story">
             <div class="story-toggle" onclick="toggleStory(this)"><span class="arrow">▶</span> The Full Journey</div>
@@ -525,7 +545,7 @@
                 <strong>Phase 4 — Anti-Spoofing: Built from Scratch.</strong> <span class="prob">The system could now recognize faces accurately — but it couldn't tell the difference between a real person and a printed photo, a passport-size image, or a face on a phone screen.</span> No off-the-shelf anti-spoof model met the requirements. Collected <strong>10,000 images across 5 people</strong> — real faces, digital screen attacks, and printed passport-size photos. Trained an <strong>EfficientNet-B0 binary classifier</strong>. Integrated with <strong>YOLOv11-face</strong> into a clean <strong>3-stage pipeline</strong>: detect face → check liveness → verify identity. Deployed on AWS EC2 via FastAPI.
               </div>
               <div class="story-milestone">
-                <span class="ms good">10K custom anti-spoof images</span><span class="ms good">5 people · 3 attack types</span><span class="ms good">EfficientNet-B0 liveness classifier ✓</span><span class="ms good">3-stage pipeline deployed ✓</span>
+                <span class="ms good">10K custom anti-spoof images</span><span class="ms good">5 people · 3 attack types</span><span class="ms good">EfficientNet-B0 liveness classifier ✓</span><span class="ms good">AWS EC2 deployed ✓</span>
               </div>
             </div>
           </div>
@@ -636,30 +656,213 @@
   </div>
 </section>
 
+<!-- CREDLY BADGES -->
+<section id="badges">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Credly Badges</span>
+      <h2 class="section-title">Verified Achievements</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="row g-4 justify-content-center">
+      <div class="col-sm-6 col-md-4 col-lg-3 reveal">
+        <a href="https://www.credly.com/badges/18550097-511d-46c0-a1ce-dec3aa3b8248" target="_blank" class="badge-card">
+          <div class="badge-img-wrap">
+            <img src="machine_learning_badge.png" alt="Machine Learning with Python Level 1" class="badge-img">
+          </div>
+          <div class="badge-name">Machine Learning with Python</div>
+          <div class="badge-issuer">IBM · Credly · Level 1</div>
+          <div class="badge-view"><i class="fa fa-external-link-alt" style="font-size:.6rem;"></i> View on Credly</div>
+        </a>
+      </div>
+      <div class="col-sm-6 col-md-4 col-lg-3 reveal">
+        <a href="https://www.credly.com/badges/6a7bfd1e-ccf1-4730-85dc-c5c98cc100e9" target="_blank" class="badge-card">
+          <div class="badge-img-wrap">
+            <img src="data_visualization_badge.png" alt="Data Visualization Badge" class="badge-img">
+          </div>
+          <div class="badge-name">Data Visualization</div>
+          <div class="badge-issuer">IBM · Credly</div>
+          <div class="badge-view"><i class="fa fa-external-link-alt" style="font-size:.6rem;"></i> View on Credly</div>
+        </a>
+      </div>
+      <div class="col-sm-6 col-md-4 col-lg-3 reveal">
+        <a href="https://www.credly.com/badges/2184498c-379c-4082-9b31-cb61837ca7a4" target="_blank" class="badge-card">
+          <div class="badge-img-wrap">
+            <img src="data_analysis_badge.png" alt="Data Analysis Badge" class="badge-img">
+          </div>
+          <div class="badge-name">Data Analysis</div>
+          <div class="badge-issuer">IBM · Credly</div>
+          <div class="badge-view"><i class="fa fa-external-link-alt" style="font-size:.6rem;"></i> View on Credly</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATES -->
+<section id="certifications">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Certificates</span>
+      <h2 class="section-title">Course Completions</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="row g-4">
+
+      <!-- Data Visualization -->
+      <div class="col-sm-6 col-lg-4 reveal">
+        <a href="https://courses.cognitiveclass.ai/certificates/090839d79d93400f981b1df3bb78ca20" target="_blank" class="cert-card">
+          <div class="cert-img-wrap">
+            <img src="data_visualization.png" alt="Data Visualization Certificate" class="cert-img">
+            <div class="cert-img-overlay"></div>
+          </div>
+          <div class="cert-card-body">
+            <div class="cert-card-title">Data Visualization</div>
+            <div class="cert-card-issuer">Cognitive Class · IBM</div>
+            <div class="cert-card-link"><i class="fa fa-external-link-alt" style="font-size:.6rem;"></i> Verify Certificate</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- SQL Basic -->
+      <div class="col-sm-6 col-lg-4 reveal">
+        <a href="https://www.hackerrank.com/certificates/0568c58c1421" target="_blank" class="cert-card">
+          <div class="cert-img-wrap">
+            <img src="sql_basic.png" alt="SQL Basic Certificate" class="cert-img">
+            <div class="cert-img-overlay"></div>
+          </div>
+          <div class="cert-card-body">
+            <div class="cert-card-title">SQL Basic</div>
+            <div class="cert-card-issuer">HackerRank</div>
+            <div class="cert-card-link"><i class="fa fa-external-link-alt" style="font-size:.6rem;"></i> Verify Certificate</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Python Basic -->
+      <div class="col-sm-6 col-lg-4 reveal">
+        <a href="https://www.hackerrank.com/certificates/a7ea93d516c2" target="_blank" class="cert-card">
+          <div class="cert-img-wrap">
+            <img src="python_basic.png" alt="Python Basic Certificate" class="cert-img">
+            <div class="cert-img-overlay"></div>
+          </div>
+          <div class="cert-card-body">
+            <div class="cert-card-title">Python Basic</div>
+            <div class="cert-card-issuer">HackerRank</div>
+            <div class="cert-card-link"><i class="fa fa-external-link-alt" style="font-size:.6rem;"></i> Verify Certificate</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Machine Learning -->
+      <div class="col-sm-6 col-lg-4 reveal">
+        <a href="https://courses.cognitiveclass.ai/certificates/d786d74be5294a989647edfd8e62bc7e" target="_blank" class="cert-card">
+          <div class="cert-img-wrap">
+            <img src="machine_learning.png" alt="Machine Learning Certificate" class="cert-img">
+            <div class="cert-img-overlay"></div>
+          </div>
+          <div class="cert-card-body">
+            <div class="cert-card-title">Machine Learning</div>
+            <div class="cert-card-issuer">Cognitive Class · IBM</div>
+            <div class="cert-card-link"><i class="fa fa-external-link-alt" style="font-size:.6rem;"></i> Verify Certificate</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Data Analysis -->
+      <div class="col-sm-6 col-lg-4 reveal">
+        <a href="https://courses.cognitiveclass.ai/certificates/fb6c3fe939924e4da7beb94804d559d9" target="_blank" class="cert-card">
+          <div class="cert-img-wrap">
+            <img src="data_analysis.png" alt="Data Analysis Certificate" class="cert-img">
+            <div class="cert-img-overlay"></div>
+          </div>
+          <div class="cert-card-body">
+            <div class="cert-card-title">Data Analysis</div>
+            <div class="cert-card-issuer">Cognitive Class · IBM</div>
+            <div class="cert-card-link"><i class="fa fa-external-link-alt" style="font-size:.6rem;"></i> Verify Certificate</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Crash Course Python -->
+      <div class="col-sm-6 col-lg-4 reveal">
+        <a href="https://www.coursera.org/account/accomplishments/verify/WC4556HB7JPS" target="_blank" class="cert-card">
+          <div class="cert-img-wrap">
+            <img src="Crash_Course_Python.jpeg" alt="Crash Course on Python" class="cert-img">
+            <div class="cert-img-overlay"></div>
+          </div>
+          <div class="cert-card-body">
+            <div class="cert-card-title">Crash Course on Python</div>
+            <div class="cert-card-issuer">Coursera · Google</div>
+            <div class="cert-card-link"><i class="fa fa-external-link-alt" style="font-size:.6rem;"></i> Verify Certificate</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Neural Networks Bootcamp -->
+      <div class="col-sm-6 col-lg-4 reveal">
+        <a href="https://www.udemy.com/certificate/UC-6d979ac1-3174-47d2-9201-f3eb2c15f212/" target="_blank" class="cert-card">
+          <div class="cert-img-wrap">
+            <img src="neural_network.jpg" alt="Neural Networks Bootcamp Certificate" class="cert-img">
+            <div class="cert-img-overlay"></div>
+          </div>
+          <div class="cert-card-body">
+            <div class="cert-card-title">Complete Neural Networks Bootcamp: Theory, Applications</div>
+            <div class="cert-card-issuer">Udemy</div>
+            <div class="cert-card-link"><i class="fa fa-external-link-alt" style="font-size:.6rem;"></i> Verify Certificate</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- DSA -->
+      <div class="col-sm-6 col-lg-4 reveal">
+        <a href="https://www.udemy.com/certificate/UC-737e8bf2-7ddb-4535-a5fb-c1d729d54c72/" target="_blank" class="cert-card">
+          <div class="cert-img-wrap">
+            <img src="data_structures.jpg" alt="Python DSA Certificate" class="cert-img">
+            <div class="cert-img-overlay"></div>
+          </div>
+          <div class="cert-card-body">
+            <div class="cert-card-title">Python Data Structures & Algorithms with Animated Examples</div>
+            <div class="cert-card-issuer">Udemy</div>
+            <div class="cert-card-link"><i class="fa fa-external-link-alt" style="font-size:.6rem;"></i> Verify Certificate</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- 99-Hours Bootcamp -->
+      <div class="col-sm-6 col-lg-4 reveal">
+        <a href="https://www.udemy.com/certificate/UC-241298e7-b435-4286-801f-0cb4b18fe030/" target="_blank" class="cert-card">
+          <div class="cert-img-wrap">
+            <img src="99_hours_course.jpg" alt="Data Science ML DL NLP Bootcamp Certificate" class="cert-img">
+            <div class="cert-img-overlay"></div>
+          </div>
+          <div class="cert-card-body">
+            <div class="cert-card-title">Complete Data Science, ML, DL & NLP Bootcamp</div>
+            <div class="cert-card-issuer">Udemy</div>
+            <div class="cert-card-link"><i class="fa fa-external-link-alt" style="font-size:.6rem;"></i> Verify Certificate</div>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- EDUCATION -->
 <section id="education">
   <div class="container">
     <div class="section-header">
-      <span class="section-tag">Education & Certifications</span>
-      <h2 class="section-title">Academic & Learning</h2>
+      <span class="section-tag">Education</span>
+      <h2 class="section-title">Academic Background</h2>
       <div class="section-line"></div>
     </div>
-    <div class="row g-4">
-      <div class="col-lg-5 reveal">
-        <div class="edu-card h-100">
+    <div class="row g-4 justify-content-center">
+      <div class="col-lg-6 reveal">
+        <div class="edu-card">
           <div class="about-icon mb-3">🎓</div>
           <div class="edu-degree">Bachelor of Computer Applications</div>
           <div class="edu-school">J.K.K. Nataraja College of Arts & Science</div>
           <div class="edu-meta">Graduated 2022 · CGPA: 6.81 / 10</div>
-        </div>
-      </div>
-      <div class="col-lg-7 reveal">
-        <div class="edu-card h-100">
-          <div class="about-icon mb-3">📜</div>
-          <div class="cert-item"><div class="cert-icon"><i class="fa fa-code"></i></div><div><div class="cert-title">Python Basic</div><div class="cert-issuer">HackerRank</div></div></div>
-          <div class="cert-item"><div class="cert-icon"><i class="fa fa-brain"></i></div><div><div class="cert-title">Deep Learning and Neural Networks with PyTorch</div><div class="cert-issuer">Udemy</div></div></div>
-          <div class="cert-item"><div class="cert-icon"><i class="fa fa-sitemap"></i></div><div><div class="cert-title">Python Data Structures and Algorithms</div><div class="cert-issuer">Udemy</div></div></div>
-          <div class="cert-item"><div class="cert-icon"><i class="fa fa-chart-bar"></i></div><div><div class="cert-title">Complete Data Science, ML, Deep Learning & NLP Bootcamp</div><div class="cert-issuer">Udemy</div></div></div>
         </div>
       </div>
     </div>
