@@ -131,6 +131,7 @@
 
   /* PROJECTS */
   .project-card{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:2rem;height:100%;transition:all .35s;position:relative;overflow:hidden;display:flex;flex-direction:column;}
+  #projects .row.g-4{align-items:stretch;}
   .project-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--cyan),var(--orange));opacity:0;transition:opacity .3s;}
   .project-card:hover{border-color:var(--border-hover);box-shadow:var(--glow);transform:translateY(-5px);}
   .project-card:hover::before{opacity:1;}
@@ -298,15 +299,15 @@
       <div class="col-lg-7">
         <p class="hero-label">AI/ML Engineer · Computer Vision</p>
         <h1 class="hero-name"><span class="first">Meiyarasu</span><span class="last">K.</span></h1>
-        <p class="hero-title"><span class="hl">PyTorch</span> · YOLO · TrOCR · FaceNet · FastAPI · <span class="hl">AWS EC2</span></p>
-        <p class="hero-desc">Building production-grade computer vision systems — from 100K+ image pipelines and model fine-tuning to real-time inference deployed locally and on the cloud.</p>
+        <p class="hero-title"><span class="hl">PyTorch</span> · YOLO · R3D-18 · FaceNet · FastAPI · <span class="hl">Claude API</span></p>
+        <p class="hero-desc">Building production-grade computer vision systems — from 100K+ image pipelines and model fine-tuning to real-time inference deployed locally and on the cloud. Currently engineering AI-powered reporting at Track Tech Solutions.</p>
         <div class="hero-badges">
           <span class="hero-badge">Object Detection</span>
           <span class="hero-badge">OCR Pipelines</span>
           <span class="hero-badge">Face Recognition</span>
-          <span class="hero-badge">Anti-Spoofing</span>
-          <span class="hero-badge">AWS Deployment</span>
-          <span class="hero-badge">Transformer Architectures</span>
+          <span class="hero-badge">Violence Detection</span>
+          <span class="hero-badge">NL → SQL via LLM</span>
+          <span class="hero-badge">Spatiotemporal CV</span>
         </div>
         <div class="hero-cta">
           <a href="Meiyarasu_k.pdf" download class="btn-p"><i class="fa fa-download"></i> Download Resume</a>
@@ -315,7 +316,7 @@
         <div class="hero-stats d-flex mt-5">
           <div class="stat-item"><div class="stat-num" data-count="3">0</div><div class="stat-label">CV Systems Built</div></div>
           <div class="stat-divider"></div>
-          <div class="stat-item"><div class="stat-num" data-count="200">0</div><div class="stat-label">K+ Images Curated</div></div>
+          <div class="stat-item"><div class="stat-num" data-count="100">0</div><div class="stat-label">K+ Images Curated</div></div>
           <div class="stat-divider"></div>
           <div class="stat-item"><div class="stat-num" data-count="20">0</div><div class="stat-label">FPS Inference</div></div>
           <div class="stat-divider"></div>
@@ -386,7 +387,7 @@
         <div class="skills-category h-100">
           <div class="skills-cat-title">Model Architectures</div>
           <div class="skill-pills">
-            <span class="skill-pill">YOLOv8</span><span class="skill-pill">YOLOv11</span><span class="skill-pill">TrOCR</span><span class="skill-pill">FaceNet</span><span class="skill-pill">EfficientNet-B0</span><span class="skill-pill">PaddleOCR</span>
+            <span class="skill-pill">YOLOv8</span><span class="skill-pill">YOLOv11</span><span class="skill-pill">TrOCR</span><span class="skill-pill">FaceNet</span><span class="skill-pill">EfficientNet-B0</span><span class="skill-pill">PaddleOCR</span><span class="skill-pill">R3D-18</span>
           </div>
         </div>
       </div>
@@ -394,7 +395,7 @@
         <div class="skills-category h-100">
           <div class="skills-cat-title">Backend & Deployment</div>
           <div class="skill-pills">
-            <span class="skill-pill">FastAPI</span><span class="skill-pill">AWS EC2</span><span class="skill-pill">REST API Design</span><span class="skill-pill">Docker</span><span class="skill-pill">Python</span><span class="skill-pill">SQL</span><span class="skill-pill">Linux</span><span class="skill-pill">Git</span>
+            <span class="skill-pill">FastAPI</span><span class="skill-pill">AWS EC2</span><span class="skill-pill">REST API Design</span><span class="skill-pill">Docker</span><span class="skill-pill">Streamlit</span><span class="skill-pill">Anthropic Claude API</span><span class="skill-pill">Python</span><span class="skill-pill">SQL</span><span class="skill-pill">Linux</span><span class="skill-pill">Git</span>
           </div>
         </div>
       </div>
@@ -413,20 +414,38 @@
     <div class="row justify-content-center">
       <div class="col-lg-9 reveal">
         <div class="timeline">
+
+          <!-- Track Tech — current -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="exp-card">
+              <div class="exp-company">Track Tech Solutions · Tamil Nadu, India</div>
+              <div class="exp-role">AI / ML Engineer</div>
+              <span class="exp-date">Apr 2026 → Present</span>
+              <ul class="exp-points">
+                <li>Built a natural-language production reporting API (FastAPI + SQLAlchemy) translating plain-English prompts into parameterised MySQL queries via the Anthropic Claude API across a 40-column garment pipeline</li>
+                <li>Engineered a Daily Production Report spanning cutting → sewing → washing → finishing → packing with per-stage today / till-date / balance breakdowns across six joined sub-queries</li>
+                <li>Delivered multi-format export (CSV, XLSX, PDF) with a single-page chat UI, paginated tables, per-style summary cards, and collapsible SQL inspection mode</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Hexbee — past -->
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="exp-card">
               <div class="exp-company">Hexbee Software Solutions Pvt Ltd · Tamil Nadu, India</div>
               <div class="exp-role">Python Developer — Computer Vision</div>
-              <span class="exp-date">Dec 2024 → Present</span>
+              <span class="exp-date">Dec 2024 → Apr 2026</span>
               <ul class="exp-points">
-                <li>Engineered 3 production computer vision systems (ANPR, Transformer OCR, Face Recognition) deployed in live environments</li>
-                <li>Curated 200K+ raw images across projects with custom deduplication, quality filtering, and annotation pipelines</li>
-                <li>Reduced false positive rates via progressive YOLO fine-tuning strategy (10K → 14K → 14K + hard negatives)</li>
-                <li>Deployed Face Recognition system on AWS EC2 via FastAPI; ANPR running locally over LAN-connected IP cameras at ~20 FPS</li>
+                <li>Engineered 2 production CV systems (ANPR, Face Recognition + Anti-Spoofing) deployed in live environments; conducted TrOCR fine-tuning research achieving 93% character accuracy</li>
+                <li>Curated 100K+ raw images across projects with custom deduplication, quality filtering, and annotation pipelines</li>
+                <li>Reduced false positive rates via progressive YOLO fine-tuning (10K hard negatives); achieved real-time inference at ~20 FPS on AWS EC2 and local LAN IP cameras via FastAPI</li>
+                <li>Trained custom EfficientNet-B0 anti-spoof classifier on 10K self-collected images — integrated as a liveness gate before FaceNet identity verification</li>
               </ul>
             </div>
           </div>
+
         </div>
       </div>
     </div>
@@ -518,7 +537,7 @@
       <!-- ── FACE RECOGNITION ── -->
       <div class="col-lg-6 reveal">
         <div class="project-card">
-          <div class="project-num">03 / BIOMETRIC</div>
+          <div class="project-num">02 / BIOMETRIC</div>
           <div class="project-icon">🛡️</div>
           <div class="project-title">Secure Face Recognition with Anti-Spoofing</div>
           <p class="project-desc">A full month spent testing every available face recognition approach before finding what actually works. Then building an anti-spoofing layer from scratch because no off-the-shelf solution was good enough. The outcome: a 3-stage production pipeline deployed on AWS EC2 that handles real-world identity verification.</p>
@@ -578,13 +597,77 @@
         </div>
       </div>
 
-      <!-- ── TrOCR ── -->
+      <!-- ── VIOLENCE DETECTION ── -->
       <div class="col-lg-6 reveal">
         <div class="project-card">
-          <div class="project-num">02 / OCR</div>
-          <div class="project-icon">📝</div>
+          <div class="project-num">03 / SECURITY</div>
+          <div class="project-icon">🎥</div>
+          <div class="project-title">AI Camera Security — Violence Detection</div>
+          <p class="project-desc">Fine-tuned a spatiotemporal deep learning model on 2,000 real-world CCTV clips to detect fights and violent activity in near real-time. Sliding-window GPU inference at ~20 FPS with a three-tier alert system and downloadable detection logs.</p>
+
+          <div class="project-story">
+            <div class="story-toggle" onclick="toggleStory(this)"><span class="arrow">▶</span> The Full Journey</div>
+            <div class="story-body">
+              <div class="story-para">
+                <strong>Phase 1 — Model Selection.</strong> Evaluated 2D CNN baselines — ResNet-50 frame-by-frame and MobileNet — but they ignored temporal motion, the core signal of violence. Chose <strong>R3D-18</strong> (3D ResNet-18) pretrained on Kinetics-400: it processes (B, 3, 16, 224, 224) clips directly, capturing spatio-temporal patterns that flat CNNs cannot.
+              </div>
+              <div class="story-milestone">
+                <span class="ms bad">2D CNN frame-by-frame ✗</span><span class="ms good">R3D-18 spatiotemporal ✓</span><span class="ms good">Kinetics-400 pretrained ✓</span>
+              </div>
+              <div class="story-para">
+                <strong>Phase 2 — Dataset & Training.</strong> Used the <strong>RWF-2000</strong> dataset — 2,000 CCTV surveillance clips (Fight / NonFight, 1,000 each). Froze the backbone for 3 epochs, then full fine-tune with cosine LR + linear warmup, AdamW, label smoothing, and AMP fp16. Best val accuracy <strong>86.5%</strong> at epoch 15 (early stop patience 15).
+              </div>
+              <div class="story-milestone">
+                <span class="ms good">RWF-2000 · 2K CCTV clips</span><span class="ms good">86.5% val accuracy</span><span class="ms good">AMP fp16 · AdamW · cosine LR</span>
+              </div>
+              <div class="story-para">
+                <strong>Phase 3 — Inference Pipeline.</strong> <span class="prob">Naive per-frame inference on a Streamlit UI caused stuttering and inconsistent predictions.</span> Designed a <strong>sliding-window pipeline</strong>: a background thread feeds frames into a queue → 16-frame deque buffer → batched GPU forward pass (batch=4) every 8 frames. Achieved stable ~20 FPS GPU throughput. Blind test: <strong>81% accuracy, 0.81 F1</strong>.
+              </div>
+              <div class="story-milestone">
+                <span class="ms bad">Naive per-frame → unstable ✗</span><span class="ms good">Sliding window (stride 8) ✓</span><span class="ms good">81% blind test · 0.81 F1 ✓</span><span class="ms good">~20 FPS GPU ✓</span>
+              </div>
+              <div class="story-para">
+                <strong>Phase 4 — Alert System & UI.</strong> Built a three-tier alert system: <strong style="color:var(--green)">✅ SAFE</strong> (NonFight), <strong style="color:#ffd84a">🟡 FIGHT DETECTED</strong> (Fight, low confidence), <strong style="color:var(--orange)">⚠️ VIOLENCE DETECTED</strong> (Fight, high confidence). Streamlit UI shows live confidence scores, per-clip predictions, and a downloadable CSV detection log.
+              </div>
+              <div class="story-milestone">
+                <span class="ms good">3-tier alert system ✓</span><span class="ms good">Downloadable CSV log ✓</span><span class="ms good">Streamlit live UI ✓</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="inline-video-wrap">
+            <div class="inline-video-label"><span class="dot-blink"></span> Demo Video</div>
+            <video class="inline-video auto-play-video" muted playsinline controls preload="metadata">
+              <source src="violence_detection_demo.mp4" type="video/mp4">
+            </video>
+          </div>
+
+          <ul class="project-points">
+            <li>R3D-18 fine-tuned on RWF-2000 (2K CCTV clips) — 86.5% val accuracy, 81% blind test accuracy, 0.81 F1</li>
+            <li>Sliding-window inference: 16-frame clips, stride 8, batched GPU forward pass — ~20 FPS throughput</li>
+            <li>Training: cosine LR + 5-epoch warmup, AdamW, label smoothing 0.1, AMP fp16, early stopping</li>
+            <li>3-tier alert system (red / amber / green) with live confidence scores in Streamlit UI</li>
+            <li>Downloadable CSV detection log with per-clip timestamps and prediction confidence</li>
+          </ul>
+          <div class="project-stack">
+            <span class="stack-tag">R3D-18</span>
+            <span class="stack-tag">PyTorch</span>
+            <span class="stack-tag">torchvision</span>
+            <span class="stack-tag">OpenCV</span>
+            <span class="stack-tag">Streamlit</span>
+            <span class="stack-tag">AMP fp16</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── TrOCR RESEARCH ── -->
+      <div class="col-lg-6 reveal">
+        <div class="project-card" style="border-color:rgba(255,109,59,.25);">
+          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--orange),transparent);opacity:1;"></div>
+          <div class="project-num" style="color:var(--orange);">RESEARCH · Jan – Mar 2025</div>
+          <div class="project-icon">🔬</div>
           <div class="project-title">Transformer-Based OCR Fine-Tuning (TrOCR)</div>
-          <p class="project-desc">Fine-tuned Microsoft TrOCR on 17K carefully curated Indian plate crops — achieving 93% character-level accuracy on static images after systematic error analysis across blur, low-light, and non-standard fonts.</p>
+          <p class="project-desc">Fine-tuned Microsoft TrOCR on 17K carefully curated Indian plate crops — achieving 93% character-level accuracy on static images after systematic error analysis across blur, low-light, and non-standard fonts. Informed the final ANPR pipeline decision.</p>
 
           <div class="result-img-wrap">
             <div class="result-img-label">
@@ -599,13 +682,13 @@
             <li>93% character-level · 71% full plate-level accuracy on static images</li>
             <li>Systematic error analysis: blur, low-light, non-standard Indian fonts</li>
             <li>TrOCR vs. PaddleOCR benchmarking — identified scenarios where each excels</li>
-            <li>Revealed live-camera instability on moving vehicles — informed final pipeline decision</li>
+            <li>Revealed live-camera instability on moving vehicles — informed final ANPR pipeline decision</li>
           </ul>
           <div class="project-stack">
-            <span class="stack-tag">TrOCR</span>
-            <span class="stack-tag">Hugging Face</span>
-            <span class="stack-tag">PyTorch</span>
-            <span class="stack-tag">Python</span>
+            <span class="stack-tag" style="border-color:rgba(255,109,59,.3);color:var(--orange);background:rgba(255,109,59,.05);">TrOCR</span>
+            <span class="stack-tag" style="border-color:rgba(255,109,59,.3);color:var(--orange);background:rgba(255,109,59,.05);">Hugging Face</span>
+            <span class="stack-tag" style="border-color:rgba(255,109,59,.3);color:var(--orange);background:rgba(255,109,59,.05);">PyTorch</span>
+            <span class="stack-tag" style="border-color:rgba(255,109,59,.3);color:var(--orange);background:rgba(255,109,59,.05);">Python</span>
           </div>
         </div>
       </div>
@@ -906,7 +989,7 @@
       <div class="col-lg-5 reveal">
         <div class="contact-card">
           <div class="contact-icon"><i class="fa fa-map-marker-alt"></i></div>
-          <div><div class="contact-label">Location</div><div class="contact-value">Tiruchengode, Tamil Nadu, India</div></div>
+          <div><div class="contact-label">Location</div><div class="contact-value">Tamil Nadu, India</div></div>
         </div>
       </div>
     </div>
