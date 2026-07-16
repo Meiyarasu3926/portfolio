@@ -536,6 +536,41 @@
         </div>
       </div>
 
+      <!-- ── TrOCR RESEARCH ── -->
+      <div class="col-lg-6 reveal">
+        <div class="project-card" style="border-color:rgba(255,109,59,.25);">
+          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--orange),transparent);opacity:1;"></div>
+          <div class="project-num" style="color:var(--orange);">RESEARCH · Jan – Mar 2025</div>
+          <div class="project-icon">🔬</div>
+          <div class="project-title">Transformer-Based OCR Fine-Tuning (TrOCR)</div>
+          <p class="project-desc">Fine-tuned Microsoft TrOCR on 17K carefully curated Indian plate crops — achieving 93% character-level accuracy on static images after systematic error analysis across blur, low-light, and non-standard fonts. Informed the final ANPR pipeline decision.</p>
+
+          <div class="result-img-wrap">
+            <div class="result-img-label">
+              <div class="result-img-label-left"><i class="fa fa-image" style="color:var(--cyan);font-size:.7rem;"></i> Model Output Results</div>
+              <div class="zoom-hint"><i class="fa fa-search-plus"></i> click to zoom</div>
+            </div>
+            <img src="project_demo_videos/trocr_result.png" alt="TrOCR Model Output Results" class="result-img" onclick="openLightbox(this)" data-caption="TrOCR Fine-Tuned Results — 93% character accuracy on Indian plates">
+          </div>
+
+          <ul class="project-points">
+            <li>17K training samples curated from 100K+ raw via blur score, resolution & aspect ratio filters</li>
+            <li>93% character-level · 71% full plate-level accuracy on static images</li>
+            <li>Systematic error analysis: blur, low-light, non-standard Indian fonts</li>
+            <li>TrOCR vs. PaddleOCR benchmarking — identified scenarios where each excels</li>
+            <li>Revealed live-camera instability on moving vehicles — informed final ANPR pipeline decision</li>
+          </ul>
+          <div class="project-stack">
+            <span class="stack-tag" style="border-color:rgba(255,109,59,.3);color:var(--orange);background:rgba(255,109,59,.05);">TrOCR</span>
+            <span class="stack-tag" style="border-color:rgba(255,109,59,.3);color:var(--orange);background:rgba(255,109,59,.05);">Hugging Face</span>
+            <span class="stack-tag" style="border-color:rgba(255,109,59,.3);color:var(--orange);background:rgba(255,109,59,.05);">PyTorch</span>
+            <span class="stack-tag" style="border-color:rgba(255,109,59,.3);color:var(--orange);background:rgba(255,109,59,.05);">Python</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
       <!-- ── FACE RECOGNITION ── -->
       <div class="col-lg-6 reveal">
         <div class="project-card">
@@ -662,73 +697,10 @@
         </div>
       </div>
 
-      <!-- ── ANNOTATOR TOOL ── -->
-      <div class="col-lg-6 reveal">
-        <div class="project-card">
-          <div class="project-num">04 / TOOLING</div>
-          <div class="project-icon">🖊️</div>
-          <div class="project-title">AI-Powered Image Annotation Tool</div>
-          <p class="project-desc">80% of my time on CV projects went into data prep, not modeling — 4,000–5,000 images could eat 5–10 days. Instead of accepting that tax, I built a CVAT-inspired, local-first annotation tool around my own workflow: AI pre-annotation, human-in-the-loop review, and dataset-prep utilities baked in from day one.</p>
-
-          <div class="project-story">
-            <div class="story-toggle" onclick="toggleStory(this)"><span class="arrow">▶</span> The Full Journey</div>
-            <div class="story-body">
-              <div class="story-para">
-                <strong>Phase 1 — The Bottleneck.</strong> <span class="prob">Across every CV project, annotation — not training — was consuming most of the calendar.</span> Manually labeling 4,000–5,000 images routinely took 5–10 days of repetitive, low-leverage work. Rather than keep absorbing that cost project after project, decided to build a purpose-made tool around the actual workflow instead of adapting to a generic one.
-              </div>
-              <div class="story-milestone">
-                <span class="ms bad">80% time on data prep ✗</span><span class="ms bad">5–10 days per 4–5K images ✗</span><span class="ms warn">Decision: build a custom tool</span>
-              </div>
-              <div class="story-para">
-                <strong>Phase 2 — AI-Assisted, Human-Verified.</strong> Built support for loading any trained <strong>YOLO (.pt)</strong> model directly into the tool for automatic pre-annotation, with adjustable confidence thresholds, multi-model support, and class mapping between model classes and annotation classes. Critically, every AI prediction stays <strong>unverified until manually reviewed</strong> — nothing gets saved without a human pass, so the tool speeds up labeling without silently degrading dataset quality.
-              </div>
-              <div class="story-milestone">
-                <span class="ms good">YOLO (.pt) model loading ✓</span><span class="ms good">Adjustable confidence threshold ✓</span><span class="ms good">Human-in-the-loop verification ✓</span>
-              </div>
-              <div class="story-para">
-                <strong>Phase 3 — Full Annotation Toolkit.</strong> Layered in point annotations, bounding boxes, polygon segmentation, ROI selection, crop & zoom, and full move/resize/edit with undo-redo. Added automatic <strong>overlap detection</strong> for point annotations with visual indicators and right-click removal of duplicates, plus per-image verification status tracking for quality assurance before export.
-              </div>
-              <div class="story-milestone">
-                <span class="ms good">Points · Boxes · Polygons · ROI ✓</span><span class="ms good">Undo/Redo ✓</span><span class="ms good">Overlap detection & QA ✓</span>
-              </div>
-              <div class="story-para">
-                <strong>Phase 4 — Dataset-Ready Export & Prep.</strong> <span class="prob">Annotating was only half the problem — turning annotations into a clean, leak-free training dataset was its own chore.</span> Built export to <strong>YOLO, COCO, Pascal VOC, Hugging Face JSONL, and custom Raw XML</strong>, alongside automatic train/validation splitting, near-duplicate detection to reduce data leakage, and video frame chunking that keeps split boundaries correct. Architected the whole thing <strong>local-first on FastAPI + JavaScript</strong> — no browser storage limits, with model caching and automatic backup/restore for large multi-project datasets.
-              </div>
-              <div class="story-milestone">
-                <span class="ms good">5 export formats ✓</span><span class="ms good">Auto train/val split ✓</span><span class="ms good">Near-dup detection ✓</span><span class="ms good">Local-first FastAPI backend ✓</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="inline-video-wrap">
-            <div class="inline-video-label"><span class="dot-blink"></span> Demo Video</div>
-            <video class="inline-video auto-play-video" muted playsinline controls preload="metadata">
-              <source src="project_demo_videos/annotator_app_demo.mp4" type="video/mp4">
-            </video>
-          </div>
-
-          <ul class="project-points">
-            <li>AI pre-annotation from any loaded YOLO (.pt) model with adjustable confidence & class mapping</li>
-            <li>Human-in-the-loop review — AI predictions stay unverified until manually accepted or corrected</li>
-            <li>Points, bounding boxes, polygons, ROI, crop/zoom, and full undo/redo editing</li>
-            <li>Overlap detection, duplicate removal, and per-image verification status for QA</li>
-            <li>Export to YOLO, COCO, Pascal VOC, Hugging Face JSONL & Raw XML; auto train/val split with near-duplicate & leakage checks</li>
-          </ul>
-          <div class="project-stack">
-            <span class="stack-tag">FastAPI</span>
-            <span class="stack-tag">JavaScript</span>
-            <span class="stack-tag">HTML/CSS</span>
-            <span class="stack-tag">YOLO</span>
-            <span class="stack-tag">Local-First</span>
-            <span class="stack-tag">COCO/VOC/JSONL</span>
-          </div>
-        </div>
-      </div>
-
       <!-- ── VOICE ASSISTANT ── -->
       <div class="col-lg-6 reveal">
         <div class="project-card">
-          <div class="project-num">05 / VOICE AI</div>
+          <div class="project-num">04 / VOICE AI</div>
           <div class="project-icon">🎙️</div>
           <div class="project-title">Voice-to-Database Assistant</div>
           <p class="project-desc">A hands-free front end for the same natural-language reporting problem I was already solving with text — speak a question, and it's transcribed, understood, and answered straight from the database or a live external API, no typing required.</p>
@@ -783,7 +755,7 @@
       <!-- ── NL-TO-SQL FACTORY CHATBOT ── -->
       <div class="col-lg-6 reveal">
         <div class="project-card">
-          <div class="project-num">06 / NL → SQL</div>
+          <div class="project-num">05 / NL → SQL</div>
           <div class="project-icon">💬</div>
           <div class="project-title">Natural-Language Factory Reporting Chatbot</div>
           <p class="project-desc">A FastAPI service that lets shop-floor staff ask plain-English questions and get answers straight from a 220+ table garment-manufacturing MySQL database — no SQL knowledge required. Claude picks the relevant tables, writes the query, a guard layer enforces read-only safety, and if the first attempt comes back empty the agent investigates why and retries with real data.</p>
@@ -849,41 +821,69 @@
         </div>
       </div>
 
-      <!-- ── TrOCR RESEARCH ── -->
+      <!-- ── ANNOTATOR TOOL ── -->
       <div class="col-lg-6 reveal">
-        <div class="project-card" style="border-color:rgba(255,109,59,.25);">
-          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--orange),transparent);opacity:1;"></div>
-          <div class="project-num" style="color:var(--orange);">RESEARCH · Jan – Mar 2025</div>
-          <div class="project-icon">🔬</div>
-          <div class="project-title">Transformer-Based OCR Fine-Tuning (TrOCR)</div>
-          <p class="project-desc">Fine-tuned Microsoft TrOCR on 17K carefully curated Indian plate crops — achieving 93% character-level accuracy on static images after systematic error analysis across blur, low-light, and non-standard fonts. Informed the final ANPR pipeline decision.</p>
+        <div class="project-card">
+          <div class="project-num">06 / TOOLING</div>
+          <div class="project-icon">🖊️</div>
+          <div class="project-title">AI-Powered Image Annotation Tool</div>
+          <p class="project-desc">80% of my time on CV projects went into data prep, not modeling — 4,000–5,000 images could eat 5–10 days. Instead of accepting that tax, I built a CVAT-inspired, local-first annotation tool around my own workflow: AI pre-annotation, human-in-the-loop review, and dataset-prep utilities baked in from day one.</p>
 
-          <div class="result-img-wrap">
-            <div class="result-img-label">
-              <div class="result-img-label-left"><i class="fa fa-image" style="color:var(--cyan);font-size:.7rem;"></i> Model Output Results</div>
-              <div class="zoom-hint"><i class="fa fa-search-plus"></i> click to zoom</div>
+          <div class="project-story">
+            <div class="story-toggle" onclick="toggleStory(this)"><span class="arrow">▶</span> The Full Journey</div>
+            <div class="story-body">
+              <div class="story-para">
+                <strong>Phase 1 — The Bottleneck.</strong> <span class="prob">Across every CV project, annotation — not training — was consuming most of the calendar.</span> Manually labeling 4,000–5,000 images routinely took 5–10 days of repetitive, low-leverage work. Rather than keep absorbing that cost project after project, decided to build a purpose-made tool around the actual workflow instead of adapting to a generic one.
+              </div>
+              <div class="story-milestone">
+                <span class="ms bad">80% time on data prep ✗</span><span class="ms bad">5–10 days per 4–5K images ✗</span><span class="ms warn">Decision: build a custom tool</span>
+              </div>
+              <div class="story-para">
+                <strong>Phase 2 — AI-Assisted, Human-Verified.</strong> Built support for loading any trained <strong>YOLO (.pt)</strong> model directly into the tool for automatic pre-annotation, with adjustable confidence thresholds, multi-model support, and class mapping between model classes and annotation classes. Critically, every AI prediction stays <strong>unverified until manually reviewed</strong> — nothing gets saved without a human pass, so the tool speeds up labeling without silently degrading dataset quality.
+              </div>
+              <div class="story-milestone">
+                <span class="ms good">YOLO (.pt) model loading ✓</span><span class="ms good">Adjustable confidence threshold ✓</span><span class="ms good">Human-in-the-loop verification ✓</span>
+              </div>
+              <div class="story-para">
+                <strong>Phase 3 — Full Annotation Toolkit.</strong> Layered in point annotations, bounding boxes, polygon segmentation, ROI selection, crop & zoom, and full move/resize/edit with undo-redo. Added automatic <strong>overlap detection</strong> for point annotations with visual indicators and right-click removal of duplicates, plus per-image verification status tracking for quality assurance before export.
+              </div>
+              <div class="story-milestone">
+                <span class="ms good">Points · Boxes · Polygons · ROI ✓</span><span class="ms good">Undo/Redo ✓</span><span class="ms good">Overlap detection & QA ✓</span>
+              </div>
+              <div class="story-para">
+                <strong>Phase 4 — Dataset-Ready Export & Prep.</strong> <span class="prob">Annotating was only half the problem — turning annotations into a clean, leak-free training dataset was its own chore.</span> Built export to <strong>YOLO, COCO, Pascal VOC, Hugging Face JSONL, and custom Raw XML</strong>, alongside automatic train/validation splitting, near-duplicate detection to reduce data leakage, and video frame chunking that keeps split boundaries correct. Architected the whole thing <strong>local-first on FastAPI + JavaScript</strong> — no browser storage limits, with model caching and automatic backup/restore for large multi-project datasets.
+              </div>
+              <div class="story-milestone">
+                <span class="ms good">5 export formats ✓</span><span class="ms good">Auto train/val split ✓</span><span class="ms good">Near-dup detection ✓</span><span class="ms good">Local-first FastAPI backend ✓</span>
+              </div>
             </div>
-            <img src="project_demo_videos/trocr_result.png" alt="TrOCR Model Output Results" class="result-img" onclick="openLightbox(this)" data-caption="TrOCR Fine-Tuned Results — 93% character accuracy on Indian plates">
+          </div>
+
+          <div class="inline-video-wrap">
+            <div class="inline-video-label"><span class="dot-blink"></span> Demo Video</div>
+            <video class="inline-video auto-play-video" muted playsinline controls preload="metadata">
+              <source src="project_demo_videos/annotator_app_demo.mp4" type="video/mp4">
+            </video>
           </div>
 
           <ul class="project-points">
-            <li>17K training samples curated from 100K+ raw via blur score, resolution & aspect ratio filters</li>
-            <li>93% character-level · 71% full plate-level accuracy on static images</li>
-            <li>Systematic error analysis: blur, low-light, non-standard Indian fonts</li>
-            <li>TrOCR vs. PaddleOCR benchmarking — identified scenarios where each excels</li>
-            <li>Revealed live-camera instability on moving vehicles — informed final ANPR pipeline decision</li>
+            <li>AI pre-annotation from any loaded YOLO (.pt) model with adjustable confidence & class mapping</li>
+            <li>Human-in-the-loop review — AI predictions stay unverified until manually accepted or corrected</li>
+            <li>Points, bounding boxes, polygons, ROI, crop/zoom, and full undo/redo editing</li>
+            <li>Overlap detection, duplicate removal, and per-image verification status for QA</li>
+            <li>Export to YOLO, COCO, Pascal VOC, Hugging Face JSONL & Raw XML; auto train/val split with near-duplicate & leakage checks</li>
           </ul>
           <div class="project-stack">
-            <span class="stack-tag" style="border-color:rgba(255,109,59,.3);color:var(--orange);background:rgba(255,109,59,.05);">TrOCR</span>
-            <span class="stack-tag" style="border-color:rgba(255,109,59,.3);color:var(--orange);background:rgba(255,109,59,.05);">Hugging Face</span>
-            <span class="stack-tag" style="border-color:rgba(255,109,59,.3);color:var(--orange);background:rgba(255,109,59,.05);">PyTorch</span>
-            <span class="stack-tag" style="border-color:rgba(255,109,59,.3);color:var(--orange);background:rgba(255,109,59,.05);">Python</span>
+            <span class="stack-tag">FastAPI</span>
+            <span class="stack-tag">JavaScript</span>
+            <span class="stack-tag">HTML/CSS</span>
+            <span class="stack-tag">YOLO</span>
+            <span class="stack-tag">Local-First</span>
+            <span class="stack-tag">COCO/VOC/JSONL</span>
           </div>
         </div>
       </div>
 
-    </div>
-  </div>
 </section>
 
 <!-- PROFILES -->
