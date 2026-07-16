@@ -660,68 +660,7 @@
         </div>
       </div>
 
-      <!-- ── ANNOTATOR TOOL ── -->
-      <div class="col-lg-6 reveal">
-        <div class="project-card">
-          <div class="project-num">04 / TOOLING</div>
-          <div class="project-icon">🖊️</div>
-          <div class="project-title">AI-Powered Image Annotation Tool</div>
-          <p class="project-desc">80% of my time on CV projects went into data prep, not modeling — 4,000–5,000 images could eat 5–10 days. Instead of accepting that tax, I built a CVAT-inspired, local-first annotation tool around my own workflow: AI pre-annotation, human-in-the-loop review, and dataset-prep utilities baked in from day one.</p>
-
-          <div class="project-story">
-            <div class="story-toggle" onclick="toggleStory(this)"><span class="arrow">▶</span> The Full Journey</div>
-            <div class="story-body">
-              <div class="story-para">
-                <strong>Phase 1 — The Bottleneck.</strong> <span class="prob">Across every CV project, annotation — not training — was consuming most of the calendar.</span> Manually labeling 4,000–5,000 images routinely took 5–10 days of repetitive, low-leverage work. Rather than keep absorbing that cost project after project, decided to build a purpose-made tool around the actual workflow instead of adapting to a generic one.
-              </div>
-              <div class="story-milestone">
-                <span class="ms bad">80% time on data prep ✗</span><span class="ms bad">5–10 days per 4–5K images ✗</span><span class="ms warn">Decision: build a custom tool</span>
-              </div>
-              <div class="story-para">
-                <strong>Phase 2 — AI-Assisted, Human-Verified.</strong> Built support for loading any trained <strong>YOLO (.pt)</strong> model directly into the tool for automatic pre-annotation, with adjustable confidence thresholds, multi-model support, and class mapping between model classes and annotation classes. Critically, every AI prediction stays <strong>unverified until manually reviewed</strong> — nothing gets saved without a human pass, so the tool speeds up labeling without silently degrading dataset quality.
-              </div>
-              <div class="story-milestone">
-                <span class="ms good">YOLO (.pt) model loading ✓</span><span class="ms good">Adjustable confidence threshold ✓</span><span class="ms good">Human-in-the-loop verification ✓</span>
-              </div>
-              <div class="story-para">
-                <strong>Phase 3 — Full Annotation Toolkit.</strong> Layered in point annotations, bounding boxes, polygon segmentation, ROI selection, crop & zoom, and full move/resize/edit with undo-redo. Added automatic <strong>overlap detection</strong> for point annotations with visual indicators and right-click removal of duplicates, plus per-image verification status tracking for quality assurance before export.
-              </div>
-              <div class="story-milestone">
-                <span class="ms good">Points · Boxes · Polygons · ROI ✓</span><span class="ms good">Undo/Redo ✓</span><span class="ms good">Overlap detection & QA ✓</span>
-              </div>
-              <div class="story-para">
-                <strong>Phase 4 — Dataset-Ready Export & Prep.</strong> <span class="prob">Annotating was only half the problem — turning annotations into a clean, leak-free training dataset was its own chore.</span> Built export to <strong>YOLO, COCO, Pascal VOC, Hugging Face JSONL, and custom Raw XML</strong>, alongside automatic train/validation splitting, near-duplicate detection to reduce data leakage, and video frame chunking that keeps split boundaries correct. Architected the whole thing <strong>local-first on FastAPI + JavaScript</strong> — no browser storage limits, with model caching and automatic backup/restore for large multi-project datasets.
-              </div>
-              <div class="story-milestone">
-                <span class="ms good">5 export formats ✓</span><span class="ms good">Auto train/val split ✓</span><span class="ms good">Near-dup detection ✓</span><span class="ms good">Local-first FastAPI backend ✓</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="inline-video-wrap">
-            <div class="inline-video-label"><span class="dot-blink"></span> Demo Video</div>
-            <video class="inline-video auto-play-video" muted playsinline controls preload="metadata">
-              <source src="project_demo_videos/annotator_app_demo.mp4" type="video/mp4">
-            </video>
-          </div>
-
-          <ul class="project-points">
-            <li>AI pre-annotation from any loaded YOLO (.pt) model with adjustable confidence & class mapping</li>
-            <li>Human-in-the-loop review — AI predictions stay unverified until manually accepted or corrected</li>
-            <li>Points, bounding boxes, polygons, ROI, crop/zoom, and full undo/redo editing</li>
-            <li>Overlap detection, duplicate removal, and per-image verification status for QA</li>
-            <li>Export to YOLO, COCO, Pascal VOC, Hugging Face JSONL & Raw XML; auto train/val split with near-duplicate & leakage checks</li>
-          </ul>
-          <div class="project-stack">
-            <span class="stack-tag">FastAPI</span>
-            <span class="stack-tag">JavaScript</span>
-            <span class="stack-tag">HTML/CSS</span>
-            <span class="stack-tag">YOLO</span>
-            <span class="stack-tag">Local-First</span>
-            <span class="stack-tag">COCO/VOC/JSONL</span>
-          </div>
-        </div>
-      </div>
+     
 
       <!-- ── VOICE ASSISTANT ── -->
       <div class="col-lg-6 reveal">
@@ -882,6 +821,71 @@
 
     </div>
   </div>
+
+   <!-- ── ANNOTATOR TOOL ── -->
+      <div class="col-lg-6 reveal">
+        <div class="project-card">
+          <div class="project-num">04 / TOOLING</div>
+          <div class="project-icon">🖊️</div>
+          <div class="project-title">AI-Powered Image Annotation Tool</div>
+          <p class="project-desc">80% of my time on CV projects went into data prep, not modeling — 4,000–5,000 images could eat 5–10 days. Instead of accepting that tax, I built a CVAT-inspired, local-first annotation tool around my own workflow: AI pre-annotation, human-in-the-loop review, and dataset-prep utilities baked in from day one.</p>
+
+          <div class="project-story">
+            <div class="story-toggle" onclick="toggleStory(this)"><span class="arrow">▶</span> The Full Journey</div>
+            <div class="story-body">
+              <div class="story-para">
+                <strong>Phase 1 — The Bottleneck.</strong> <span class="prob">Across every CV project, annotation — not training — was consuming most of the calendar.</span> Manually labeling 4,000–5,000 images routinely took 5–10 days of repetitive, low-leverage work. Rather than keep absorbing that cost project after project, decided to build a purpose-made tool around the actual workflow instead of adapting to a generic one.
+              </div>
+              <div class="story-milestone">
+                <span class="ms bad">80% time on data prep ✗</span><span class="ms bad">5–10 days per 4–5K images ✗</span><span class="ms warn">Decision: build a custom tool</span>
+              </div>
+              <div class="story-para">
+                <strong>Phase 2 — AI-Assisted, Human-Verified.</strong> Built support for loading any trained <strong>YOLO (.pt)</strong> model directly into the tool for automatic pre-annotation, with adjustable confidence thresholds, multi-model support, and class mapping between model classes and annotation classes. Critically, every AI prediction stays <strong>unverified until manually reviewed</strong> — nothing gets saved without a human pass, so the tool speeds up labeling without silently degrading dataset quality.
+              </div>
+              <div class="story-milestone">
+                <span class="ms good">YOLO (.pt) model loading ✓</span><span class="ms good">Adjustable confidence threshold ✓</span><span class="ms good">Human-in-the-loop verification ✓</span>
+              </div>
+              <div class="story-para">
+                <strong>Phase 3 — Full Annotation Toolkit.</strong> Layered in point annotations, bounding boxes, polygon segmentation, ROI selection, crop & zoom, and full move/resize/edit with undo-redo. Added automatic <strong>overlap detection</strong> for point annotations with visual indicators and right-click removal of duplicates, plus per-image verification status tracking for quality assurance before export.
+              </div>
+              <div class="story-milestone">
+                <span class="ms good">Points · Boxes · Polygons · ROI ✓</span><span class="ms good">Undo/Redo ✓</span><span class="ms good">Overlap detection & QA ✓</span>
+              </div>
+              <div class="story-para">
+                <strong>Phase 4 — Dataset-Ready Export & Prep.</strong> <span class="prob">Annotating was only half the problem — turning annotations into a clean, leak-free training dataset was its own chore.</span> Built export to <strong>YOLO, COCO, Pascal VOC, Hugging Face JSONL, and custom Raw XML</strong>, alongside automatic train/validation splitting, near-duplicate detection to reduce data leakage, and video frame chunking that keeps split boundaries correct. Architected the whole thing <strong>local-first on FastAPI + JavaScript</strong> — no browser storage limits, with model caching and automatic backup/restore for large multi-project datasets.
+              </div>
+              <div class="story-milestone">
+                <span class="ms good">5 export formats ✓</span><span class="ms good">Auto train/val split ✓</span><span class="ms good">Near-dup detection ✓</span><span class="ms good">Local-first FastAPI backend ✓</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="inline-video-wrap">
+            <div class="inline-video-label"><span class="dot-blink"></span> Demo Video</div>
+            <video class="inline-video auto-play-video" muted playsinline controls preload="metadata">
+              <source src="project_demo_videos/annotator_app_demo.mp4" type="video/mp4">
+            </video>
+          </div>
+
+          <ul class="project-points">
+            <li>AI pre-annotation from any loaded YOLO (.pt) model with adjustable confidence & class mapping</li>
+            <li>Human-in-the-loop review — AI predictions stay unverified until manually accepted or corrected</li>
+            <li>Points, bounding boxes, polygons, ROI, crop/zoom, and full undo/redo editing</li>
+            <li>Overlap detection, duplicate removal, and per-image verification status for QA</li>
+            <li>Export to YOLO, COCO, Pascal VOC, Hugging Face JSONL & Raw XML; auto train/val split with near-duplicate & leakage checks</li>
+          </ul>
+          <div class="project-stack">
+            <span class="stack-tag">FastAPI</span>
+            <span class="stack-tag">JavaScript</span>
+            <span class="stack-tag">HTML/CSS</span>
+            <span class="stack-tag">YOLO</span>
+            <span class="stack-tag">Local-First</span>
+            <span class="stack-tag">COCO/VOC/JSONL</span>
+          </div>
+        </div>
+      </div>
+
+  
 </section>
 
 <!-- PROFILES -->
