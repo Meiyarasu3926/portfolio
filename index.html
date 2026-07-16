@@ -824,7 +824,7 @@
           <div class="project-num">06 / TOOLING</div>
           <div class="project-icon">🖊️</div>
           <div class="project-title">AI-Powered Image Annotation Tool</div>
-          <p class="project-desc">80% of my time on CV projects went into data prep, not modeling — 4,000–5,000 images could eat 5–10 days. Instead of accepting that tax, I built a CVAT-inspired, local-first annotation tool around my own workflow: AI pre-annotation, human-in-the-loop review, and dataset-prep utilities baked in from day one.</p>
+          <p class="project-desc">80% of my time on CV projects went into data prep, not modeling — 4,000–5,000 images could eat 5–10 days. Instead of accepting that tax, I built a CVAT-inspired, local-first annotation tool around my own workflow: AI pre-annotation, human-in-the-loop review, dataset-prep utilities, and in-tool few-shot training to fine-tune or train a fresh model on what's been annotated so far — all baked in from day one.</p>
 
           <div class="project-story">
             <div class="story-toggle" onclick="toggleStory(this)"><span class="arrow">▶</span> The Full Journey</div>
@@ -853,6 +853,12 @@
               <div class="story-milestone">
                 <span class="ms good">5 export formats ✓</span><span class="ms good">Auto train/val split ✓</span><span class="ms good">Near-dup detection ✓</span><span class="ms good">Local-first FastAPI backend ✓</span>
               </div>
+              <div class="story-para">
+                <strong>Phase 5 — Closing the Loop: Few-Shot Training.</strong> <span class="prob">AI pre-annotation only helps once a model already knows the objects — on a brand-new task there's nothing to suggest with yet.</span> Added few-shot training directly into the tool: fine-tune the currently loaded model, or train a fresh <strong>YOLO26n/s/m</strong> model from scratch, on whatever's already been confirmed-annotated in that task — no separate training script or export/re-import round trip required. Training runs as a background job on the server that the browser polls for live epoch progress, and always writes the result out as a brand-new model file — the base weights you started from are never overwritten, so every run is safe to retry or compare against. That new model then drops straight back into the AI panel, ready to pre-annotate the rest of the task.
+              </div>
+              <div class="story-milestone">
+                <span class="ms good">Fine-tune or train-from-scratch ✓</span><span class="ms good">In-tool background training + live progress ✓</span><span class="ms good">Base model never overwritten ✓</span>
+              </div>
             </div>
           </div>
 
@@ -869,6 +875,7 @@
             <li>Points, bounding boxes, polygons, ROI, crop/zoom, and full undo/redo editing</li>
             <li>Overlap detection, duplicate removal, and per-image verification status for QA</li>
             <li>Export to YOLO, COCO, Pascal VOC, Hugging Face JSONL & Raw XML; auto train/val split with near-duplicate & leakage checks</li>
+            <li>Few-shot training in-tool — fine-tune the active model or train a new YOLO26 model from scratch on confirmed annotations, as a background job with live progress</li>
           </ul>
           <div class="project-stack">
             <span class="stack-tag">FastAPI</span>
@@ -877,6 +884,7 @@
             <span class="stack-tag">YOLO</span>
             <span class="stack-tag">Local-First</span>
             <span class="stack-tag">COCO/VOC/JSONL</span>
+            <span class="stack-tag">Few-Shot Training</span>
           </div>
         </div>
       </div>
