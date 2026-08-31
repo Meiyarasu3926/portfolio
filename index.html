@@ -889,6 +889,70 @@
         </div>
       </div>
 
+      <!-- ── SELF-PERSONA LLM ── -->
+      <div class="col-lg-6 reveal">
+        <div class="project-card">
+          <div class="project-num">07 / PERSONA AI</div>
+          <div class="project-icon">🪞</div>
+          <div class="project-title">Self-Persona LLM — A Fine-Tuned Digital Twin</div>
+          <p class="project-desc">A LoRA fine-tuned "Meiyarasu K" persona on top of Llama-3.2-3B-Instruct, trained to answer in first person about my own career and projects — grounded strictly in what I actually built, with anti-hallucination practices baked into the data, the training run, and the deployment, not bolted on after the fact.</p>
+
+          <div class="project-story">
+            <div class="story-toggle" onclick="toggleStory(this)"><span class="arrow">▶</span> The Full Journey</div>
+            <div class="story-body">
+              <div class="story-para">
+                <strong>Phase 1 — The Real Risk Was Confident Fabrication.</strong> <span class="prob">A generic chatbot fine-tuned on a resume will happily invent a project, a metric, or a company you never worked at — and say it with total confidence.</span> Designed the whole pipeline around preventing that: LoRA-only updates with the base model frozen, so the network's original world knowledge stays intact and it only learns voice and persona on top, never overwriting facts. Loss was computed strictly on assistant-turn tokens — every system/user token masked with -100 — so the model is trained to reproduce the persona's phrasing on top of facts already sitting in the prompt, never to "predict" new ones.
+              </div>
+              <div class="story-milestone">
+                <span class="ms bad">Full-weight fine-tune → knowledge overwrite risk ✗</span><span class="ms good">LoRA-only, base frozen ✓</span><span class="ms good">Assistant-token-only loss masking ✓</span>
+              </div>
+              <div class="story-para">
+                <strong>Phase 2 — A 541-Example Dataset Built From Real Work.</strong> Every training record traces back to actual project specifics — the stitch-counting CV pipeline, the NL→SQL factory chatbot, the voice assistant, ANPR, face recognition, and independent projects — hand-authored into the exact raw Llama-3 chat-format (<code>&lt;|start_header_id|&gt;</code> turns) the model would see at inference. The same system prompt, containing the full verified background, is repeated across all 541 records so the persona never drifts from the source facts.
+              </div>
+              <div class="story-milestone">
+                <span class="ms good">541 hand-built training records</span><span class="ms good">Grounded in real project data</span><span class="ms good">Exact Llama-3 chat template ✓</span>
+              </div>
+              <div class="story-para">
+                <strong>Phase 3 — Training Across Two GPUs Without Silently Breaking.</strong> <span class="prob">Launching the script directly instead of via torchrun lets HF Trainer silently fall back to naive DataParallel, which gathers every replica's vocab-sized logits onto GPU 0 and OOMs it.</span> Added a fail-fast guard that raises immediately if multiple GPUs are visible but no distributed launch was detected. Trained in fp16 rather than bf16 since Kaggle's T4s are Turing-generation with no bf16 tensor cores. Combined gradient checkpointing, a held-out validation split, and early stopping on eval_loss so training halts the moment the model starts memorizing instead of generalizing — the exact point where small models start confidently inventing details.
+              </div>
+              <div class="story-milestone">
+                <span class="ms bad">Silent DataParallel fallback → GPU 0 OOM ✗</span><span class="ms good">torchrun dual-GPU launch + fail-fast guard ✓</span><span class="ms good">fp16 for Turing T4s ✓</span><span class="ms good">Early stopping on eval_loss ✓</span>
+              </div>
+              <div class="story-para">
+                <strong>Phase 4 — Fitting a Live Chat Model on an 8GB Card.</strong> <span class="prob">Running the 3B base model in bf16 alongside a growing KV cache on an 8GB RTX 5050 left almost no headroom, silently spilling into system RAM via Windows' CUDA sysmem fallback and tanking generation speed.</span> Switched to 4-bit NF4 quantization via bitsandbytes, cutting resident weight size to roughly a third of bf16. Since merging the LoRA adapter would require dequantizing the 4-bit weights first — defeating the memory savings — kept the adapter as a live PeftModel wrapper on top of the quantized base instead. Wrapped it all in a Streamlit chat app with token-by-token streaming, throttled to a fixed UI refresh rate so long replies stream smoothly instead of stuttering on every token.
+              </div>
+              <div class="story-milestone">
+                <span class="ms bad">bf16 + KV cache → RAM spillover on 8GB card ✗</span><span class="ms good">4-bit NF4 quantization (bitsandbytes) ✓</span><span class="ms good">Live PeftModel adapter, no merge ✓</span><span class="ms good">Streamlit streaming chat UI ✓</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="inline-video-wrap">
+            <div class="inline-video-label"><span class="dot-blink"></span> Demo Video</div>
+            <video class="inline-video auto-play-video" muted playsinline controls preload="metadata">
+              <source src="project_demo_videos/personal_chatbot.mp4" type="video/mp4">
+            </video>
+          </div>
+
+          <ul class="project-points">
+            <li>LoRA fine-tune of Llama-3.2-3B-Instruct on 541 hand-built examples, base weights frozen throughout</li>
+            <li>Loss masked to assistant-turn tokens only — trained to reproduce voice, never to invent facts</li>
+            <li>Held-out validation split + early stopping on eval_loss to stop before memorization/hallucination sets in</li>
+            <li>Dual-GPU training via torchrun on Kaggle T4s, fp16, gradient checkpointing, fail-fast DataParallel guard</li>
+            <li>4-bit NF4 quantized inference with a live LoRA adapter, fit for an 8GB consumer GPU</li>
+            <li>Streamlit chat app with raw Llama-3 prompt formatting and smooth token-streamed output</li>
+          </ul>
+          <div class="project-stack">
+            <span class="stack-tag">Llama-3.2-3B-Instruct</span>
+            <span class="stack-tag">LoRA / PEFT</span>
+            <span class="stack-tag">bitsandbytes (4-bit)</span>
+            <span class="stack-tag">Hugging Face Transformers</span>
+            <span class="stack-tag">Streamlit</span>
+            <span class="stack-tag">torchrun · Dual-GPU</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
