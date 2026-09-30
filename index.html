@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meiyarasu K — AI/ML Engineer</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;700&display=swap" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- LIGHTBOX -->
+<div class="lightbox-overlay" id="lightbox" onclick="closeLightbox(event)">
+  <div class="lightbox-img-wrap">
+    <img class="lightbox-img" id="lightboxImg" src="" alt="">
+  </div>
+  <button class="lightbox-close" onclick="closeLightboxBtn()"><i class="fa fa-times"></i></button>
+  <div class="lightbox-caption" id="lightboxCaption"></div>
+</div>
+
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<canvas id="neural-bg"></canvas>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#hero">MEI<span>.</span>K</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+        <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="#profiles">Profiles</a></li>
+        <li class="nav-item"><a class="nav-link" href="#badges">Badges</a></li>
+        <li class="nav-item"><a class="nav-link" href="#certifications">Certs</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-7">
+        <p class="hero-label">AI/ML Engineer · Computer Vision</p>
+        <h1 class="hero-name"><span class="first">Meiyarasu</span><span class="last">K.</span></h1>
+        <p class="hero-title"><span class="hl">PyTorch</span> · YOLO · R3D-18 · FaceNet · FastAPI · <span class="hl">Claude API</span></p>
+        <p class="hero-desc">Building production-grade computer vision systems — from 100K+ image pipelines and model fine-tuning to real-time inference deployed locally and on the cloud. Currently engineering AI-powered reporting at Track Tech Solutions.</p>
+        <div class="hero-badges">
+          <span class="hero-badge">Object Detection</span>
+          <span class="hero-badge">OCR Pipelines</span>
+          <span class="hero-badge">Face Recognition</span>
+          <span class="hero-badge">Violence Detection</span>
+          <span class="hero-badge">NL → SQL via LLM</span>
+          <span class="hero-badge">Spatiotemporal CV</span>
+          <span class="hero-badge">GUI Agents</span>
+        </div>
+        <div class="hero-cta">
+          <a href="resume/Meiyarasu_k.pdf" download class="btn-p"><i class="fa fa-download"></i> Download Resume</a>
+          <a href="#projects" class="btn-o">View Projects</a>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="hero-visual">
+          <div class="hero-grid-box">
+            <div class="grid-ring ring-1"></div>
+            <div class="grid-ring ring-2"></div>
+            <div class="grid-ring ring-3"></div>
+            <div class="grid-center"><span class="psi-core">|ψ⟩</span></div>
+            <div class="floating-tag tag-1">YOLOv11</div>
+            <div class="floating-tag tag-2">PyTorch</div>
+            <div class="floating-tag tag-3">FaceNet</div>
+            <div class="floating-tag tag-4">FastAPI</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMULA TICKER -->
+<div class="formula-ticker" aria-hidden="true">
+  <div class="formula-track"><span>iħ ∂ψ/∂t = Ĥψ<i>Schrödinger</i></span><span>t′ = t / √(1 − v²/c²)<i>Time dilation</i></span><span>Δx · Δp ≥ ħ/2<i>Uncertainty</i></span><span>ds² = −c²dt² + dx² + dy² + dz²<i>Minkowski</i></span><span>|ψ⟩ = α|0⟩ + β|1⟩<i>Qubit</i></span><span>G_μν + Λg_μν = (8πG/c⁴) T_μν<i>Einstein</i></span><span>t′ = γ(t − vx/c²)<i>Lorentz</i></span><span>|Φ⁺⟩ = (|00⟩ + |11⟩)/√2<i>Entanglement</i></span><span>r_s = 2GM/c²<i>Schwarzschild</i></span><span>[x̂, p̂] = iħ<i>Commutator</i></span><span>ds² = −dt² + (dx − v_s f dt)² + dy² + dz²<i>Alcubierre warp</i></span><span>T_H = ħc³ / 8πGMk_B<i>Hawking</i></span><span>⟨x_f|e^{−iĤT/ħ}|x_i⟩ = ∫𝒟x e^{iS/ħ}<i>Path integral</i></span><span>S = k_B ln Ω<i>Entropy</i></span><span>Δτ = Δt √(1 − 2GM/rc²)<i>Gravitational time</i></span><span>(iγ^μ∂_μ − m)ψ = 0<i>Dirac</i></span><span>iħ ∂ψ/∂t = Ĥψ<i>Schrödinger</i></span><span>t′ = t / √(1 − v²/c²)<i>Time dilation</i></span><span>Δx · Δp ≥ ħ/2<i>Uncertainty</i></span><span>ds² = −c²dt² + dx² + dy² + dz²<i>Minkowski</i></span><span>|ψ⟩ = α|0⟩ + β|1⟩<i>Qubit</i></span><span>G_μν + Λg_μν = (8πG/c⁴) T_μν<i>Einstein</i></span><span>t′ = γ(t − vx/c²)<i>Lorentz</i></span><span>|Φ⁺⟩ = (|00⟩ + |11⟩)/√2<i>Entanglement</i></span><span>r_s = 2GM/c²<i>Schwarzschild</i></span><span>[x̂, p̂] = iħ<i>Commutator</i></span><span>ds² = −dt² + (dx − v_s f dt)² + dy² + dz²<i>Alcubierre warp</i></span><span>T_H = ħc³ / 8πGMk_B<i>Hawking</i></span><span>⟨x_f|e^{−iĤT/ħ}|x_i⟩ = ∫𝒟x e^{iS/ħ}<i>Path integral</i></span><span>S = k_B ln Ω<i>Entropy</i></span><span>Δτ = Δt √(1 − 2GM/rc²)<i>Gravitational time</i></span><span>(iγ^μ∂_μ − m)ψ = 0<i>Dirac</i></span></div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">About</span>
+      <h2 class="section-title">What I Do</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3 reveal"><div class="about-card"><div class="about-icon">🎯</div><h5>Computer Vision</h5><p>Specialized in object detection, OCR, and face recognition systems using YOLO, TrOCR, and FaceNet architectures for real-world deployment.</p></div></div>
+      <div class="col-md-6 col-lg-3 reveal"><div class="about-card"><div class="about-icon">🔧</div><h5>End-to-End Pipelines</h5><p>From large-scale dataset curation (100K+ images) and quality filtering to model fine-tuning, evaluation, and production deployment.</p></div></div>
+      <div class="col-md-6 col-lg-3 reveal"><div class="about-card"><div class="about-icon">☁️</div><h5>Cloud & Local Deploy</h5><p>Deploying ML systems via FastAPI REST services on AWS EC2 and local LAN networks, achieving real-time inference at ~20 FPS in live environments.</p></div></div>
+      <div class="col-md-6 col-lg-3 reveal"><div class="about-card"><div class="about-icon">🤖</div><h5>Transformer Models</h5><p>Deep understanding of self-attention, multi-head attention, and encoder–decoder mechanisms powering state-of-the-art CV systems.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Technical Skills</span>
+      <h2 class="section-title">Stack & Expertise</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="row g-3">
+      <div class="col-md-6 col-lg-3 reveal">
+        <div class="skills-category h-100">
+          <div class="skills-cat-title">AI/ML Domains</div>
+          <div class="skill-pills">
+            <span class="skill-pill">Machine Learning</span><span class="skill-pill">Deep Learning</span><span class="skill-pill">Computer Vision</span><span class="skill-pill">OCR</span><span class="skill-pill">Biometric Authentication</span><span class="skill-pill">Anti-Spoofing</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 reveal">
+        <div class="skills-category h-100">
+          <div class="skills-cat-title">Frameworks & Libraries</div>
+          <div class="skill-pills">
+            <span class="skill-pill">PyTorch</span><span class="skill-pill">OpenCV</span><span class="skill-pill">Hugging Face Transformers</span><span class="skill-pill">scikit-learn</span><span class="skill-pill">PyAutoGUI</span><span class="skill-pill">NumPy</span><span class="skill-pill">Pandas</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 reveal">
+        <div class="skills-category h-100">
+          <div class="skills-cat-title">Model Architectures</div>
+          <div class="skill-pills">
+            <span class="skill-pill">YOLOv8</span><span class="skill-pill">YOLOv11</span><span class="skill-pill">TrOCR</span><span class="skill-pill">FaceNet</span><span class="skill-pill">EfficientNet-B0</span><span class="skill-pill">PaddleOCR</span><span class="skill-pill">R3D-18</span><span class="skill-pill">GUI-Owl-1.5 (Qwen3-VL)</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 reveal">
+        <div class="skills-category h-100">
+          <div class="skills-cat-title">Backend & Deployment</div>
+          <div class="skill-pills">
+            <span class="skill-pill">FastAPI</span><span class="skill-pill">AWS EC2</span><span class="skill-pill">REST API Design</span><span class="skill-pill">Docker</span><span class="skill-pill">Streamlit</span><span class="skill-pill">Anthropic Claude API</span><span class="skill-pill">Python</span><span class="skill-pill">SQL</span><span class="skill-pill">Linux</span><span class="skill-pill">Git</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Experience</span>
+      <h2 class="section-title">Work History</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-9 reveal">
+        <div class="timeline">
+
+          <!-- Track Tech — current -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="exp-card">
+              <div class="exp-company">Track Tech Solutions · Tamil Nadu, India</div>
+              <div class="exp-role">AI / ML Engineer</div>
+              <span class="exp-date">Apr 2026 → Sep 2026</span>
+              <ul class="exp-points">
+                <li>Built a natural-language factory reporting chatbot (FastAPI + SQLAlchemy) translating plain-English shop-floor questions into safe, parameterised MySQL queries via the Anthropic Claude API across a 220+ table garment production database</li>
+                <li>Designed a business-glossary + domain-group table-selection layer so the model always sees the right join set, backed by hand-documented join-key conventions for a schema with almost no declared foreign keys</li>
+                <li>Added a read-only SQL guard (SELECT-only enforcement, forbidden-keyword filtering, auto-injected LIMIT) and an empty-result investigator that diagnoses join elimination and retries with working fallback tables</li>
+                <li>Extended the chatbot into a voice-to-database assistant — live mic capture, speech-to-text transcription, and the same LLM-driven query pipeline, with supplementary data pulled from external APIs when needed</li>
+                <li>Delivered multi-format export (CSV, XLSX, PDF) with a single-page chat UI, paginated tables, per-style summary cards, and collapsible SQL inspection mode</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Hexbee — past -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="exp-card">
+              <div class="exp-company">Hexbee Software Solutions Pvt Ltd · Tamil Nadu, India</div>
+              <div class="exp-role">Python Developer — Computer Vision</div>
+              <span class="exp-date">Sep 2024 → Apr 2026</span>
+              <ul class="exp-points">
+                <li>Engineered 2 production CV systems (ANPR, Face Recognition + Anti-Spoofing) deployed in live environments; conducted TrOCR fine-tuning research achieving 93% character accuracy</li>
+                <li>Curated 100K+ raw images across projects with custom deduplication, quality filtering, and annotation pipelines</li>
+                <li>Reduced false positive rates via progressive YOLO fine-tuning (10K hard negatives); achieved real-time inference at ~20 FPS on AWS EC2 and local LAN IP cameras via FastAPI</li>
+                <li>Trained custom EfficientNet-B0 anti-spoof classifier on 10K self-collected images — integrated as a liveness gate before FaceNet identity verification</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Projects</span>
+      <h2 class="section-title">What I've Built</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="row g-4">
+
+      <!-- ── ANPR ── -->
+      <div class="col-lg-6 reveal">
+        <div class="project-card">
+          <div class="project-num">01 / ANPR</div>
+          <div class="project-icon">🚗</div>
+          <div class="project-title">Automatic Number Plate Recognition System</div>
+          <p class="project-desc">Not a straight line from idea to product — a months-long grind through broken OCR engines, exploding false positives, a dataset that didn't exist, and a live LAN camera that refused to cooperate. Every obstacle forced a smarter solution. The result: a stable ANPR system running locally over a LAN-connected IP camera that actually works.</p>
+
+          <div class="project-story">
+            <div class="story-toggle" onclick="toggleStory(this)"><span class="arrow">▶</span> The Full Journey</div>
+            <div class="story-body">
+              <div class="story-para">
+                <strong>Phase 1 — OCR Engine Graveyard.</strong> Tried nearly every available option — none delivered satisfying accuracy on Indian number plates. Eventually settled on <strong>YOLOv8m + PaddleOCR</strong> as the baseline. But it was painfully slow, missed characters regularly, and was completely unstable on a live camera feed. Added <strong>Indian plate regex post-processing</strong> — this improved results noticeably, but couldn't fully fix the accuracy gap.
+              </div>
+              <div class="story-milestone">
+                <span class="ms bad">Tesseract ✗</span><span class="ms bad">EasyOCR ✗</span><span class="ms bad">PaddleOCR (raw) ✗</span><span class="ms warn">PaddleOCR + regex → partial ✓</span>
+              </div>
+              <div class="story-para">
+                <strong>Phase 2 — False Positive Crisis.</strong> <span class="prob">Any rectangular object in frame — storefronts, stickers, camera watermarks, signboards — was being confidently detected as a number plate.</span> Worse: front-facing plates weren't being detected at all. Collected and manually annotated front-plate images to fill the detection gap. That fixed detection, but false positives still ran wild.
+              </div>
+              <div class="story-milestone">
+                <span class="ms bad">Storefront → plate ✗</span><span class="ms bad">Watermark → plate ✗</span><span class="ms bad">Front plates missed ✗</span><span class="ms warn">Front plate annotations → detection fixed</span>
+              </div>
+              <div class="story-para">
+                <strong>Phase 3 — The Dataset That Didn't Exist.</strong> Planned a lightweight custom recognition model but couldn't find any dataset with actual plate text labels. Tried every available source. Nothing worked. So the only option was to do it manually.
+                <br><br>
+                <strong>681 plate images annotated by hand over 12 straight hours.</strong> Then extended programmatically to 2,500 images. Later discovered a public 1-lakh character recognition dataset — combined all characters with the manual annotations. After full quality filtering (deduplication, blur scoring, noise removal), ended up with <strong>14K images for detection</strong> and <strong>17K images for recognition</strong>.
+              </div>
+              <div class="story-milestone">
+                <span class="ms good">681 manual annotations</span><span class="ms good">12 hours of labeling</span><span class="ms good">2,500 → 17K via pipeline</span><span class="ms good">14K detection · 17K recognition</span>
+              </div>
+              <div class="story-para">
+                <strong>Phase 4 — TrOCR Breakthrough, Then Another Wall.</strong> Fine-tuned <strong>Microsoft TrOCR</strong> on the curated dataset — worked well on static images. But on a live LAN camera feed with moving vehicles, it was still unstable. Came very close to solving this, but moving-vehicle inference remained unresolved despite exhausting every approach. Fell back to PaddleOCR, which still failed on edge cases. Added a <strong>manual entry fallback</strong> as a practical workaround.
+              </div>
+              <div class="story-milestone">
+                <span class="ms good">TrOCR → static images ✓</span><span class="ms bad">TrOCR → moving vehicles ✗</span><span class="ms warn">PaddleOCR fallback + manual entry</span>
+              </div>
+              <div class="story-para">
+                <strong>Phase 5 — False Positives, Solved for Good.</strong> Collected <strong>10,000 negative images</strong> — storefronts, signboards, stickers, watermarks. Ran training in two rounds: first on 14K plates alone, then on 14K plates + 10K negatives combined. <span class="txt-green"><strong>This completely eliminated the false positive problem.</strong></span> The final system is stable, accurate, and runs locally via FastAPI on a LAN-connected IP camera at ~20 FPS.
+              </div>
+              <div class="story-milestone">
+                <span class="ms good">10K hard negatives collected</span><span class="ms good">Two-round progressive fine-tuning</span><span class="ms good">False positives eliminated ✓</span><span class="ms good">Local LAN deployment ✓</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="inline-video-wrap">
+            <div class="inline-video-label"><span class="dot-blink"></span> Demo Video</div>
+            <video class="inline-video auto-play-video" muted playsinline controls preload="metadata">
+              <source src="project_demo_videos/ANPR_DEMO.mp4" type="video/mp4">
+            </video>
+          </div>
+
+          <ul class="project-points">
+            <li>14K annotated plates + 10K hard negatives — two-round progressive fine-tuning crushed false positives</li>
+            <li>681 plates annotated manually over 12 hours — programmatically extended to 17K for recognition training</li>
+            <li>Indian plate regex post-processing to stabilize OCR output across format variants</li>
+            <li>Advanced augmentation: motion blur, low-light, rotation, shadow overlays for robustness</li>
+            <li>Manual entry fallback for edge cases; FastAPI running locally on LAN IP camera at ~20 FPS</li>
+          </ul>
+          <div class="project-stack">
+            <span class="stack-tag">YOLOv8</span>
+            <span class="stack-tag">PaddleOCR</span>
+            <span class="stack-tag">TrOCR</span>
+            <span class="stack-tag">FastAPI</span>
+            <span class="stack-tag">PyTorch</span>
+            <span class="stack-tag">OpenCV</span>
+            <span class="stack-tag">Local LAN</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── TrOCR RESEARCH ── -->
+      <div class="col-lg-6 reveal">
+        <div class="project-card project-card--research">
+          <div class="research-bar"></div>
+          <div class="project-num">RESEARCH · Jan – Mar 2025</div>
+          <div class="project-icon">🔬</div>
+          <div class="project-title">Transformer-Based OCR Fine-Tuning (TrOCR)</div>
+          <p class="project-desc">Fine-tuned Microsoft TrOCR on 17K carefully curated Indian plate crops — achieving 93% character-level accuracy on static images after systematic error analysis across blur, low-light, and non-standard fonts. Informed the final ANPR pipeline decision.</p>
+
+          <div class="result-img-wrap">
+            <div class="result-img-label">
+              <div class="result-img-label-left"><i class="fa fa-image"></i> Model Output Results</div>
+              <div class="zoom-hint"><i class="fa fa-search-plus"></i> click to zoom</div>
+            </div>
+            <img src="project_demo_videos/trocr_result.png" alt="TrOCR Model Output Results" class="result-img" onclick="openLightbox(this)" data-caption="TrOCR Fine-Tuned Results — 93% character accuracy on Indian plates">
+          </div>
+
+          <ul class="project-points">
+            <li>17K training samples curated from 100K+ raw via blur score, resolution & aspect ratio filters</li>
+            <li>93% character-level · 71% full plate-level accuracy on static images</li>
+            <li>Systematic error analysis: blur, low-light, non-standard Indian fonts</li>
+            <li>TrOCR vs. PaddleOCR benchmarking — identified scenarios where each excels</li>
+            <li>Revealed live-camera instability on moving vehicles — informed final ANPR pipeline decision</li>
+          </ul>
+          <div class="project-stack">
+            <span class="stack-tag">TrOCR</span>
+            <span class="stack-tag">Hugging Face</span>
+            <span class="stack-tag">PyTorch</span>
+            <span class="stack-tag">Python</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── FACE RECOGNITION ── -->
+      <div class="col-lg-6 reveal">
+        <div class="project-card">
+          <div class="project-num">02 / BIOMETRIC</div>
+          <div class="project-icon">🛡️</div>
+          <div class="project-title">Secure Face Recognition with Anti-Spoofing</div>
+          <p class="project-desc">A full month spent testing every available face recognition approach before finding what actually works. Then building an anti-spoofing layer from scratch because no off-the-shelf solution was good enough. The outcome: a 3-stage production pipeline deployed on AWS EC2 that handles real-world identity verification.</p>
+
+          <div class="project-story">
+            <div class="story-toggle" onclick="toggleStory(this)"><span class="arrow">▶</span> The Full Journey</div>
+            <div class="story-body">
+              <div class="story-para">
+                <strong>Phase 1 — One Month in the Library Graveyard.</strong> Spent a full month systematically testing every mainstream face recognition library. <strong>DeepFace, OpenCV face modules, and the face_recognition library</strong> — each tried, evaluated, and discarded. Performance on varied lighting, different angles, and partial occlusion was too inconsistent for production use. None cleared the accuracy bar required.
+              </div>
+              <div class="story-milestone">
+                <span class="ms bad">DeepFace ✗</span><span class="ms bad">face_recognition ✗</span><span class="ms bad">OpenCV face module ✗</span>
+              </div>
+              <div class="story-para">
+                <strong>Phase 2 — Building a Siamese Network from Scratch.</strong> Decided to go custom. Designed and trained a <strong>Siamese network with contrastive loss</strong> — learning to push similar faces together and dissimilar faces apart. Built OpenCV-based data collection scripts to capture personal training data. Rewrote it with <strong>triplet loss</strong> (anchor / positive / negative pairs) for better metric learning. Results were promising — but still fell short of production-grade accuracy.
+              </div>
+              <div class="story-milestone">
+                <span class="ms bad">Siamese + Contrastive Loss ✗</span><span class="ms bad">Siamese + Triplet Loss ✗</span><span class="ms warn">Custom data collection pipeline ✓</span>
+              </div>
+              <div class="story-para">
+                <strong>Phase 3 — FaceNet Breakthrough.</strong> Discovered <strong>facenet_pytorch</strong> — InceptionResnetV1 pretrained on VGGFace2. Cosine similarity for 1:N identity verification. The accuracy jump was immediate and significant — fast enrollment, reliable matching across lighting and angle variation. This became the identity verification backbone.
+              </div>
+              <div class="story-milestone">
+                <span class="ms good">FaceNet (InceptionResnetV1) ✓</span><span class="ms good">Cosine similarity 1:N ✓</span><span class="ms good">VGGFace2 pretrained backbone ✓</span>
+              </div>
+              <div class="story-para">
+                <strong>Phase 4 — Anti-Spoofing: Built from Scratch.</strong> <span class="prob">The system could now recognize faces accurately — but it couldn't tell the difference between a real person and a printed photo, a passport-size image, or a face on a phone screen.</span> No off-the-shelf anti-spoof model met the requirements. Collected <strong>10,000 images across 5 people</strong> — real faces, digital screen attacks, and printed passport-size photos. Trained an <strong>EfficientNet-B0 binary classifier</strong>. Integrated with <strong>YOLOv11-face</strong> into a clean <strong>3-stage pipeline</strong>: detect face → check liveness → verify identity. Deployed on AWS EC2 via FastAPI.
+              </div>
+              <div class="story-milestone">
+                <span class="ms good">10K custom anti-spoof images</span><span class="ms good">5 people · 3 attack types</span><span class="ms good">EfficientNet-B0 liveness classifier ✓</span><span class="ms good">AWS EC2 deployed ✓</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="inline-video-wrap">
+            <div class="inline-video-label"><span class="dot-blink"></span> Demo Video</div>
+            <video class="inline-video auto-play-video" muted playsinline controls preload="metadata">
+              <source src="project_demo_videos/face_recognition.mp4" type="video/mp4">
+            </video>
+          </div>
+
+          <ul class="project-points">
+            <li>Full month testing DeepFace, face_recognition, OpenCV — none met production accuracy bar</li>
+            <li>Custom Siamese network (contrastive + triplet loss) built and trained from scratch</li>
+            <li>FaceNet (InceptionResnetV1 / VGGFace2) — cosine similarity 1:N with dedup enrollment</li>
+            <li>10K images (5 people) — real faces, screen attacks, passport prints — for custom anti-spoof training</li>
+            <li>EfficientNet-B0 liveness check gating identity verification; FastAPI on AWS EC2</li>
+          </ul>
+          <div class="project-stack">
+            <span class="stack-tag">YOLOv11-Face</span>
+            <span class="stack-tag">FaceNet</span>
+            <span class="stack-tag">EfficientNet-B0</span>
+            <span class="stack-tag">Siamese Net</span>
+            <span class="stack-tag">FastAPI</span>
+            <span class="stack-tag">AWS EC2</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── VIOLENCE DETECTION ── -->
+      <div class="col-lg-6 reveal">
+        <div class="project-card">
+          <div class="project-num">03 / SECURITY</div>
+          <div class="project-icon">🎥</div>
+          <div class="project-title">AI Camera Security — Violence Detection</div>
+          <p class="project-desc">Fine-tuned a spatiotemporal deep learning model on 2,000 real-world CCTV clips to detect fights and violent activity in near real-time. Sliding-window GPU inference at ~20 FPS with a three-tier alert system and downloadable detection logs.</p>
+
+          <div class="project-story">
+            <div class="story-toggle" onclick="toggleStory(this)"><span class="arrow">▶</span> The Full Journey</div>
+            <div class="story-body">
+              <div class="story-para">
+                <strong>Phase 1 — Model Selection.</strong> Evaluated 2D CNN baselines — ResNet-50 frame-by-frame and MobileNet — but they ignored temporal motion, the core signal of violence. Chose <strong>R3D-18</strong> (3D ResNet-18) pretrained on Kinetics-400: it processes (B, 3, 16, 224, 224) clips directly, capturing spatio-temporal patterns that flat CNNs cannot.
+              </div>
+              <div class="story-milestone">
+                <span class="ms bad">2D CNN frame-by-frame ✗</span><span class="ms good">R3D-18 spatiotemporal ✓</span><span class="ms good">Kinetics-400 pretrained ✓</span>
+              </div>
+              <div class="story-para">
+                <strong>Phase 2 — Dataset & Training.</strong> Used the <strong>RWF-2000</strong> dataset — 2,000 CCTV surveillance clips (Fight / NonFight, 1,000 each). Froze the backbone for 3 epochs, then full fine-tune with cosine LR + linear warmup, AdamW, label smoothing, and AMP fp16. Best val accuracy <strong>86.5%</strong> at epoch 15 (early stop patience 15).
+              </div>
+              <div class="story-milestone">
+                <span class="ms good">RWF-2000 · 2K CCTV clips</span><span class="ms good">86.5% val accuracy</span><span class="ms good">AMP fp16 · AdamW · cosine LR</span>
+              </div>
+              <div class="story-para">
+                <strong>Phase 3 — Inference Pipeline.</strong> <span class="prob">Naive per-frame inference on a Streamlit UI caused stuttering and inconsistent predictions.</span> Designed a <strong>sliding-window pipeline</strong>: a background thread feeds frames into a queue → 16-frame deque buffer → batched GPU forward pass (batch=4) every 8 frames. Achieved stable ~20 FPS GPU throughput. Blind test: <strong>81% accuracy, 0.81 F1</strong>.
+              </div>
+              <div class="story-milestone">
+                <span class="ms bad">Naive per-frame → unstable ✗</span><span class="ms good">Sliding window (stride 8) ✓</span><span class="ms good">81% blind test · 0.81 F1 ✓</span><span class="ms good">~20 FPS GPU ✓</span>
+              </div>
+              <div class="story-para">
+                <strong>Phase 4 — Alert System & UI.</strong> Built a three-tier alert system: <strong class="txt-green">✅ SAFE</strong> (NonFight), <strong class="txt-yellow">🟡 FIGHT DETECTED</strong> (Fight, low confidence), <strong class="txt-orange">⚠️ VIOLENCE DETECTED</strong> (Fight, high confidence). Streamlit UI shows live confidence scores, per-clip predictions, and a downloadable CSV detection log.
+              </div>
+              <div class="story-milestone">
+                <span class="ms good">3-tier alert system ✓</span><span class="ms good">Downloadable CSV log ✓</span><span class="ms good">Streamlit live UI ✓</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="inline-video-wrap">
+            <div class="inline-video-label"><span class="dot-blink"></span> Demo Video</div>
+            <video class="inline-video auto-play-video" muted playsinline controls preload="metadata">
+              <source src="project_demo_videos/violence_detection_demo.mp4" type="video/mp4">
+            </video>
+          </div>
+
+          <ul class="project-points">
+            <li>R3D-18 fine-tuned on RWF-2000 (2K CCTV clips) — 86.5% val accuracy, 81% blind test accuracy, 0.81 F1</li>
+            <li>Sliding-window inference: 16-frame clips, stride 8, batched GPU forward pass — ~20 FPS throughput</li>
+            <li>Training: cosine LR + 5-epoch warmup, AdamW, label smoothing 0.1, AMP fp16, early stopping</li>
+            <li>3-tier alert system (red / amber / green) with live confidence scores in Streamlit UI</li>
+            <li>Downloadable CSV detection log with per-clip timestamps and prediction confidence</li>
+          </ul>
+          <div class="project-stack">
+            <span class="stack-tag">R3D-18</span>
+            <span class="stack-tag">PyTorch</span>
+            <span class="stack-tag">torchvision</span>
+            <span class="stack-tag">OpenCV</span>
+            <span class="stack-tag">Streamlit</span>
+            <span class="stack-tag">AMP fp16</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── VOICE ASSISTANT ── -->
+      <div class="col-lg-6 reveal">
+        <div class="project-card">
+          <div class="project-num">04 / VOICE AI</div>
+          <div class="project-icon">🎙️</div>
+          <div class="project-title">Voice-to-Database Assistant</div>
+          <p class="project-desc">A hands-free front end for the same natural-language reporting problem I was already solving with text — speak a question, and it's transcribed, understood, and answered straight from the database or a live external API, no typing required.</p>
+
+          <div class="project-story">
+            <div class="story-toggle" onclick="toggleStory(this)"><span class="arrow">▶</span> The Full Journey</div>
+            <div class="story-body">
+              <div class="story-para">
+                <strong>Phase 1 — Speech to Text.</strong> Captured microphone input in the browser/client and ran it through a speech-to-text pipeline to transcribe spoken questions into plain text, so factory-floor staff could ask questions without touching a keyboard.
+              </div>
+              <div class="story-milestone">
+                <span class="ms good">Live mic capture ✓</span><span class="ms good">Speech-to-text transcription ✓</span>
+              </div>
+              <div class="story-para">
+                <strong>Phase 2 — Text Chatbot & Database Access.</strong> Fed the transcribed text into an LLM-driven chatbot that interprets intent, generates the right query, and pulls the answer directly from the database — the same NL→SQL approach used in the Trakwel reporting assistant, now reachable by voice.
+              </div>
+              <div class="story-milestone">
+                <span class="ms good">LLM intent parsing ✓</span><span class="ms good">Database querying ✓</span>
+              </div>
+              <div class="story-para">
+                <strong>Phase 3 — External API Data.</strong> Extended the assistant to fetch supplementary datasets from external APIs when the answer isn't in the local database, merging live API data with database results into a single spoken-question, single-answer flow.
+              </div>
+              <div class="story-milestone">
+                <span class="ms good">External API fetch ✓</span><span class="ms good">Unified voice-in, answer-out flow ✓</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="inline-video-wrap">
+            <div class="inline-video-label"><span class="dot-blink"></span> Demo Video</div>
+            <video class="inline-video auto-play-video" muted playsinline controls preload="metadata">
+              <source src="project_demo_videos/voice_assistant_demo.mp4" type="video/mp4">
+            </video>
+          </div>
+
+          <ul class="project-points">
+            <li>Speech-to-text transcription of spoken questions, no typing required</li>
+            <li>LLM-powered chatbot interprets intent and queries the database directly</li>
+            <li>Fetches supplementary data from external APIs when needed</li>
+            <li>Same conversational reporting approach as the text-based assistant, now voice-first</li>
+          </ul>
+          <div class="project-stack">
+            <span class="stack-tag">Speech-to-Text</span>
+            <span class="stack-tag">LLM Chatbot</span>
+            <span class="stack-tag">FastAPI</span>
+            <span class="stack-tag">REST API</span>
+            <span class="stack-tag">SQL</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── NL-TO-SQL FACTORY CHATBOT ── -->
+      <div class="col-lg-6 reveal">
+        <div class="project-card">
+          <div class="project-num">05 / NL → SQL</div>
+          <div class="project-icon">💬</div>
+          <div class="project-title">Natural-Language Factory Reporting Chatbot</div>
+          <p class="project-desc">A FastAPI service that lets shop-floor staff ask plain-English questions and get answers straight from a 220+ table garment-manufacturing MySQL database — no SQL knowledge required. Claude picks the relevant tables, writes the query, a guard layer enforces read-only safety, and if the first attempt comes back empty the agent investigates why and retries with real data.</p>
+
+          <div class="project-story">
+            <div class="story-toggle" onclick="toggleStory(this)"><span class="arrow">▶</span> The Full Journey</div>
+            <div class="story-body">
+              <div class="story-para">
+                <strong>Phase 1 — A Schema With No Signposts.</strong> <span class="prob">The production database spans 220+ tables covering orders, fabric/GRN, cutting, bundling, sewing, finishing, washing, QC, and packing — but it's a Laravel app that enforces relationships in application code, not MySQL, so there are almost no declared foreign keys.</span> Handing all 220 tables to an LLM on every question was both too expensive and too noisy — the model had no way to know which columns actually joined. Solved it by writing a relationship-notes document encoding the real join conventions (order_id/order_detail_id/order_part_id chains, cut-plan-to-lay-to-bundle lineage, fabric-roll-to-allocation links) and feeding it into every prompt.
+              </div>
+              <div class="story-milestone">
+                <span class="ms bad">220+ tables, no FKs ✗</span><span class="ms bad">Dumping full schema per question ✗</span><span class="ms good">Hand-authored join-key notes ✓</span>
+              </div>
+              <div class="story-para">
+                <strong>Phase 2 — Picking the Right Tables.</strong> Built a two-stage table-selection layer: a business-glossary of 60+ shop-floor terms ("bundle", "cutting", "wip", "kanban", "GRN") mapped to ordered candidate tables, layered under a keyword/column scorer. Neither alone was enough — <span class="prob">a question like "sewing WIP by line for order X" only surfaces the tables whose names or columns literally matched the words, missing siblings the join actually needs.</span> Added a domain-group expansion step that pulls in every table from the same production-stage bucket (cutting/lay, bundling, sewing, etc.) once one member of that group is matched, so multi-table questions get everything they need to join correctly.
+              </div>
+              <div class="story-milestone">
+                <span class="ms bad">Keyword match alone → missed joins ✗</span><span class="ms good">60+ term business glossary ✓</span><span class="ms good">Domain-group table expansion ✓</span>
+              </div>
+              <div class="story-para">
+                <strong>Phase 3 — Guarding a Read-Only Agent.</strong> The model writes raw SQL against a production database, so safety couldn't be an afterthought. Added a regex guard blocking INSERT/UPDATE/DELETE/DROP/ALTER/TRUNCATE/GRANT/CREATE, enforced SELECT-only execution against a read-only engine, auto-injected a 200-row LIMIT when the model forgot one, and ran everything through SQLAlchemy against a dedicated read-only DB user.
+              </div>
+              <div class="story-milestone">
+                <span class="ms good">SELECT-only enforcement ✓</span><span class="ms good">Forbidden-keyword regex guard ✓</span><span class="ms good">Auto LIMIT 200 ✓</span><span class="ms good">Read-only DB engine ✓</span>
+              </div>
+              <div class="story-para">
+                <strong>Phase 4 — When the Answer Comes Back Empty.</strong> <span class="prob">A join across several tables can return nothing even if only one of them is empty — join elimination silently kills the whole result, and a flat "no data found" response was misleading operators into thinking a stage genuinely had zero activity.</span> Built an empty-result investigator: it checks real row counts on every table used in the failed query, identifies which one is actually empty, pulls glossary-defined fallback tables that do have data, and asks the model to rebuild the query joining through whichever tables actually work — returning both the corrected answer and a note explaining the substitution.
+              </div>
+              <div class="story-milestone">
+                <span class="ms bad">Empty join → looked like "no data" ✗</span><span class="ms good">Per-table row-count diagnostics ✓</span><span class="ms good">Automatic fallback-table rewrite ✓</span><span class="ms good">Transparent substitution notes ✓</span>
+              </div>
+              <div class="story-para">
+                <strong>Phase 5 — Answers, Not Query Dumps.</strong> Raw JSON rows aren't useful to factory floor staff. Added a second Claude pass that explains the SQL result in plain English — leading with the direct number/answer, only surfacing caveats (data gaps, substitute calculations, quality issues) when genuinely important, and never presenting a NULL/empty result as a false zero.
+              </div>
+              <div class="story-milestone">
+                <span class="ms good">Plain-English summarization ✓</span><span class="ms good">NULL ≠ zero handling ✓</span><span class="ms good">FastAPI /chat endpoint shipped ✓</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="inline-video-wrap">
+            <div class="inline-video-label"><span class="dot-blink"></span> Demo Video</div>
+            <video class="inline-video auto-play-video" muted playsinline controls preload="metadata">
+              <source src="project_demo_videos/chatbot_demo.mp4" type="video/mp4">
+            </video>
+          </div>
+
+          <ul class="project-points">
+            <li>Accesses 220+ tables across the full garment production pipeline via a compact, auto-generated schema catalog</li>
+            <li>Business-glossary + keyword scoring + domain-group expansion picks exactly the tables a question needs, including join siblings it didn't literally mention</li>
+            <li>Hand-documented join-key conventions stand in for a schema with almost no declared foreign keys</li>
+            <li>Read-only guard: SELECT-only enforcement, forbidden-keyword regex, auto-injected LIMIT, dedicated read-only DB engine</li>
+            <li>Empty-result investigator diagnoses join elimination via per-table row counts and automatically retries with working fallback tables</li>
+            <li>Second-pass LLM summarization turns raw SQL results into a concise, caveat-aware plain-English answer</li>
+          </ul>
+          <div class="project-stack">
+            <span class="stack-tag">FastAPI</span>
+            <span class="stack-tag">SQLAlchemy</span>
+            <span class="stack-tag">MySQL/MariaDB</span>
+            <span class="stack-tag">Anthropic Claude API</span>
+            <span class="stack-tag">Python</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── ANNOTATOR TOOL ── -->
+      <div class="col-lg-6 reveal">
+        <div class="project-card">
+          <div class="project-num">06 / TOOLING</div>
+          <div class="project-icon">🖊️</div>
+          <div class="project-title">AI-Powered Image Annotation Tool</div>
+          <p class="project-desc">80% of my time on CV projects went into data prep, not modeling — 4,000–5,000 images could eat 5–10 days. Instead of accepting that tax, I built a CVAT-inspired, local-first annotation tool around my own workflow: AI pre-annotation, human-in-the-loop review, dataset-prep utilities, and in-tool few-shot training to fine-tune or train a fresh model on what's been annotated so far — all baked in from day one.</p>
+
+          <div class="project-story">
+            <div class="story-toggle" onclick="toggleStory(this)"><span class="arrow">▶</span> The Full Journey</div>
+            <div class="story-body">
+              <div class="story-para">
+                <strong>Phase 1 — The Bottleneck.</strong> <span class="prob">Across every CV project, annotation — not training — was consuming most of the calendar.</span> Manually labeling 4,000–5,000 images routinely took 5–10 days of repetitive, low-leverage work. Rather than keep absorbing that cost project after project, decided to build a purpose-made tool around the actual workflow instead of adapting to a generic one.
+              </div>
+              <div class="story-milestone">
+                <span class="ms bad">80% time on data prep ✗</span><span class="ms bad">5–10 days per 4–5K images ✗</span><span class="ms warn">Decision: build a custom tool</span>
+              </div>
+              <div class="story-para">
+                <strong>Phase 2 — AI-Assisted, Human-Verified.</strong> Built support for loading any trained <strong>YOLO (.pt)</strong> model directly into the tool for automatic pre-annotation, with adjustable confidence thresholds, multi-model support, and class mapping between model classes and annotation classes. Critically, every AI prediction stays <strong>unverified until manually reviewed</strong> — nothing gets saved without a human pass, so the tool speeds up labeling without silently degrading dataset quality.
+              </div>
+              <div class="story-milestone">
+                <span class="ms good">YOLO (.pt) model loading ✓</span><span class="ms good">Adjustable confidence threshold ✓</span><span class="ms good">Human-in-the-loop verification ✓</span>
+              </div>
+              <div class="story-para">
+                <strong>Phase 3 — Full Annotation Toolkit.</strong> Layered in point annotations, bounding boxes, polygon segmentation, ROI selection, crop & zoom, and full move/resize/edit with undo-redo. Added automatic <strong>overlap detection</strong> for point annotations with visual indicators and right-click removal of duplicates, plus per-image verification status tracking for quality assurance before export.
+              </div>
+              <div class="story-milestone">
+                <span class="ms good">Points · Boxes · Polygons · ROI ✓</span><span class="ms good">Undo/Redo ✓</span><span class="ms good">Overlap detection & QA ✓</span>
+              </div>
+              <div class="story-para">
+                <strong>Phase 4 — Dataset-Ready Export & Prep.</strong> <span class="prob">Annotating was only half the problem — turning annotations into a clean, leak-free training dataset was its own chore.</span> Built export to <strong>YOLO, COCO, Pascal VOC, Hugging Face JSONL, and custom Raw XML</strong>, alongside automatic train/validation splitting, near-duplicate detection to reduce data leakage, and video frame chunking that keeps split boundaries correct. Architected the whole thing <strong>local-first on FastAPI + JavaScript</strong> — no browser storage limits, with model caching and automatic backup/restore for large multi-project datasets.
+              </div>
+              <div class="story-milestone">
+                <span class="ms good">5 export formats ✓</span><span class="ms good">Auto train/val split ✓</span><span class="ms good">Near-dup detection ✓</span><span class="ms good">Local-first FastAPI backend ✓</span>
+              </div>
+              <div class="story-para">
+                <strong>Phase 5 — Closing the Loop: Few-Shot Training.</strong> <span class="prob">AI pre-annotation only helps once a model already knows the objects — on a brand-new task there's nothing to suggest with yet.</span> Added few-shot training directly into the tool: fine-tune the currently loaded model, or train a fresh <strong>YOLO26n/s/m</strong> model from scratch, on whatever's already been confirmed-annotated in that task — no separate training script or export/re-import round trip required. Training runs as a background job on the server that the browser polls for live epoch progress, and always writes the result out as a brand-new model file — the base weights you started from are never overwritten, so every run is safe to retry or compare against. That new model then drops straight back into the AI panel, ready to pre-annotate the rest of the task.
+              </div>
+              <div class="story-milestone">
+                <span class="ms good">Fine-tune or train-from-scratch ✓</span><span class="ms good">In-tool background training + live progress ✓</span><span class="ms good">Base model never overwritten ✓</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="inline-video-wrap">
+            <div class="inline-video-label"><span class="dot-blink"></span> Demo Video</div>
+            <video class="inline-video auto-play-video" muted playsinline controls preload="metadata">
+              <source src="project_demo_videos/annotator_app_demo.mp4" type="video/mp4">
+            </video>
+          </div>
+
+          <ul class="project-points">
+            <li>AI pre-annotation from any loaded YOLO (.pt) model with adjustable confidence & class mapping</li>
+            <li>Human-in-the-loop review — AI predictions stay unverified until manually accepted or corrected</li>
+            <li>Points, bounding boxes, polygons, ROI, crop/zoom, and full undo/redo editing</li>
+            <li>Overlap detection, duplicate removal, and per-image verification status for QA</li>
+            <li>Export to YOLO, COCO, Pascal VOC, Hugging Face JSONL & Raw XML; auto train/val split with near-duplicate & leakage checks</li>
+            <li>Few-shot training in-tool — fine-tune the active model or train a new YOLO26 model from scratch on confirmed annotations, as a background job with live progress</li>
+          </ul>
+          <div class="project-stack">
+            <span class="stack-tag">FastAPI</span>
+            <span class="stack-tag">JavaScript</span>
+            <span class="stack-tag">HTML/CSS</span>
+            <span class="stack-tag">YOLO</span>
+            <span class="stack-tag">Local-First</span>
+            <span class="stack-tag">COCO/VOC/JSONL</span>
+            <span class="stack-tag">Few-Shot Training</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── SELF-PERSONA LLM ── -->
+      <div class="col-lg-6 reveal">
+        <div class="project-card">
+          <div class="project-num">07 / PERSONA AI</div>
+          <div class="project-icon">🪞</div>
+          <div class="project-title">Self-Persona LLM — A Fine-Tuned Digital Twin</div>
+          <p class="project-desc">A LoRA fine-tuned "Meiyarasu K" persona on top of Llama-3.2-3B-Instruct, trained to answer in first person about my own career and projects — grounded strictly in what I actually built, with anti-hallucination practices baked into the data, the training run, and the deployment, not bolted on after the fact.</p>
+
+          <div class="project-story">
+            <div class="story-toggle" onclick="toggleStory(this)"><span class="arrow">▶</span> The Full Journey</div>
+            <div class="story-body">
+              <div class="story-para">
+                <strong>Phase 1 — The Real Risk Was Confident Fabrication.</strong> <span class="prob">A generic chatbot fine-tuned on a resume will happily invent a project, a metric, or a company you never worked at — and say it with total confidence.</span> Designed the whole pipeline around preventing that: LoRA-only updates with the base model frozen, so the network's original world knowledge stays intact and it only learns voice and persona on top, never overwriting facts. Loss was computed strictly on assistant-turn tokens — every system/user token masked with -100 — so the model is trained to reproduce the persona's phrasing on top of facts already sitting in the prompt, never to "predict" new ones.
+              </div>
+              <div class="story-milestone">
+                <span class="ms bad">Full-weight fine-tune → knowledge overwrite risk ✗</span><span class="ms good">LoRA-only, base frozen ✓</span><span class="ms good">Assistant-token-only loss masking ✓</span>
+              </div>
+              <div class="story-para">
+                <strong>Phase 2 — A 541-Example Dataset Built From Real Work.</strong> Every training record traces back to actual project specifics — the stitch-counting CV pipeline, the NL→SQL factory chatbot, the voice assistant, ANPR, face recognition, and independent projects — hand-authored into the exact raw Llama-3 chat-format (<code>&lt;|start_header_id|&gt;</code> turns) the model would see at inference. The same system prompt, containing the full verified background, is repeated across all 541 records so the persona never drifts from the source facts.
+              </div>
+              <div class="story-milestone">
+                <span class="ms good">541 hand-built training records</span><span class="ms good">Grounded in real project data</span><span class="ms good">Exact Llama-3 chat template ✓</span>
+              </div>
+              <div class="story-para">
+                <strong>Phase 3 — Training Across Two GPUs Without Silently Breaking.</strong> <span class="prob">Launching the script directly instead of via torchrun lets HF Trainer silently fall back to naive DataParallel, which gathers every replica's vocab-sized logits onto GPU 0 and OOMs it.</span> Added a fail-fast guard that raises immediately if multiple GPUs are visible but no distributed launch was detected. Trained in fp16 rather than bf16 since Kaggle's T4s are Turing-generation with no bf16 tensor cores. Combined gradient checkpointing, a held-out validation split, and early stopping on eval_loss so training halts the moment the model starts memorizing instead of generalizing — the exact point where small models start confidently inventing details.
+              </div>
+              <div class="story-milestone">
+                <span class="ms bad">Silent DataParallel fallback → GPU 0 OOM ✗</span><span class="ms good">torchrun dual-GPU launch + fail-fast guard ✓</span><span class="ms good">fp16 for Turing T4s ✓</span><span class="ms good">Early stopping on eval_loss ✓</span>
+              </div>
+              <div class="story-para">
+                <strong>Phase 4 — Fitting a Live Chat Model on an 8GB Card.</strong> <span class="prob">Running the 3B base model in bf16 alongside a growing KV cache on an 8GB RTX 5050 left almost no headroom, silently spilling into system RAM via Windows' CUDA sysmem fallback and tanking generation speed.</span> Switched to 4-bit NF4 quantization via bitsandbytes, cutting resident weight size to roughly a third of bf16. Since merging the LoRA adapter would require dequantizing the 4-bit weights first — defeating the memory savings — kept the adapter as a live PeftModel wrapper on top of the quantized base instead. Wrapped it all in a Streamlit chat app with token-by-token streaming, throttled to a fixed UI refresh rate so long replies stream smoothly instead of stuttering on every token.
+              </div>
+              <div class="story-milestone">
+                <span class="ms bad">bf16 + KV cache → RAM spillover on 8GB card ✗</span><span class="ms good">4-bit NF4 quantization (bitsandbytes) ✓</span><span class="ms good">Live PeftModel adapter, no merge ✓</span><span class="ms good">Streamlit streaming chat UI ✓</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="inline-video-wrap">
+            <div class="inline-video-label"><span class="dot-blink"></span> Demo Video</div>
+            <video class="inline-video auto-play-video" muted playsinline controls preload="metadata">
+              <source src="project_demo_videos/personal_chatbot.mp4" type="video/mp4">
+            </video>
+          </div>
+
+          <ul class="project-points">
+            <li>LoRA fine-tune of Llama-3.2-3B-Instruct on 541 hand-built examples, base weights frozen throughout</li>
+            <li>Loss masked to assistant-turn tokens only — trained to reproduce voice, never to invent facts</li>
+            <li>Held-out validation split + early stopping on eval_loss to stop before memorization/hallucination sets in</li>
+            <li>Dual-GPU training via torchrun on Kaggle T4s, fp16, gradient checkpointing, fail-fast DataParallel guard</li>
+            <li>4-bit NF4 quantized inference with a live LoRA adapter, fit for an 8GB consumer GPU</li>
+            <li>Streamlit chat app with raw Llama-3 prompt formatting and smooth token-streamed output</li>
+          </ul>
+          <div class="project-stack">
+            <span class="stack-tag">Llama-3.2-3B-Instruct</span>
+            <span class="stack-tag">LoRA / PEFT</span>
+            <span class="stack-tag">bitsandbytes (4-bit)</span>
+            <span class="stack-tag">Hugging Face Transformers</span>
+            <span class="stack-tag">Streamlit</span>
+            <span class="stack-tag">torchrun · Dual-GPU</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── GUI AGENT ── -->
+      <div class="col-lg-6 reveal">
+        <div class="project-card">
+          <div class="project-num">08 / GUI AGENT</div>
+          <div class="project-icon">🖥️</div>
+          <div class="project-title">Zero-Budget GUI Agent — Plain English to Windows Control</div>
+          <p class="project-desc">Inspired by the GPT 6 Astra computer-use idea, I built my own simplified version: type a task in plain English and the agent looks at the screen and operates the PC like a person would. Built with no paid APIs and no dedicated GPU — a government-issued Ryzen 3 laptop is just the eyes and hands, while a free Kaggle 2×T4 GPU runs the open-source GUI-Owl-1.5-8B model in 4-bit behind a free ngrok tunnel.</p>
+
+          <div class="project-story">
+            <div class="story-toggle" onclick="toggleStory(this)"><span class="arrow">▶</span> The Full Journey</div>
+            <div class="story-body">
+              <div class="story-para">
+                <strong>Phase 1 — Zero Budget, Split Architecture.</strong> <span class="prob">The client laptop (AMD Ryzen 3 7320U, no dedicated GPU) can't run an 8B vision-language model, and paid computer-use APIs were off the table.</span> Split the system in two: the laptop only takes screenshots and executes actions, while a FastAPI server on Kaggle loads <strong>GUI-Owl-1.5-8B in 4-bit NF4, sharded across both T4s</strong>, exposed to the laptop through a free ngrok tunnel. Loop: screenshot → POST /step → one action returned → executed → repeat.
+              </div>
+              <div class="story-milestone">
+                <span class="ms bad">Local 8B inference ✗</span><span class="ms bad">Paid computer-use APIs ✗</span><span class="ms good">Kaggle 2×T4 + 4-bit NF4 ✓</span><span class="ms good">ngrok tunnel ✓</span>
+              </div>
+              <div class="story-para">
+                <strong>Phase 2 — Making Clicks Land on Any Screen.</strong> <span class="prob">Model coordinates and real screen pixels didn't line up across resolutions and DPI-scaled displays, so clicks drifted.</span> Switched the model to a <strong>normalized 0–1000 coordinate grid</strong> independent of screen size, resized screenshots with <strong>smart_resize</strong> before inference, made the client DPI-aware, and required every click to carry a <strong>short label naming the control</strong> so the model re-reads its target before acting. Clicks are also clamped away from screen corners so they can't accidentally trip the failsafe.
+              </div>
+              <div class="story-milestone">
+                <span class="ms bad">Pixel coords drifting ✗</span><span class="ms good">0–1000 normalized grid ✓</span><span class="ms good">Labeled clicks ✓</span><span class="ms good">DPI-aware client ✓</span>
+              </div>
+              <div class="story-para">
+                <strong>Phase 3 — Taming an 8B Model's Output.</strong> <span class="prob">The model sometimes wrote "Action:" instead of "ACTION:", which the parser missed — so generation ran on and it hallucinated a whole multi-step plan.</span> Made the action parser case-insensitive and string-aware (so a ")" inside typed code doesn't end the call), added a <strong>custom stopping criterion that halts generation the moment one complete action line appears</strong>, truncated replies to the first action, and forced a short <code>&lt;think&gt;</code> reasoning block on every step. Both server and client parsers now agree on which action is "the" action.
+              </div>
+              <div class="story-milestone">
+                <span class="ms bad">Hallucinated multi-step plans ✗</span><span class="ms good">Stop-on-first-action criterion ✓</span><span class="ms good">Case-insensitive, string-aware parser ✓</span><span class="ms good">Forced &lt;think&gt; block ✓</span>
+              </div>
+              <div class="story-para">
+                <strong>Phase 4 — Guardrails Around the Model.</strong> <span class="prob">Small models type a filename and then click somewhere else, repeat the same click forever, or declare victory too early.</span> Built a scaffolding layer: a <strong>submit gate</strong> (typed text isn't done until Enter or Save — after two refusals the client presses Enter itself), <strong>done() verification</strong> (the first done() is challenged once to confirm the result is on screen), <strong>loop and repeat protection</strong> for no-op and toggling actions, and <strong>screen-change detection</strong> that waits for the display to settle before the next step. Minimizing the agent's own console keeps its log text from looking like a UI change.
+              </div>
+              <div class="story-milestone">
+                <span class="ms good">Submit gate ✓</span><span class="ms good">done() challenged once ✓</span><span class="ms good">Loop &amp; repeat guard ✓</span><span class="ms good">Settle-wait + change detection ✓</span>
+              </div>
+              <div class="story-para">
+                <strong>Phase 5 — Follow-Ups, Logs and a Kill Switch.</strong> Added <strong>session memory</strong> so a follow-up like "same file, replace its content with…" resolves against earlier tasks, plus a mouse-to-corner <strong>failsafe</strong> and full run logs — raw and marked screenshots with JSONL and text logs — so every executed step can be audited. Result: it created a Python file in a test folder, wrote an add-two-numbers program, saved it and ran it in a separate terminal; and it opened Chrome, picked the correct profile avatar and downloaded VS Code.
+              </div>
+              <div class="story-milestone">
+                <span class="ms good">Session memory for follow-ups ✓</span><span class="ms good">Failsafe + full logging ✓</span><span class="ms good">Create → code → save → run ✓</span><span class="ms good">Chrome profile select + download ✓</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="inline-video-wrap">
+            <div class="inline-video-label"><span class="dot-blink"></span> Demo Video</div>
+            <video class="inline-video auto-play-video" muted playsinline controls preload="metadata">
+              <source src="project_demo_videos/astra_demo.mp4" type="video/mp4">
+            </video>
+          </div>
+
+          <ul class="project-points">
+            <li>Runs on zero budget: free Kaggle 2×T4 GPU, GUI-Owl-1.5-8B in 4-bit, free ngrok tunnel — the low-end laptop only captures screens and executes actions</li>
+            <li>Normalized 0–1000 coordinates and labeled clicks make actions resolution-independent and easier for the model to self-check</li>
+            <li>Stop-on-first-action generation with a case-insensitive, string-aware parser prevents hallucinated multi-step plans</li>
+            <li>Guardrails: submit gate, first-done() verification, loop/repeat protection and screen-change detection with settle-wait</li>
+            <li>Follow-up tasks with session memory, mouse-to-corner failsafe, and full logs with marked screenshots</li>
+            <li>Demo tasks: create a file, write, save and run a Python program in a separate terminal; open Chrome, pick a profile and download VS Code</li>
+          </ul>
+          <div class="project-stack">
+            <span class="stack-tag">GUI-Owl-1.5-8B</span>
+            <span class="stack-tag">Qwen3-VL</span>
+            <span class="stack-tag">4-bit NF4</span>
+            <span class="stack-tag">FastAPI</span>
+            <span class="stack-tag">PyAutoGUI</span>
+            <span class="stack-tag">Transformers</span>
+            <span class="stack-tag">ngrok</span>
+            <span class="stack-tag">Kaggle 2×T4</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROFILES -->
+<section id="profiles">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Online Profiles</span>
+      <h2 class="section-title">Find Me Online</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3 reveal">
+        <a href="https://www.linkedin.com/in/meiyarasu-k" target="_blank" class="profile-card">
+          <div class="profile-icon profile-icon--linkedin"><i class="fab fa-linkedin"></i></div>
+          <div class="profile-name">LinkedIn</div>
+          <div class="profile-handle">meiyarasu-k</div>
+          <div class="profile-desc">Professional profile & work experience updates</div>
+        </a>
+      </div>
+      <div class="col-md-6 col-lg-3 reveal">
+        <a href="https://leetcode.com/u/dyXX6IGV43/" target="_blank" class="profile-card">
+          <div class="profile-icon profile-icon--leetcode"><span>⚡</span></div>
+          <div class="profile-name">LeetCode</div>
+          <div class="profile-handle">dyXX6IGV43</div>
+          <div class="profile-desc">Competitive programming & algorithm challenges</div>
+        </a>
+      </div>
+      <div class="col-md-6 col-lg-3 reveal">
+        <a href="https://www.hackerrank.com/profile/meiyarasu713" target="_blank" class="profile-card">
+          <div class="profile-icon profile-icon--hackerrank"><i class="fab fa-hackerrank"></i></div>
+          <div class="profile-name">HackerRank</div>
+          <div class="profile-handle">meiyarasu713</div>
+          <div class="profile-desc">Python Basic certification & coding challenges</div>
+        </a>
+      </div>
+      <div class="col-md-6 col-lg-3 reveal">
+        <a href="https://www.geeksforgeeks.org/profile/meiyara7i3f" target="_blank" class="profile-card">
+          <div class="profile-icon profile-icon--gfg"><span>GfG</span></div>
+          <div class="profile-name">GeeksforGeeks</div>
+          <div class="profile-handle">meiyara7i3f</div>
+          <div class="profile-desc">DSA practice & CS articles engagement</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CREDLY BADGES -->
+<section id="badges">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Credly Badges</span>
+      <h2 class="section-title">Verified Achievements</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="row g-4 justify-content-center">
+      <div class="col-sm-6 col-md-4 col-lg-3 reveal">
+        <a href="https://www.credly.com/badges/18550097-511d-46c0-a1ce-dec3aa3b8248" target="_blank" class="badge-card">
+          <div class="badge-img-wrap">
+            <img src="badges/machine_learning_badge.png" alt="Machine Learning with Python Level 1" class="badge-img">
+          </div>
+          <div class="badge-name">Machine Learning with Python</div>
+          <div class="badge-issuer">IBM · Credly · Level 1</div>
+          <div class="badge-view"><i class="fa fa-external-link-alt"></i> View on Credly</div>
+        </a>
+      </div>
+      <div class="col-sm-6 col-md-4 col-lg-3 reveal">
+        <a href="https://www.credly.com/badges/6a7bfd1e-ccf1-4730-85dc-c5c98cc100e9" target="_blank" class="badge-card">
+          <div class="badge-img-wrap">
+            <img src="badges/data_visualization_badge.png" alt="Data Visualization Badge" class="badge-img">
+          </div>
+          <div class="badge-name">Data Visualization</div>
+          <div class="badge-issuer">IBM · Credly</div>
+          <div class="badge-view"><i class="fa fa-external-link-alt"></i> View on Credly</div>
+        </a>
+      </div>
+      <div class="col-sm-6 col-md-4 col-lg-3 reveal">
+        <a href="https://www.credly.com/badges/2184498c-379c-4082-9b31-cb61837ca7a4" target="_blank" class="badge-card">
+          <div class="badge-img-wrap">
+            <img src="badges/data_analysis_badge.png" alt="Data Analysis Badge" class="badge-img">
+          </div>
+          <div class="badge-name">Data Analysis</div>
+          <div class="badge-issuer">IBM · Credly</div>
+          <div class="badge-view"><i class="fa fa-external-link-alt"></i> View on Credly</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATES -->
+<section id="certifications">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Certificates</span>
+      <h2 class="section-title">Course Completions</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="row g-4">
+
+      <!-- Data Visualization -->
+      <div class="col-sm-6 col-lg-4 reveal">
+        <a href="https://courses.cognitiveclass.ai/certificates/090839d79d93400f981b1df3bb78ca20" target="_blank" class="cert-card">
+          <div class="cert-img-wrap">
+            <img src="certificates/data_visualization.png" alt="Data Visualization Certificate" class="cert-img">
+            <div class="cert-img-overlay"></div>
+          </div>
+          <div class="cert-card-body">
+            <div class="cert-card-title">Data Visualization</div>
+            <div class="cert-card-issuer">Cognitive Class · IBM</div>
+            <div class="cert-card-link"><i class="fa fa-external-link-alt"></i> Verify Certificate</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- SQL Basic -->
+      <div class="col-sm-6 col-lg-4 reveal">
+        <a href="https://www.hackerrank.com/certificates/0568c58c1421" target="_blank" class="cert-card">
+          <div class="cert-img-wrap">
+            <img src="certificates/sql_basic.png" alt="SQL Basic Certificate" class="cert-img">
+            <div class="cert-img-overlay"></div>
+          </div>
+          <div class="cert-card-body">
+            <div class="cert-card-title">SQL Basic</div>
+            <div class="cert-card-issuer">HackerRank</div>
+            <div class="cert-card-link"><i class="fa fa-external-link-alt"></i> Verify Certificate</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Python Basic -->
+      <div class="col-sm-6 col-lg-4 reveal">
+        <a href="https://www.hackerrank.com/certificates/a7ea93d516c2" target="_blank" class="cert-card">
+          <div class="cert-img-wrap">
+            <img src="certificates/python_basic.png" alt="Python Basic Certificate" class="cert-img">
+            <div class="cert-img-overlay"></div>
+          </div>
+          <div class="cert-card-body">
+            <div class="cert-card-title">Python Basic</div>
+            <div class="cert-card-issuer">HackerRank</div>
+            <div class="cert-card-link"><i class="fa fa-external-link-alt"></i> Verify Certificate</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Machine Learning -->
+      <div class="col-sm-6 col-lg-4 reveal">
+        <a href="https://courses.cognitiveclass.ai/certificates/d786d74be5294a989647edfd8e62bc7e" target="_blank" class="cert-card">
+          <div class="cert-img-wrap">
+            <img src="certificates/machine_learning.png" alt="Machine Learning Certificate" class="cert-img">
+            <div class="cert-img-overlay"></div>
+          </div>
+          <div class="cert-card-body">
+            <div class="cert-card-title">Machine Learning</div>
+            <div class="cert-card-issuer">Cognitive Class · IBM</div>
+            <div class="cert-card-link"><i class="fa fa-external-link-alt"></i> Verify Certificate</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Data Analysis -->
+      <div class="col-sm-6 col-lg-4 reveal">
+        <a href="https://courses.cognitiveclass.ai/certificates/fb6c3fe939924e4da7beb94804d559d9" target="_blank" class="cert-card">
+          <div class="cert-img-wrap">
+            <img src="certificates/data_analysis.png" alt="Data Analysis Certificate" class="cert-img">
+            <div class="cert-img-overlay"></div>
+          </div>
+          <div class="cert-card-body">
+            <div class="cert-card-title">Data Analysis</div>
+            <div class="cert-card-issuer">Cognitive Class · IBM</div>
+            <div class="cert-card-link"><i class="fa fa-external-link-alt"></i> Verify Certificate</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Crash Course Python -->
+      <div class="col-sm-6 col-lg-4 reveal">
+        <a href="https://www.coursera.org/account/accomplishments/verify/WC4556HB7JPS" target="_blank" class="cert-card">
+          <div class="cert-img-wrap">
+            <img src="certificates/Crash_Course_Python.jpeg" alt="Crash Course on Python" class="cert-img">
+            <div class="cert-img-overlay"></div>
+          </div>
+          <div class="cert-card-body">
+            <div class="cert-card-title">Crash Course on Python</div>
+            <div class="cert-card-issuer">Coursera · Google</div>
+            <div class="cert-card-link"><i class="fa fa-external-link-alt"></i> Verify Certificate</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Neural Networks Bootcamp -->
+      <div class="col-sm-6 col-lg-4 reveal">
+        <a href="https://www.udemy.com/certificate/UC-6d979ac1-3174-47d2-9201-f3eb2c15f212/" target="_blank" class="cert-card">
+          <div class="cert-img-wrap">
+            <img src="certificates/neural_network.jpg" alt="Neural Networks Bootcamp Certificate" class="cert-img">
+            <div class="cert-img-overlay"></div>
+          </div>
+          <div class="cert-card-body">
+            <div class="cert-card-title">Complete Neural Networks Bootcamp: Theory, Applications</div>
+            <div class="cert-card-issuer">Udemy</div>
+            <div class="cert-card-link"><i class="fa fa-external-link-alt"></i> Verify Certificate</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- DSA -->
+      <div class="col-sm-6 col-lg-4 reveal">
+        <a href="https://www.udemy.com/certificate/UC-737e8bf2-7ddb-4535-a5fb-c1d729d54c72/" target="_blank" class="cert-card">
+          <div class="cert-img-wrap">
+            <img src="certificates/data_structures.jpg" alt="Python DSA Certificate" class="cert-img">
+            <div class="cert-img-overlay"></div>
+          </div>
+          <div class="cert-card-body">
+            <div class="cert-card-title">Python Data Structures & Algorithms with Animated Examples</div>
+            <div class="cert-card-issuer">Udemy</div>
+            <div class="cert-card-link"><i class="fa fa-external-link-alt"></i> Verify Certificate</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- 99-Hours Bootcamp -->
+      <div class="col-sm-6 col-lg-4 reveal">
+        <a href="https://www.udemy.com/certificate/UC-241298e7-b435-4286-801f-0cb4b18fe030/" target="_blank" class="cert-card">
+          <div class="cert-img-wrap">
+            <img src="certificates/99_hours_course.jpg" alt="Data Science ML DL NLP Bootcamp Certificate" class="cert-img">
+            <div class="cert-img-overlay"></div>
+          </div>
+          <div class="cert-card-body">
+            <div class="cert-card-title">Complete Data Science, ML, DL & NLP Bootcamp</div>
+            <div class="cert-card-issuer">Udemy</div>
+            <div class="cert-card-link"><i class="fa fa-external-link-alt"></i> Verify Certificate</div>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Education</span>
+      <h2 class="section-title">Academic Background</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="row g-4 justify-content-center">
+      <div class="col-lg-6 reveal">
+        <div class="edu-card">
+          <div class="about-icon mb-3">🎓</div>
+          <div class="edu-degree">Bachelor of Computer Applications</div>
+          <div class="edu-school">J.K.K. Nataraja College of Arts & Science</div>
+          <div class="edu-meta">Graduated 2022 · CGPA: 6.81 / 10</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-header text-center">
+      <span class="section-tag">Contact</span>
+      <h2 class="section-title">Let's Connect</h2>
+      <div class="section-line mx-auto"></div>
+      <p class="mt-3 contact-intro">Open to opportunities in Computer Vision, ML Engineering, and AI research roles.</p>
+    </div>
+    <div class="row justify-content-center g-3">
+      <div class="col-lg-5 reveal">
+        <a href="mailto:meiyarasu.developer3@gmail.com" class="contact-card">
+          <div class="contact-icon"><i class="fa fa-envelope"></i></div>
+          <div><div class="contact-label">Email</div><div class="contact-value">meiyarasu.developer3@gmail.com</div></div>
+          <div class="contact-arrow"><i class="fa fa-arrow-right"></i></div>
+        </a>
+      </div>
+      <div class="col-lg-5 reveal">
+        <a href="tel:+917904677948" class="contact-card">
+          <div class="contact-icon"><i class="fa fa-phone"></i></div>
+          <div><div class="contact-label">Phone</div><div class="contact-value">+91 7904677948</div></div>
+          <div class="contact-arrow"><i class="fa fa-arrow-right"></i></div>
+        </a>
+      </div>
+      <div class="col-lg-5 reveal">
+        <a href="https://www.linkedin.com/in/meiyarasu-k" target="_blank" class="contact-card">
+          <div class="contact-icon"><i class="fab fa-linkedin"></i></div>
+          <div><div class="contact-label">LinkedIn</div><div class="contact-value">linkedin.com/in/meiyarasu-k</div></div>
+          <div class="contact-arrow"><i class="fa fa-arrow-right"></i></div>
+        </a>
+      </div>
+      <div class="col-lg-5 reveal">
+        <div class="contact-card">
+          <div class="contact-icon"><i class="fa fa-map-marker-alt"></i></div>
+          <div><div class="contact-label">Location</div><div class="contact-value">Tamil Nadu, India</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p class="footer-brand">MEIYARASU K — AI/ML Engineer</p>
+    <p class="footer-copy">© 2026 Meiyarasu K · Built with precision · Tamil Nadu, India</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
